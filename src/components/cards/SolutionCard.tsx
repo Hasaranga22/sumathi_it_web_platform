@@ -1,26 +1,51 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { ArrowUpRight } from "lucide-react";
 
-export function SolutionCard({ title, summary, image, href }: { title: string; summary: string; image: string; href: string }) {
+export function SolutionCard({
+  title,
+  summary,
+  image,
+  href
+}: {
+  title: string;
+  summary: string;
+  image: string;
+  href: string;
+}) {
   return (
-    <Link href={href} className="group block">
-      <Card className="overflow-hidden transition duration-500 hover:-translate-y-1 hover:border-brand-purple/30 hover:shadow-glow">
-        <div className="relative h-52 overflow-hidden bg-brand-lavender">
-          <Image src={image} alt={title} fill className="object-cover transition duration-1000 group-hover:scale-110" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/45 via-transparent to-transparent opacity-0 transition duration-700 group-hover:opacity-100" />
-        </div>
-        <CardContent className="p-6">
-          <h3 className="text-xl font-semibold tracking-[-0.03em] text-navy-950">{title}</h3>
-          <p className="mt-3 text-sm leading-7 text-slate-600">{summary}</p>
-        </CardContent>
-        <CardFooter className="px-6 pb-6">
-          <span className="inline-flex items-center gap-2 text-sm font-semibold text-brand-purple">
-            Explore solution <ArrowRight className="h-4 w-4 transition duration-500 group-hover:translate-x-1" />
+    <Link
+      href={href}
+      className="group relative flex h-full min-h-[320px] flex-col justify-end overflow-hidden rounded-[28px] border border-slate-200 shadow-card transition-all duration-500 hover:-translate-y-1.5 hover:shadow-glow"
+    >
+      <div className="absolute inset-0">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/55 to-navy-950/10" />
+      </div>
+
+      <div className="relative z-10 flex items-center justify-between p-6">
+        <div>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--gold)]">
+            UAV Solution
           </span>
-        </CardFooter>
-      </Card>
+          <h3 className="mt-2 text-2xl font-semibold text-white">{title}</h3>
+          <p className="mt-2 max-w-xs text-sm leading-6 text-blue-100/90 line-clamp-2">
+            {summary}
+          </p>
+        </div>
+      </div>
+
+      <span className="absolute right-6 top-6 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-md transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-navy-950 group-hover:rotate-45">
+        <ArrowUpRight className="h-5 w-5" />
+      </span>
     </Link>
   );
 }

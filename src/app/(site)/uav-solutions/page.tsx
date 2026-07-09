@@ -9,6 +9,8 @@ import { ProductCard } from "@/components/cards/ProductCard";
 import { DroneComparison } from "@/components/product/DroneComparison";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
+import { CategoryVideoHeader } from "@/components/sections/CategoryVideoHeader";
+// import { PartnersSlider } from "@/components/sections/PartnersSlider";
 
 export const metadata = buildMetadata({
   title: "UAV Solutions, Drones, GNSS, BIM and Scanners",
@@ -26,6 +28,7 @@ const useCases = [
 
 export default function UavSolutionsPage() {
   const featured = products.filter((item) => item.category === "drones").slice(0, 3);
+  const droneCategory = uavCategories.find((category) => category.slug === "drones");
 
   return (
     <>
@@ -34,18 +37,17 @@ export default function UavSolutionsPage() {
         description="Drone, geospatial, mapping and reality capture solutions"
         breadcrumbs={[{ label: "UAV Solutions" }]}
       />
-      <section className="bg-navy-950 py-12 text-white">
-        <div className="container-padded">
-          <AnimatedSection variant="pop">
-            <div className="aspect-video overflow-hidden rounded-card border border-white/10 bg-white/5 shadow-soft">
-              <video className="h-full w-full object-cover" controls poster="/images/uav/drone-video-poster.svg">
-                <source src="/videos/uav/drone-demo.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </AnimatedSection>
-          <p className="mt-4 text-sm text-blue-100">Replace the demo video file inside public/videos/uav/drone-demo.mp4.</p>
-        </div>
-      </section>
+
+      {droneCategory?.videoUrl && (
+        <CategoryVideoHeader
+          videoUrl={droneCategory.videoUrl}
+          poster={droneCategory.videoPoster}
+          eyebrow="See it in the field"
+          title="One ecosystem, from flight to finished data"
+          description="Drones, GNSS, BIM, scanners and software working together across every mission."
+        />
+      )}
+
       <section className="section-padding bg-white">
         <div className="container-padded">
           <SectionHeader eyebrow="Field technology ecosystem" title="UAV use cases designed for practical business outcomes" description="The UAV section should feel more visual and interactive because customers need to understand both the product and the operational value." />
@@ -67,11 +69,16 @@ export default function UavSolutionsPage() {
       </section>
       <section className="section-padding bg-slate-50">
         <div className="container-padded">
-          <SectionHeader title="UAV solution categories" description="Each category pulls content from JSON and can later be connected to Supabase." />
+          <SectionHeader title="UAV solution categories" description="Explore our comprehensive range of UAV solutions and services." />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {uavCategories.map((category, index) => (
               <AnimatedSection key={category.slug} delay={index * 0.05} variant="pop">
-                <SolutionCard title={category.title} summary={category.summary} image={category.image} href={`/uav-solutions/${category.slug}`} />
+                <SolutionCard
+                  title={category.title}
+                  summary={category.tagline || category.summary}
+                  image={category.image}
+                  href={`/uav-solutions/${category.slug}`}
+                />
               </AnimatedSection>
             ))}
           </div>
@@ -97,6 +104,7 @@ export default function UavSolutionsPage() {
           </div>
         </div>
       </section>
+
       <CtaBand title="Need help choosing a UAV platform?" description="Talk to Sumathi IT for drone selection, UAV workflows, mapping software, and geospatial integration support." />
     </>
   );

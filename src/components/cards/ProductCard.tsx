@@ -1,28 +1,69 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Box } from "lucide-react";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { ArrowUpRight } from "lucide-react";
+import { titleCase } from "@/lib/utils";
 
-export function ProductCard({ title, summary, image, href, category }: { title: string; summary: string; image: string; href: string; category: string }) {
+export function ProductCard({
+  title,
+  summary,
+  image,
+  href,
+  category
+}: {
+  title: string;
+  summary: string;
+  image: string;
+  href: string;
+  category: string;
+}) {
   return (
-    <Link href={href} className="group block">
-      <Card className="overflow-hidden transition duration-500 hover:-translate-y-1 hover:border-brand-purple/30 hover:shadow-glow">
-        <div className="relative h-56 overflow-hidden bg-brand-lavender">
-          <Image src={image} alt={title} fill className="object-cover transition duration-1000 group-hover:scale-110" />
-          <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-purple shadow-card">
-            <Box className="h-4 w-4" /> {category}
-          </div>
+    <Link
+      href={href}
+      className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-card transition-all duration-500 hover:-translate-y-1.5 hover:border-transparent hover:shadow-glow"
+    >
+      {/* Image bleed */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        />
+        {/* Gradient scrim */}
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+
+        {/* Category chip */}
+        <span className="absolute left-4 top-4 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
+          {titleCase(category)}
+        </span>
+
+        {/* Arrow affordance */}
+        <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-navy-950 group-hover:rotate-45">
+          <ArrowUpRight className="h-4 w-4" />
+        </span>
+
+        {/* Title over image */}
+        <div className="absolute inset-x-0 bottom-0 p-5">
+          <h3 className="text-lg font-semibold leading-snug text-white drop-shadow-sm">
+            {title}
+          </h3>
         </div>
-        <CardContent className="p-6">
-          <h3 className="text-xl font-semibold tracking-[-0.03em] text-navy-950">{title}</h3>
-          <p className="mt-3 text-sm leading-7 text-slate-600">{summary}</p>
-        </CardContent>
-        <CardFooter className="px-6 pb-6">
-          <span className="inline-flex items-center gap-2 text-sm font-semibold text-brand-purple">
-            View product details <ArrowRight className="h-4 w-4 transition duration-500 group-hover:translate-x-1" />
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-1 flex-col gap-4 p-5">
+        <p className="text-sm leading-6 text-slate-600 line-clamp-3">{summary}</p>
+        <div className="mt-auto flex items-center gap-2 text-sm font-semibold text-brand-purple">
+          <span className="button-flip-text">
+            <span>View product</span>
+            <span>View product</span>
           </span>
-        </CardFooter>
-      </Card>
+          <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+        </div>
+      </div>
     </Link>
   );
 }

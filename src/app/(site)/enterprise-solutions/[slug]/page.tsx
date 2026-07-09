@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Building2, Layers3 } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { enterpriseSolutions } from "@/data/enterprise-solutions";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { HeroBlock } from "@/components/sections/HeroBlock";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { SolutionCard } from "@/components/cards/SolutionCard";
+import { SolutionShowcaseBand } from "@/components/sections/SolutionShowcaseBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { AnimatedList } from "@/components/common/AnimatedList";
 
@@ -51,19 +51,29 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
           </AnimatedSection>
         </div>
       </section>
+
+
+      <SolutionShowcaseBand
+        eyebrow="In the Field"
+        title={`${solution.title} deployments, done right.`}
+        description="From planning to go-live, our engineers deliver every deployment with the same precision and care every enterprise client expects."
+        image={solution.image}
+        imageAlt={`${solution.title} deployment by Sumathi IT`}
+      />
+      
       <section className="section-padding bg-slate-50">
-        <div className="container-padded grid gap-8 lg:grid-cols-2">
-          <AnimatedSection variant="pop">
-            <div className="premium-card p-7">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-lavender text-brand-purple"><Layers3 className="h-6 w-6" /></div>
-              <h2 className="mt-5 text-2xl font-semibold text-navy-950">Key benefits</h2>
-              <div className="mt-6"><AnimatedList items={solution.benefits} /></div>
+        <div className="container-padded grid gap-8 lg:grid-cols-2 lg:items-stretch">
+          <AnimatedSection variant="pop" className="h-full">
+            <div className="premium-card flex h-full flex-col p-7">
+              <h2 className="text-2xl font-semibold text-navy-950">Key benefits</h2>
+              <div className="mt-6">
+                <AnimatedList items={solution.benefits} />
+              </div>
             </div>
           </AnimatedSection>
-          <AnimatedSection variant="pop" delay={0.08}>
-            <div className="premium-card p-7">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-lavender text-brand-purple"><Building2 className="h-6 w-6" /></div>
-              <h2 className="mt-5 text-2xl font-semibold text-navy-950">Industries served</h2>
+          <AnimatedSection variant="pop" delay={0.08} className="h-full">
+            <div className="premium-card flex h-full flex-col p-7">
+              <h2 className="text-2xl font-semibold text-navy-950">Industries served</h2>
               <div className="mt-6 flex flex-wrap gap-3">
                 {solution.industries.map((industry) => <span key={industry} className="rounded-full bg-brand-lavender px-4 py-2 text-sm font-medium text-brand-purple">{industry}</span>)}
               </div>
@@ -72,6 +82,7 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
           </AnimatedSection>
         </div>
       </section>
+
       <section className="section-padding bg-white">
         <div className="container-padded">
           <h2 className="text-3xl font-semibold tracking-[-0.04em] text-navy-950">Related solutions</h2>
