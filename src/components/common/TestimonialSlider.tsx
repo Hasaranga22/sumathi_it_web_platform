@@ -1,76 +1,74 @@
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
+
 import { testimonials } from "@/data/testimonials";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function TestimonialSlider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  const autoplay = useRef(
+    Autoplay({
+      delay: 3000,
+      stopOnInteraction: false,
+    })
+  );
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden">
-        <div 
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.name} className="w-full flex-shrink-0 px-4">
-              <div className="mx-auto max-w-3xl rounded-card bg-white p-8 shadow-card md:p-10">
-                <div className="grid gap-8 md:grid-cols-[200px_1fr] md:items-center">
-                  <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-brand-lavender mx-auto md:mx-0">
-                    <Image src={testimonial.image} alt={testimonial.name} fill className="object-cover" />
+    <Carousel
+      plugins={[autoplay.current]}
+      opts={{
+        align: "start",
+        loop: true,
+      }}
+      className="w-full"
+    >
+      <CarouselContent className="-ml-4">
+        {testimonials.map((testimonial) => (
+          <CarouselItem
+            key={testimonial.name}
+            className="pl-4 basis-full md:basis-1/2"
+          >
+            <Card className="h-full border-slate-200 shadow-card">
+              <CardContent className="p-8">
+                <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-center">
+                  <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full border-4 border-brand-lavender">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <div className="text-center md:text-left">
-                    <Quote className="mx-auto h-10 w-10 text-brand-purple md:mx-0" />
-                    <p className="mt-4 text-lg leading-8 text-slate-700">"{testimonial.quote}"</p>
-                    <p className="mt-6 font-semibold text-navy-950">{testimonial.name}</p>
-                    <p className="text-sm text-brand-purple">{testimonial.role}</p>
+
+                  <div className="flex-1 text-center lg:text-left">
+                    <Quote className="mx-auto h-10 w-10 text-brand-purple lg:mx-0" />
+
+                    <p className="mt-4 leading-8 text-slate-700">
+                      "{testimonial.quote}"
+                    </p>
+
+                    <h3 className="mt-6 text-xl font-semibold text-navy-950">
+                      {testimonial.name}
+                    </h3>
+
+                    <p className="text-sm text-brand-purple">
+                      {testimonial.role}
+                    </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      <div className="mt-8 flex items-center justify-center gap-3">
-        <button 
-          onClick={prev}
-          className="grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-brand-purple hover:text-white"
-          aria-label="Previous testimonial"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        
-        <div className="flex gap-2">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-2 w-2 rounded-full transition ${index === currentIndex ? 'bg-brand-purple' : 'bg-slate-300'}`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
-        </div>
-        
-        <button 
-          onClick={next}
-          className="grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-brand-purple hover:text-white"
-          aria-label="Next testimonial"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </div>
-    </div>
+              </CardContent>
+            </Card>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
   );
 }

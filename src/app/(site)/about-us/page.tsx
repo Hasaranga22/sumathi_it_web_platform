@@ -96,16 +96,13 @@ export default function AboutUsPage() {
       </section>
       <section className="section-padding bg-white">
         <div className="container-padded">
-          <SectionHeader title="Customer testimonials" />
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <section className="section-padding bg-white">
-              <div className="container-padded">
-                <SectionHeader title="Customer testimonials" description="What our clients say about working with Sumathi IT." />
-                <div className="mt-8">
-                  <TestimonialSlider />
-                </div>
-              </div>
-            </section>
+          <SectionHeader
+            title="Customer testimonials"
+            description="What our clients say about working with Sumathi IT."
+          />
+
+          <div className="mt-8">
+            <TestimonialSlider />
           </div>
         </div>
       </section>

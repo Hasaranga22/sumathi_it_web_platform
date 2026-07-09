@@ -3,12 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { ChevronDown, Facebook, Instagram, Linkedin, MapPin, Menu, Phone, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { navigation } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [panelOpen, setPanelOpen] = useState(false);
 
@@ -20,27 +22,30 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          {navigation.map((item) => (
-            <div key={item.label} className="group relative py-7">
-              <Link href={item.href} className="nav-link rounded-full px-3 py-2">
-                {item.label}
-                {item.children ? <ChevronDown className="h-4 w-4 transition group-hover:rotate-180" /> : null}
-              </Link>
-              {item.children ? (
-                <div className="invisible absolute left-0 top-full w-[330px] translate-y-3 rounded-[1.4rem] border border-slate-200 bg-white p-3 opacity-0 shadow-soft transition duration-500 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="group/item flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-brand-purple"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          ))}
+          {navigation.map((item) => {
+            const isActive = pathname === item.href || (item.children?.some(child => pathname === child.href));
+            return (
+              <div key={item.label} className="group relative py-7">
+                <Link href={item.href} className={`nav-link rounded-full px-3 py-2 ${isActive ? 'text-brand-purple' : ''}`}>
+                  {item.label}
+                  {item.children ? <ChevronDown className="h-4 w-4 transition group-hover:rotate-180" /> : null}
+                </Link>
+                {item.children ? (
+                  <div className="invisible absolute left-0 top-full w-[330px] translate-y-3 rounded-[1.4rem] border border-slate-200 bg-white p-3 opacity-0 shadow-soft transition duration-500 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className={`group/item flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition hover:bg-slate-50 ${pathname === child.href ? 'text-brand-purple bg-slate-50' : 'text-slate-700 hover:text-brand-purple'}`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-2 xl:flex">
@@ -78,22 +83,25 @@ export function Header() {
             className="overflow-hidden border-t border-slate-200 bg-white lg:hidden"
           >
             <div className="container-padded py-4">
-              {navigation.map((item) => (
-                <div key={item.label} className="border-b border-slate-100 py-3">
-                  <Link href={item.href} className="block text-base font-semibold text-navy-950" onClick={() => setOpen(false)}>
-                    {item.label}
-                  </Link>
-                  {item.children ? (
-                    <div className="mt-2 grid gap-1 pl-4">
-                      {item.children.map((child) => (
-                        <Link key={child.href} href={child.href} className="py-2 text-sm text-slate-600" onClick={() => setOpen(false)}>
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              ))}
+              {navigation.map((item) => {
+                const isActive = pathname === item.href || (item.children?.some(child => pathname === child.href));
+                return (
+                  <div key={item.label} className="border-b border-slate-100 py-3">
+                    <Link href={item.href} className={`block text-base font-semibold ${isActive ? 'text-brand-purple' : 'text-navy-950'}`} onClick={() => setOpen(false)}>
+                      {item.label}
+                    </Link>
+                    {item.children ? (
+                      <div className="mt-2 grid gap-1 pl-4">
+                        {item.children.map((child) => (
+                          <Link key={child.href} href={child.href} className={`py-2 text-sm ${pathname === child.href ? 'text-brand-purple font-medium' : 'text-slate-600'}`} onClick={() => setOpen(false)}>
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
               <Link href="tel:0115583311" className="mt-4 inline-flex rounded-full bg-navy-950 px-5 py-3 text-sm font-semibold text-white">
                 Hotline {siteConfig.contact.hotline}
               </Link>

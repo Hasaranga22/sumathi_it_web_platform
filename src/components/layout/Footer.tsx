@@ -31,7 +31,7 @@ export function Footer() {
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.25fr_0.75fr_0.9fr_1fr]">
           <div>
-            <Image src="/images/logo/sumathi-it-logo.png" alt="Sumathi IT" width={160} height={44} className="rounded-2xl bg-white p-2" />
+            <Image src="/images/logo/logo_white.png" alt="Sumathi IT" width={380} height={54} className=" p-2" />
             <p className="mt-5 max-w-sm text-sm leading-7 text-blue-100">
               Sri Lankan IT solutions and system integration partner for enterprise infrastructure, UAV solutions, cybersecurity, data center, geospatial, and digital transformation services.
             </p>

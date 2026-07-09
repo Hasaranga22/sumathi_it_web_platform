@@ -29,7 +29,18 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
   return (
     <>
       <Breadcrumbs items={[{ label: "Enterprise Solutions", href: "/enterprise-solutions" }, { label: solution.title }]} />
-      <HeroBlock eyebrow="Enterprise Solution" title={solution.title} description={solution.description} image={solution.image} />
+      <HeroBlock eyebrow="Enterprise Solution" title={solution.title} description={solution.summary} image={solution.image} />
+      <section className="section-padding bg-white">
+        <div className="container-padded">
+          <AnimatedSection variant="pop">
+            <div className="prose prose-lg max-w-none text-slate-700">
+              {solution.description.split('\n\n').map((paragraph, index) => (
+                <p key={index} className="mb-4 leading-8">{paragraph}</p>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
       <section className="section-padding bg-slate-50">
         <div className="container-padded grid gap-8 lg:grid-cols-2">
           <AnimatedSection variant="pop">
