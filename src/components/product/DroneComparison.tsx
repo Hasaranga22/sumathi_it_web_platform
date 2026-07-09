@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { GitCompareArrows } from "lucide-react";
+import { GitCompareArrows} from "lucide-react";
 import { droneProducts } from "@/data/products";
 import type { Product } from "@/types/product";
 
@@ -37,9 +37,7 @@ export function DroneComparison({ defaultFirstSlug }: { defaultFirstSlug?: strin
     <div className="premium-card overflow-hidden">
       <div className="border-b border-slate-200 bg-brand-lavender/55 p-5">
         <div className="mb-5 flex items-center gap-3">
-          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-purple text-white"><GitCompareArrows className="h-5 w-5" /></div>
           <div>
-            <h3 className="font-semibold text-navy-950">Drone comparison</h3>
             <p className="text-sm text-slate-600">Select two UAV platforms and review operational fit.</p>
           </div>
         </div>

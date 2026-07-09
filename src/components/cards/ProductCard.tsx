@@ -40,11 +40,6 @@ export function ProductCard({
           {titleCase(category)}
         </span>
 
-        {/* Arrow affordance */}
-        <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-navy-950 group-hover:rotate-45">
-          <ArrowUpRight className="h-4 w-4" />
-        </span>
-
         {/* Title over image */}
         <div className="absolute inset-x-0 bottom-0 p-5">
           <h3 className="text-lg font-semibold leading-snug text-white drop-shadow-sm">

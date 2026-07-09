@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import { buildMetadata } from "@/lib/seo";
 
-import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { AnniversaryCelebration } from "@/components/sections/AnniversaryCelebration";
@@ -15,12 +14,6 @@ export const metadata = buildMetadata({
   keywords: ["Sumathi IT 25 anniversary", "25 years technology solutions Sri Lanka", "Sumathi IT chairman message"]
 });
 
-const milestones = [
-  "ICT infrastructure and enterprise networking",
-  "System integration and end-user devices",
-  "Repair services and technical support",
-  "UAV, GNSS, BIM, scanning and software services"
-];
 
 export default function ChairmanMessagePage() {
   return (

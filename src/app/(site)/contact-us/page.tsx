@@ -26,9 +26,11 @@ export default function ContactUsPage() {
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1fr] lg:items-center">
             <AnimatedSection variant="slide-right">
               <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-100/80">Get in touch</span>
-              <h2 className="mt-3 text-2xl font-semibold md:text-3xl">Let's talk about your project</h2>
+              <h2 className="mt-3 text-2xl font-semibold md:text-3xl">
+                Let&apos;s talk about your project
+              </h2>
               <p className="mt-3 max-w-md text-sm leading-7 text-blue-100/85">
-                Reach us directly, or fill out the form and we'll route your inquiry to the right team.
+                Reach us directly, or fill out the form and we&apos;ll route your inquiry to the right team.
               </p>
               <div className="mt-8 grid max-w-xl gap-4 text-sm text-blue-50">
                 <Info icon={<Phone className="h-4 w-4" />} text={siteConfig.contact.phone} />

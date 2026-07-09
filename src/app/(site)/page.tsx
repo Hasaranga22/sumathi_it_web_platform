@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUp, Facebook, Globe2, Instagram, Linkedin, ShieldCheck, UsersRound } from "lucide-react";
+import { Globe2, ShieldCheck, UsersRound } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { enterpriseSolutions } from "@/data/enterprise-solutions";
 import { blogs } from "@/data/blogs";
