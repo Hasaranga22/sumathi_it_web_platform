@@ -1,0 +1,27 @@
+export const siteConfig = {
+  name: "Sumathi IT",
+  legalName: "Sumathi Information Technologies",
+  url: "https://www.sumathiit.com",
+  description:
+    "Sumathi IT is a leading Sri Lankan IT solutions and system integration company specializing in enterprise networking, cybersecurity, data center, geospatial engineering, UAV solutions, and digital transformation services.",
+  keywords: [
+    "Sumathi IT",
+    "Sri Lanka IT solutions",
+    "System integration Sri Lanka",
+    "Enterprise networking",
+    "Cybersecurity Sri Lanka",
+    "Data center solutions",
+    "UAV solutions Sri Lanka",
+    "Drone solutions Sri Lanka",
+    "Geospatial engineering",
+    "Digital transformation"
+  ],
+  contact: {
+    address: "532/2, Sirikotha Lane, Colombo",
+    email: "info@sumathiit.com",
+    phone: "+94 115 553 311",
+    callToday: "+94 112273757",
+    whatsapp: "+94 77 1234567",
+    hotline: "0115 583 311"
+  }
+};
