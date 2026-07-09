@@ -21,7 +21,7 @@ export function Header() {
           <Image src="/images/logo/sumathi-it-logo.png" alt="Sumathi IT" width={220} height={52} priority />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 xl:flex max-[1414px]:hidden">
           {navigation.map((item) => {
             const isActive = pathname === item.href || (item.children?.some(child => pathname === child.href));
             return (
@@ -48,7 +48,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-2 xl:flex">
+        <div className="hidden items-center gap-2 2xl:flex max-[1414px]:hidden">
           <button
             type="button"
             onClick={() => setPanelOpen(true)}
@@ -59,16 +59,16 @@ export function Header() {
           </button>
         </div>
 
-        <div className="flex items-center gap-2 xl:hidden">
+        <div className="flex items-center gap-2 2xl:hidden max-[1414px]:flex">
           <button
             type="button"
             onClick={() => setPanelOpen(true)}
-            className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-navy-950 lg:flex"
+            className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-navy-950 xl:flex"
             aria-label="Open company information"
           >
             <Menu className="h-5 w-5" />
           </button>
-          <button className="inline-flex rounded-full border border-slate-200 p-3 lg:hidden" onClick={() => setOpen((value) => !value)} aria-label="Toggle menu">
+          <button className="inline-flex rounded-full border border-slate-200 p-3 xl:hidden" onClick={() => setOpen((value) => !value)} aria-label="Toggle menu">
             {open ? <X className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
           </button>
         </div>

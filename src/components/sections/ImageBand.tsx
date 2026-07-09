@@ -1,0 +1,41 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "motion/react";
+
+export function ImageBand() {
+  return (
+    <section className="bg-white py-4 sm:py-6">
+      <div className="container-padded">
+        <motion.div
+          initial={{ opacity: 0, y: -90, scale: 0.94 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", stiffness: 220, damping: 14, mass: 0.8 }}
+          className="relative h-[280px] w-full overflow-hidden rounded-card shadow-soft sm:h-[340px] lg:h-[400px]"
+        >
+          <Image
+            src="/images/enterprise/nationwide-infrastructure.jpg"
+            alt="Sumathi IT infrastructure deployed across Sri Lanka"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent" />
+
+          <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 lg:p-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/70">
+              Nationwide Infrastructure
+            </p>
+            <h2 className="mt-3 max-w-xl text-2xl font-semibold leading-tight text-white sm:text-3xl lg:text-4xl">
+              Built for Sri Lanka&apos;s mission-critical systems.
+            </h2>
+            <p className="mt-3 max-w-md text-sm leading-6 text-white/80 sm:text-base">
+              From Colombo data centers to island-wide field deployments, our
+              infrastructure keeps enterprises running without interruption.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

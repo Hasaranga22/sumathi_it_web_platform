@@ -52,7 +52,7 @@ export function TestimonialSlider() {
                     <Quote className="mx-auto h-10 w-10 text-brand-purple lg:mx-0" />
 
                     <p className="mt-4 leading-8 text-slate-700">
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
 
                     <h3 className="mt-6 text-xl font-semibold text-navy-950">

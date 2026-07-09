@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Globe2, Network, ShieldCheck, UsersRound } from "lucide-react";
+import { ArrowUp, Facebook, Globe2, Instagram, Linkedin, ShieldCheck, UsersRound } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { enterpriseSolutions } from "@/data/enterprise-solutions";
 import { blogs } from "@/data/blogs";
@@ -10,6 +10,12 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import { SolutionCard } from "@/components/cards/SolutionCard";
 import { ArticleCard } from "@/components/cards/ArticleCard";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { LegacyBand } from "@/components/sections/LegacyBand";
+import { ImageBand } from "@/components/sections/ImageBand";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { TestimonialSlider } from "@/components/common/TestimonialSlider";
+import { ScrollToTop } from "@/components/common/ScrollToTop";
+import { ProcessShowcase } from "@/components/sections/Processshowcase";
 
 export const metadata = buildMetadata({
   title: "Enterprise IT, UAV and System Integration Solutions",
@@ -18,10 +24,9 @@ export const metadata = buildMetadata({
 });
 
 const processSteps = [
-  "Discovery and Analysis",
-  "Tailored Solutions",
-  "Design Your IT Roadmap",
-  "Deployment and Support"
+  { title: "Understand Your Needs", description: "We begin every project by carefully understanding your unique business goals, challenges, and audience. This deep discovery process ensures we create a solution that's not only relevant but also built around your specific needs and expectations." },
+  { title: "Design Tailored Solutions", description: "Our team transforms insights into strategic, creative, and scalable solutions. Every element is customized to align with your vision, ensuring the final product is both impactful and functional—designed to solve real problems and deliver measurable results." },
+  { title: "Deliver And Support", description: "We focus on delivering high-quality, on-time results with a seamless process. Post-launch, we remain committed through ongoing support, improvements, and optimization—ensuring your investment continues to perform and adapt to evolving business needs." }
 ];
 
 const partners = [
@@ -44,13 +49,6 @@ const partners = [
   { name: "Grandstream", logo: "/images/logo/partners logos/grandstream-logo-150x80.png" }
 ];
 
-const whyCards = [
-  { title: "Trust backed by 30 years of legacy", icon: ShieldCheck, text: "A reliable partner with group strength, local understanding, and long-term customer relationships." },
-  { title: "Expert team with proven experience", icon: UsersRound, text: "Certified engineers, consultants, and support teams for complex enterprise and field technology needs." },
-  { title: "Strong global and local partnerships", icon: Globe2, text: "Technology relationships help us deliver scalable, practical, and certified solutions." },
-  { title: "End-to-end future-ready solutions", icon: Network, text: "From consultation and deployment to support, we build ecosystems that grow with your business." }
-];
-
 export default function HomePage() {
   return (
     <>
@@ -58,11 +56,11 @@ export default function HomePage() {
         <div className="container-padded grid gap-12 lg:grid-cols-[1fr_0.92fr] lg:items-center">
           <AnimatedSection>
             <p className="inline-flex rounded-full px-4 py-2 text-md font-semibold uppercase tracking-[0.22em] text-brand-purple">Sumathi IT</p>
-            <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-[-0.055em] text-navy-950 sm:text-5xl lg:text-6xl">
-              Your challenges, our solutions — IT done right with precision and care.
+            <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.1] tracking-normal text-navy-950 sm:text-5xl lg:text-6xl">
+              Reliable IT Services for Your Organisation.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-              Enterprise infrastructure, cybersecurity, UAV solutions, geospatial engineering, end-user devices, and system integration services for Sri Lankan organizations.
+              We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of today.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/enterprise-solutions">Explore Solutions</ButtonLink>
@@ -71,8 +69,12 @@ export default function HomePage() {
           </AnimatedSection>
           <AnimatedSection delay={0.15} variant="pop" className="relative">
             <div className="absolute -left-6 -top-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
-              <p className="text-4xl font-semibold tracking-[-0.06em] text-brand-purple">30+</p>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Years of IT experience</p>
+              <p className="text-4xl font-semibold tracking-normal text-brand-purple">30+</p>
+              <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">Years of IT experience</p>
+            </div>
+            <div className="absolute -right-6 -bottom-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
+              <p className="text-4xl font-semibold tracking-normal text-brand-purple">99%</p>
+              <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">Happy Customers</p>
             </div>
             <div className="relative h-[360px] overflow-hidden rounded-card bg-brand-lavender shadow-soft sm:h-[480px]">
               <Image src="/images/hero/home-hero.svg" alt="Sumathi IT team and technology solutions" fill className="object-cover transition duration-1000 hover:scale-[1.03]" priority />
@@ -83,14 +85,20 @@ export default function HomePage() {
 
       <section className="border-y border-slate-200 bg-white py-12">
         <div className="container-padded overflow-hidden">
-          <div className="relative w-full">
+          <h2 className="text-center text-2xl font-semibold tracking-normal text-navy-950 mb-[6rem]">
+            OUR GLOBAL PARTNERS
+          </h2>
+          <div className="relative w-full mt-100">
             <div className="flex w-max animate-[marquee_60s_linear_infinite] gap-20 hover:[animation-play-state:paused]">
               {[...partners, ...partners, ...partners].map((item, index) => (
                 <div key={`${item.name}-${index}`} className="flex items-center justify-center opacity-60 grayscale transition hover:grayscale-0 hover:opacity-100">
-                  <img 
+                  <Image 
                     src={item.logo} 
                     alt={item.name} 
-                    className="h-12 w-auto object-contain"
+                    width={150}
+                    height={80}
+                    className="h-16 w-auto object-contain"
+                    unoptimized
                   />
                 </div>
               ))}
@@ -99,26 +107,29 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* NEW: "Done right, with precision and care" band */}
+      <LegacyBand />
+
       <section className="section-padding bg-white">
         <div className="container-padded grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
           <AnimatedSection variant="slide-right">
             <SectionHeader
-              eyebrow="Our approach"
-              title="We guide IT and business leaders through four clear steps."
-              description="The experience must feel structured, easy to understand, and dependable from the first consultation to deployment and support."
+              eyebrow="How We Work"
+              title="How We Deliver Innovation and Excellence"
+              description="We transform ideas into powerful digital solutions through a structured, collaborative approach."
             />
             <div className="mt-7 rounded-card bg-brand-lavender p-6">
-              <AnimatedList items={["Clear discovery before recommending products", "Vendor-agnostic solution thinking", "Support-focused implementation planning"]} />
+              <AnimatedList items={["Deep understanding of your business needs", "Customized solutions aligned with your vision", "Ongoing support and optimization"]} />
             </div>
           </AnimatedSection>
           <div className="grid gap-4">
             {processSteps.map((step, index) => (
-              <AnimatedSection key={step} delay={index * 0.06} variant="pop">
+              <AnimatedSection key={step.title} delay={index * 0.06} variant="pop">
                 <div className="premium-card flex items-start gap-4 p-5">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-purple text-sm font-bold text-white">0{index + 1}</span>
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-purple text-sm font-bold text-white">{index + 1}</span>
                   <div>
-                    <h3 className="font-semibold text-navy-950">{step}</h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-600">Structured consultation, technical clarity, and practical execution for enterprise-grade outcomes.</p>
+                    <h3 className="font-semibold text-navy-950">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{step.description}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -127,31 +138,68 @@ export default function HomePage() {
         </div>
       </section>
 
+      <ImageBand />
+
       <section className="section-padding bg-white">
-        <div className="container-padded rounded-card bg-brand-lavender !pr-0">
-          <div className="grid lg:grid-cols-[0.42fr_0.58fr]">
-            <AnimatedSection variant="slide-right" className="relative min-h-[420px]">
-              <Image src="/images/enterprise/data-center.svg" alt="Data center and enterprise infrastructure" fill className="object-cover" />
-            </AnimatedSection>
-            <div className="purple-panel p-8 text-white sm:p-10 lg:p-12 rounded-tr-[1.4rem] rounded-br-[1.4rem]">
-              <div className="grid gap-8 md:grid-cols-2">
-                {whyCards.map((card, index) => {
-                  const Icon = card.icon;
-                  return (
-                    <AnimatedSection key={card.title} delay={index * 0.06} variant="pop" className="text-center">
-                      <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-white/18 text-white">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="mt-5 text-lg font-semibold">{card.title}</h3>
-                      <p className="mt-3 text-sm leading-7 text-blue-50">{card.text}</p>
-                    </AnimatedSection>
-                  );
-                })}
+        <div className="container-padded grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <AnimatedSection variant="slide-left">
+            <SectionHeader
+              eyebrow="Why Choose Us"
+              title="Your Trusted Technology Partner"
+              description="We combine deep technical expertise with a customer-first approach to deliver solutions that drive real business results."
+            />
+            <div className="mt-6 space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-lavender text-brand-purple">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-navy-950">Certified Experts</h4>
+                  <p className="mt-1 text-sm text-slate-600">Our team holds certifications from leading technology vendors.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-lavender text-brand-purple">
+                  <UsersRound className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-navy-950">24/7 Support</h4>
+                  <p className="mt-1 text-sm text-slate-600">Round-the-clock technical support for critical systems.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-lavender text-brand-purple">
+                  <Globe2 className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-navy-950">Global Reach</h4>
+                  <p className="mt-1 text-sm text-slate-600">Partnerships with world-leading technology providers.</p>
+                </div>
               </div>
             </div>
+          </AnimatedSection>
+          <AnimatedSection className="relative h-[400px] overflow-hidden rounded-card bg-brand-lavender shadow-soft" variant="pop">
+            <Image src="/images/enterprise/networking.svg" alt="Technology solutions" fill className="object-cover transition duration-700 hover:scale-[1.03]" />
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <ProcessShowcase />
+      <section className="section-padding bg-slate-50">
+        <div className="container-padded">
+          <SectionHeader
+            eyebrow="Customer Testimonials"
+            title="What Our Clients Say"
+            description="Don't just take our word for it — hear from businesses we've helped transform."
+          />
+          <div className="mt-8">
+            <TestimonialSlider />
           </div>
         </div>
       </section>
+
+      {/* REDESIGNED: replaces the old "Trust Backed by 30 Years of Legacy" purple panel */}
+      <WhyChooseUs />
 
       <section className="section-padding bg-slate-50">
         <div className="container-padded">
@@ -195,6 +243,7 @@ export default function HomePage() {
       </section>
 
       <CtaBand />
+      <ScrollToTop />
     </>
   );
 }

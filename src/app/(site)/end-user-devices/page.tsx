@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Laptop, Monitor, TabletSmartphone } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
@@ -62,7 +63,7 @@ export default function EndUserDevicesPage() {
               </div>
             </div>
             <div className="relative h-80 overflow-hidden rounded-card bg-white">
-              <img src="/images/enterprise/end-user-devices.svg" alt="End User Devices" className="h-full w-full object-cover" />
+              <Image src="/images/enterprise/end-user-devices.svg" alt="End User Devices" fill className="object-cover" />
             </div>
           </AnimatedSection>
         </div>

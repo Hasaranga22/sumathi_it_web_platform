@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowUp } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 function WhatsappIcon() {
@@ -13,30 +11,10 @@ function WhatsappIcon() {
 }
 
 export function FloatingActions() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY > 500);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`;
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
-      {visible ? (
-        <button
-          aria-label="Scroll to top"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-brand-purple text-white shadow-soft transition hover:bg-navy-950"
-        >
-          <ArrowUp className="h-5 w-5" />
-        </button>
-      ) : null}
+    <div className="fixed bottom-5 right-5 z-50">
       <a
         href={whatsappUrl}
         aria-label="WhatsApp Sumathi IT"

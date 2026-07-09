@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { Building2, Layers3 } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { enterpriseSolutions } from "@/data/enterprise-solutions";
@@ -30,8 +31,17 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
     <>
       <Breadcrumbs items={[{ label: "Enterprise Solutions", href: "/enterprise-solutions" }, { label: solution.title }]} />
       <HeroBlock eyebrow="Enterprise Solution" title={solution.title} description={solution.summary} image={solution.image} />
-      <section className="section-padding bg-white">
-        <div className="container-padded">
+      <section className="section-padding relative bg-white">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/background/Back_ground_visual.png" 
+            alt="Background visual" 
+            fill 
+            className="object-cover opacity-[0.06]"
+            priority
+          />
+        </div>
+        <div className="container-padded relative z-10">
           <AnimatedSection variant="pop">
             <div className="prose prose-lg max-w-none text-slate-700">
               {solution.description.split('\n\n').map((paragraph, index) => (
