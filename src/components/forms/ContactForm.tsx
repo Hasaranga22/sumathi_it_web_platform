@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 const serviceOptions = [
@@ -12,7 +13,8 @@ const serviceOptions = [
   "Smart Infrastructure",
   "Managed Services",
   "End User Devices",
-  "Repairing"
+  "Repairing",
+  "Other"
 ];
 
 export function ContactForm() {
@@ -35,14 +37,21 @@ export function ContactForm() {
     <form onSubmit={submit} className="premium-card relative overflow-hidden p-6 sm:p-8">
       <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-[4rem] bg-brand-lavender" />
       <div className="relative">
-        <div className="mb-6 flex items-start gap-4">
-          <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-purple text-white">
-            <ShieldCheck className="h-6 w-6" />
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold tracking-[-0.03em] text-navy-950">Request a consultation</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-600">Share your requirement. Phase 01 opens a prepared email draft to the Sumathi IT team.</p>
-          </div>
+        {/* Logo — replace the path below if your logo asset lives elsewhere */}
+        <div className="relative mb-6 h-10 w-40">
+          <Image
+            src="/images/logo/sumathi-it-logo.png"
+            alt="Sumathi IT"
+            fill
+            className="object-contain object-left"
+          />
+        </div>
+
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold tracking-[-0.03em] text-navy-950">Request a consultation</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            Share your requirement and our team will send a prepared reply to the right specialist.
+          </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">

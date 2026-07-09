@@ -17,7 +17,12 @@ export default function GalleryPage() {
         description="A curated view of our work, people, and technology moments"
         breadcrumbs={[{ label: "Gallery" }]}
       />
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-slate-50">
+        <div className="container-padded mb-10 max-w-2xl">
+          <p className="text-sm leading-6 text-slate-600">
+            Click the front photo to open it full-screen, or use the arrows to browse the deck.
+          </p>
+        </div>
         <GalleryGrid />
       </section>
     </>

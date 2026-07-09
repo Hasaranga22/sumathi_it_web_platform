@@ -5,21 +5,52 @@ import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
+import { BrandLogoSlider, type BrandLogo } from "@/components/sections/BrandLogoSlider";
+import { DeviceGallery } from "@/components/sections/Devicegallery";
 
 export const metadata = buildMetadata({
-  title: "End User Devices",
-  description: "Business laptops, desktops, workstations, tablets, hybrid devices, and branded end-user technology from HP, Dell, Lenovo, Apple, ASUS, and MSI.",
+  title: "End User Devices - Business Laptops, Workstations & Tablets",
+  description:
+    "High-performance computing devices for professionals, businesses, and educational institutions. Business laptops, workstations, and tablets from HP, Dell, Lenovo, Apple, ASUS, and MSI in Sri Lanka.",
   path: "/end-user-devices",
-  keywords: ["business laptops Sri Lanka", "enterprise devices Sri Lanka", "workstations Colombo"]
+  keywords: [
+    "business laptops Sri Lanka",
+    "enterprise devices Sri Lanka",
+    "workstations Colombo",
+    "HP Dell Lenovo laptops Sri Lanka",
+    "Apple MacBook supplier Sri Lanka",
+    "gaming PC Sri Lanka"
+  ]
 });
 
 const offerings = [
-  { title: "Laptops", icon: Laptop, text: "Business, gaming, and ultraportable models for modern teams." },
-  { title: "Desktops & Workstations", icon: Monitor, text: "Custom-built for CAD, AI, multimedia, and enterprise workloads." },
-  { title: "Tablets & Hybrid Devices", icon: TabletSmartphone, text: "Portable devices for fieldwork, presentations, and flexible work." }
+  {
+    title: "Laptops",
+    icon: Laptop,
+    text: "Business, gaming, and ultraportable laptop models for modern teams, from everyday productivity to demanding creative and technical workloads."
+  },
+  {
+    title: "Desktops & Workstations",
+    icon: Monitor,
+    text: "Custom-built desktops and workstations for CAD, AI, 3D visualization, and multimedia production, sized for professionals, businesses, and educational institutions."
+  },
+  {
+    title: "Tablets & Hybrid Devices",
+    icon: TabletSmartphone,
+    text: "Portable devices for fieldwork, presentations, and flexible work, built for teams that move between the office and the field."
+  }
 ];
 
-const brands = ["HP", "Dell", "Lenovo", "Apple MacBooks", "ASUS", "MSI"];
+// Real logo paths pulled from your partners logo folder — HP, Apple, ASUS, and MSI
+// weren't in that list yet, so they're marked as placeholders until you add the files.
+const deviceBrands: BrandLogo[] = [
+  { name: "HP", logo: "/images/logo/partners logos/HP-150x80.png", isPlaceholder: true },
+  { name: "Dell", logo: "/images/logo/partners logos/Dell_logo_PNG1-scaled-150x80.png" },
+  { name: "Lenovo", logo: "/images/logo/partners logos/Lenovo_logo_PNG3-scaled-150x80.png" },
+  { name: "Apple MacBooks", logo: "/images/logo/partners logos/Apple-150x80.png", isPlaceholder: true },
+  { name: "ASUS", logo: "/images/logo/partners logos/ASUS-150x80.png", isPlaceholder: true },
+  { name: "MSI", logo: "/images/logo/partners logos/MSI-150x80.png", isPlaceholder: true }
+];
 
 export default function EndUserDevicesPage() {
   return (
@@ -31,7 +62,10 @@ export default function EndUserDevicesPage() {
       />
       <section className="section-padding bg-slate-50">
         <div className="container-padded">
-          <SectionHeader title="Our offerings" description="The page is structured for quotation-driven B2B users who need reliable supply, brand options, and practical guidance." />
+          <SectionHeader
+            title="Our offerings"
+            description="High-performance computing devices for professionals, businesses, and educational institutions — structured for quotation-driven B2B users who need reliable supply, brand options, and practical guidance."
+          />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {offerings.map((item, index) => {
               const Icon = item.icon;
@@ -55,11 +89,31 @@ export default function EndUserDevicesPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-purple">Enterprise Endpoints</p>
               <h2 className="mt-3 text-2xl font-semibold text-navy-950">Comprehensive End User Device Solutions</h2>
               <div className="mt-6 space-y-4 text-sm leading-7 text-slate-700">
-                <p>End user devices encompass enterprise computing endpoints such as desktops, notebooks, workstations, and intelligent client devices designed for secure access, data processing, and application delivery across modern IT environments. At Sumathi IT, we provide enterprise-grade endpoint solutions combined with lifecycle and managed services to ensure performance, security, and operational continuity across the organization.</p>
-                <p>Our device portfolio is engineered to support heterogeneous enterprise environments, enabling integration with on-premises infrastructure, virtual desktop environments (VDI/DaaS), and cloud-first architectures. This ensures users can operate efficiently across distributed workforces while maintaining centralized control, policy enforcement, and security compliance.</p>
-                <p>We work with a broad ecosystem of global OEMs and technology providers including Lenovo, Apple, HP, Dell, and Centerm, among others. This multi-vendor approach enables us to align device selection with workload requirements, ranging from knowledge worker laptops and high-performance engineering workstations to secure thin clients and mobility-first devices.</p>
-                <p>Through our End User Devices & Managed Services portfolio, Sumathi IT delivers end-to-end services including device provisioning, standard image deployment, endpoint management (MDM/UEM), patching, asset lifecycle management, and secure configuration aligned with enterprise security frameworks.</p>
-                <p>This ensures organizations benefit from standardized, secure, and scalable endpoint ecosystems that reduce operational overhead while improving user productivity and IT governance.</p>
+                <p>
+                  We provide high-performance computing devices for professionals, businesses, and educational
+                  institutions across Sri Lanka. End user devices encompass enterprise computing endpoints such as
+                  desktops, notebooks, workstations, and intelligent client devices designed for secure access, data
+                  processing, and application delivery across modern IT environments.
+                </p>
+                <p>
+                  Our device portfolio is engineered to support heterogeneous enterprise environments, enabling
+                  integration with on-premises infrastructure, virtual desktop environments (VDI/DaaS), and
+                  cloud-first architectures. This ensures users can operate efficiently across distributed
+                  workforces while maintaining centralized control, policy enforcement, and security compliance.
+                </p>
+                <p>
+                  We supply business laptops from HP, Dell, and Lenovo, Apple MacBooks for creative professionals,
+                  and ASUS and MSI machines for gaming and high-performance computing — alongside custom-built
+                  desktops and workstations for CAD, AI, 3D visualization, and multimedia, plus tablets and hybrid
+                  devices for fieldwork and presentations.
+                </p>
+                <p>
+                  Through our End User Devices &amp; Managed Services portfolio, Sumathi IT delivers end-to-end
+                  services including device provisioning, standard image deployment, endpoint management (MDM/UEM),
+                  patching, asset lifecycle management, and secure configuration aligned with enterprise security
+                  frameworks — giving organizations a standardized, secure, and scalable endpoint ecosystem that
+                  reduces operational overhead while improving user productivity and IT governance.
+                </p>
               </div>
             </div>
             <div className="relative h-80 overflow-hidden rounded-card bg-white">
@@ -68,14 +122,10 @@ export default function EndUserDevicesPage() {
           </AnimatedSection>
         </div>
       </section>
-      <section className="section-padding bg-white">
-        <div className="container-padded">
-          <SectionHeader title="Top brands we supply" description="Business laptops, creative workstations, gaming/high-performance PCs, and enterprise devices from trusted global brands." />
-          <div className="mt-8 flex flex-wrap gap-3">
-            {brands.map((brand) => <span key={brand} className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-brand-purple hover:text-brand-purple">{brand}</span>)}
-          </div>
-        </div>
-      </section>
+      <BrandLogoSlider title="Top brands we supply" logos={deviceBrands} />
+
+      <DeviceGallery />
+
       <CtaBand title="Need a device supply quotation?" />
     </>
   );

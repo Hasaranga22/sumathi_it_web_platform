@@ -10,7 +10,6 @@ import { DroneComparison } from "@/components/product/DroneComparison";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { CategoryVideoHeader } from "@/components/sections/CategoryVideoHeader";
-// import { PartnersSlider } from "@/components/sections/PartnersSlider";
 
 export const metadata = buildMetadata({
   title: "UAV Solutions, Drones, GNSS, BIM and Scanners",

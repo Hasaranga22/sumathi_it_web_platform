@@ -2,42 +2,160 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
+import { ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import { galleryItems } from "@/data/gallery";
-import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { ImageLightbox } from "@/components/common/ImageLightbox";
 
-export function GalleryGrid() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
-  const images = galleryItems.map(item => item.image);
+const total = galleryItems.length;
 
-  const openLightbox = (index: number) => {
-    setLightboxIndex(index);
-    setLightboxOpen(true);
+// Shortest signed distance from `index` to `center` on a circular deck,
+// e.g. with 8 items, index 7 and center 0 are 1 apart, not 7 apart.
+function relativePosition(index: number, center: number) {
+  let diff = index - center;
+  if (diff > total / 2) diff -= total;
+  if (diff < -total / 2) diff += total;
+  return diff;
+}
+
+// Visual recipe per distance-from-center. Anything further than this is hidden.
+function cardStyle(diff: number) {
+  const abs = Math.abs(diff);
+  const sign = Math.sign(diff);
+  const steps = [
+    { scale: 1, x: 0, rotate: 0, z: 50, opacity: 1 },
+    { scale: 0.84, x: 15, rotate: 10, z: 40, opacity: 0.92 },
+    { scale: 0.7, x: 27, rotate: 17, z: 30, opacity: 0.65 },
+    { scale: 0.58, x: 37, rotate: 22, z: 20, opacity: 0.32 }
+  ];
+  const step = steps[Math.min(abs, steps.length - 1)];
+  const hidden = abs >= steps.length;
+  return {
+    scale: step.scale,
+    xVw: step.x * sign,
+    rotate: step.rotate * sign,
+    zIndex: step.z,
+    opacity: hidden ? 0 : step.opacity,
+    pointerEvents: hidden ? ("none" as const) : ("auto" as const)
+  };
+}
+
+export function GalleryGrid() {
+  const [center, setCenter] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const images = galleryItems.map((item) => item.image);
+
+  const goTo = (index: number) => setCenter(((index % total) + total) % total);
+  const next = () => goTo(center + 1);
+  const prev = () => goTo(center - 1);
+
+  const handleCardClick = (index: number) => {
+    if (index === center) {
+      setLightboxOpen(true);
+    } else {
+      goTo(index);
+    }
+  };
+
+  // Basic touch swipe support for the deck
+  let touchStartX = 0;
+  const onTouchStart = (event: React.TouchEvent) => {
+    touchStartX = event.touches[0].clientX;
+  };
+  const onTouchEnd = (event: React.TouchEvent) => {
+    const delta = event.changedTouches[0].clientX - touchStartX;
+    if (delta > 50) prev();
+    if (delta < -50) next();
   };
 
   return (
     <>
-      <div className="container-padded grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {galleryItems.map((item, index) => (
-          <AnimatedSection key={item.title} delay={index * 0.04} variant="pop">
-            <div className="group premium-card overflow-hidden p-0 cursor-pointer" onClick={() => openLightbox(index)}>
-              <div className="relative h-72 overflow-hidden bg-brand-lavender">
-                <Image src={item.image} alt={item.title} fill className="object-cover transition duration-1000 group-hover:scale-110" />
-              </div>
-              <div className="bg-white p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-purple">{item.category}</p>
-                <h3 className="mt-2 font-semibold text-navy-950">{item.title}</h3>
-              </div>
-            </div>
-          </AnimatedSection>
-        ))}
+      <div className="container-padded">
+        <div
+          className="relative mx-auto h-[420px] w-full max-w-4xl sm:h-[520px] md:h-[600px]"
+          style={{ perspective: "1400px" }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          {galleryItems.map((item, index) => {
+            const diff = relativePosition(index, center);
+            const style = cardStyle(diff);
+            const isCenter = diff === 0;
+
+            return (
+              <motion.div
+                key={item.title}
+                className="absolute left-1/2 top-1/2 w-[260px] sm:w-[300px] md:w-[340px]"
+                style={{ zIndex: style.zIndex, pointerEvents: style.pointerEvents }}
+                animate={{
+                  x: `calc(-50% + ${style.xVw}vw)`,
+                  y: "-50%",
+                  scale: style.scale,
+                  rotate: style.rotate,
+                  opacity: style.opacity
+                }}
+                initial={false}
+                transition={{ type: "spring", stiffness: 220, damping: 26 }}
+                onClick={() => handleCardClick(index)}
+              >
+                <div
+                  className={`group relative aspect-[3/4] cursor-pointer overflow-hidden rounded-[26px] border border-white/40 bg-brand-lavender shadow-[0_25px_45px_-15px_rgba(6,18,52,0.45)] transition-shadow duration-500 ${
+                    isCenter ? "ring-2 ring-white" : ""
+                  }`}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="340px"
+                    className="object-cover"
+                    priority={isCenter}
+                  />
+
+                  {isCenter && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/5 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 p-4">
+                        <span className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full bg-white/20 text-white backdrop-blur-md">
+                          <Camera className="h-4 w-4" />
+                        </span>
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-semibold text-white">{item.title}</p>
+                          <p className="truncate text-xs text-blue-100/80">{item.category}</p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Deck navigation */}
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <button
+            onClick={prev}
+            className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-navy-950 shadow-card transition hover:-translate-x-0.5 hover:border-brand-purple hover:text-brand-purple"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            onClick={next}
+            className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-navy-950 shadow-card transition hover:translate-x-0.5 hover:border-brand-purple hover:text-brand-purple"
+            aria-label="Next photo"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
       </div>
+
       {lightboxOpen && (
-        <ImageLightbox 
-          images={images} 
-          initialIndex={lightboxIndex} 
-          onClose={() => setLightboxOpen(false)} 
+        <ImageLightbox
+          images={images}
+          initialIndex={center}
+          onClose={() => setLightboxOpen(false)}
         />
       )}
     </>

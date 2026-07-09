@@ -25,6 +25,11 @@ export default function ContactUsPage() {
         <div className="container-padded overflow-hidden rounded-card bg-brand-purple p-8 text-white shadow-glow sm:p-10 lg:p-12">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1fr] lg:items-center">
             <AnimatedSection variant="slide-right">
+              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-100/80">Get in touch</span>
+              <h2 className="mt-3 text-2xl font-semibold md:text-3xl">Let's talk about your project</h2>
+              <p className="mt-3 max-w-md text-sm leading-7 text-blue-100/85">
+                Reach us directly, or fill out the form and we'll route your inquiry to the right team.
+              </p>
               <div className="mt-8 grid max-w-xl gap-4 text-sm text-blue-50">
                 <Info icon={<Phone className="h-4 w-4" />} text={siteConfig.contact.phone} />
                 <Info icon={<Mail className="h-4 w-4" />} text={siteConfig.contact.email} />
@@ -65,24 +70,36 @@ export default function ContactUsPage() {
 }
 
 function Info({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return <div className="flex items-center gap-3"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/12 text-gold-100">{icon}</span>{text}</div>;
+  return (
+    <div className="flex items-center gap-3">
+      <span className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full bg-white/12 text-[var(--gold)]">{icon}</span>
+      {text}
+    </div>
+  );
 }
 
 function OfficeCard({ title, image, linkText }: { title: string; image: string; linkText: string }) {
   return (
-    <AnimatedSection variant="pop">
-      <div className="premium-card grid gap-6 p-6 sm:grid-cols-[1fr_220px] sm:items-center">
-        <div>
-          <h2 className="text-xl font-semibold text-navy-950">{title}</h2>
+    <AnimatedSection variant="pop" className="h-full">
+      <div className="premium-card flex h-full flex-col gap-6 p-6 sm:grid sm:grid-cols-[1fr_220px] sm:items-stretch">
+        <div className="flex flex-col">
+          <h2 className="min-h-[3.5rem] text-xl font-semibold leading-snug text-navy-950">{title}</h2>
           <div className="mt-4 grid gap-2 text-sm text-slate-600">
             <p>Address: {siteConfig.contact.address}</p>
             <p>{siteConfig.contact.phone}</p>
             <p>{siteConfig.contact.email}</p>
             <p>Working Hours: 08:15AM to 05:30PM</p>
           </div>
-          <a className="mt-5 inline-flex text-sm font-semibold text-brand-purple underline underline-offset-8" href="https://maps.google.com" target="_blank" rel="noreferrer">{linkText}</a>
+          <a
+            className="mt-auto pt-5 inline-flex text-sm font-semibold text-brand-purple underline underline-offset-8"
+            href="https://maps.google.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {linkText}
+          </a>
         </div>
-        <div className="relative h-40 overflow-hidden rounded-2xl bg-brand-lavender">
+        <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-brand-lavender sm:h-full">
           <Image src={image} alt={title} fill className="object-cover" />
         </div>
       </div>
