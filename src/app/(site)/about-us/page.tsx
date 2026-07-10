@@ -6,6 +6,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { CountUpStat } from "@/components/common/CountUpStat";
 import { TestimonialSlider } from "@/components/common/TestimonialSlider";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
+import { GlobalPartners } from "@/components/sections/GlobalPartners";
 
 export const metadata = buildMetadata({
   title: "About Us",
@@ -22,12 +23,11 @@ const stats = [
 ];
 
 const leadership = [
-  { name: "Chandima Wickramatunge", role: "Group CEO – IT Cluster", image: "/images/team/chairman.svg" },
-  { name: "Kumara Perera", role: "Chief Technology Officer", image: "/images/team/cto.svg" },
-  { name: "Nimal Fernando", role: "Director – Operations", image: "/images/team/director-ops.svg" },
-  { name: "Priya Jayawardena", role: "Head – Enterprise Solutions", image: "/images/team/head-enterprise.svg" },
-  { name: "Samantha Silva", role: "Head – UAV Solutions", image: "/images/team/head-uav.svg" },
-  { name: "Dilani Rathnayake", role: "Head – Human Resources", image: "/images/team/head-hr.svg" }
+  { name: "Jagath Sumathipala", role: "Chairman / Managing Director", image: "/images/team/person1.webp" },
+  { name: "Chadu Sumathipala", role: "Executive Director", image: "/images/team/person 2.webp" },
+  { name: "Chathula Sumathipala", role: "Director - Business Development and Strategies", image: "/images/team/person3.webp" },
+  { name: "Chandima Wickramatunge", role: "CEO - IT Cluster", image: "/images/anniversary/ceo.jpg" },
+  { name: "Ravi Sivasithamparam", role: "Chief Sales Officer", image: "/images/team/person4.webp" }
 ];
 
 export default function AboutUsPage() {
@@ -37,6 +37,7 @@ export default function AboutUsPage() {
         title="About Sumathi IT"
         description="A trusted technology partner under Sumathi Holdings"
         breadcrumbs={[{ label: "About Us" }]}
+        backgroundImage="/images/home/sumathiIT-home-image2.jpg"
       />
       <section className="section-padding bg-slate-50">
         <div className="container-padded grid gap-8 lg:grid-cols-2">
@@ -62,16 +63,16 @@ export default function AboutUsPage() {
       <section className="section-padding bg-slate-50">
         <div className="container-padded">
           <SectionHeader title="Leadership team" description="Meet the experienced professionals driving Sumathi IT's vision and growth." />
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {leadership.map((person, index) => (
               <AnimatedSection key={person.name} delay={index * 0.06} variant="pop">
                 <div className="premium-card overflow-hidden p-0 text-center">
-                  <div className="relative h-64 overflow-hidden bg-brand-lavender">
+                  <div className="relative h-96 overflow-hidden bg-brand-lavender">
                     <Image src={person.image} alt={person.name} fill className="object-cover transition duration-1000 hover:scale-110" />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-navy-950">{person.name}</h3>
-                    <p className="mt-2 text-sm text-brand-purple">{person.role}</p>
+                  <div className="p-8">
+                    <h3 className="text-xl font-semibold text-navy-950">{person.name}</h3>
+                    <p className="mt-2 text-base text-brand-purple">{person.role}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -84,7 +85,7 @@ export default function AboutUsPage() {
           <SectionHeader title="Leadership message" description="The 25th anniversary connects Sumathi IT’s legacy, customer trust, and future-ready technology direction." />
           <AnimatedSection variant="pop" className="mt-8 grid gap-8 rounded-card bg-white p-6 shadow-card lg:grid-cols-[340px_1fr] lg:items-center">
             <div className="relative h-80 overflow-hidden rounded-card bg-brand-lavender">
-              <Image src="/images/team/chairman.svg" alt="Chairman" fill className="object-cover" />
+              <Image src="/images/anniversary/ceo.jpg" alt="Chairman" fill className="object-cover" />
             </div>
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-gold-500">25th anniversary</p>
@@ -106,6 +107,7 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
+      <GlobalPartners />
       <CtaBand />
     </>
   );

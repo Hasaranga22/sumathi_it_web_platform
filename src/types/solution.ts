@@ -4,6 +4,7 @@ export type Solution = {
   summary: string;
   description: string;
   image: string;
+  bannerImage: string;
   benefits: string[];
   industries: string[];
   seoTitle: string;

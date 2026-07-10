@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 
 export function CategoryVideoHeader({
@@ -7,7 +8,7 @@ export function CategoryVideoHeader({
   poster,
   eyebrow,
   title,
-  description
+  description,
 }: {
   videoUrl: string;
   poster?: string;
@@ -15,45 +16,97 @@ export function CategoryVideoHeader({
   title: string;
   description?: string;
 }) {
+  const words = title.split(" ");
+
   return (
     <section className="relative w-full overflow-hidden bg-navy-950">
-      <div className="relative aspect-[16/7] w-full min-h-[340px] md:min-h-[460px]">
-        <video
-          className="absolute inset-0 h-full w-full object-cover opacity-70"
+      <div className="relative aspect-[16/7] w-full min-h-[340px] md:min-h-[500px] lg:min-h-[620px]">
+        {/* Background Video */}
+        <motion.video
+          className="absolute inset-0 h-full w-full object-cover"
           autoPlay
           muted
           loop
           playsInline
           poster={poster}
+          initial={{ scale: 1.08, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.72 }}
+          transition={{ duration: 2 }}
         >
           <source src={videoUrl} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-navy-950/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/70 via-transparent to-transparent" />
+        </motion.video>
 
-        <div className="container-padded relative z-10 flex h-full items-end pb-10 md:pb-14">
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/30 to-transparent" />
+
+        {/* Content */}
+        <div className="container-padded relative z-10 flex h-full items-center">
           <AnimatedSection variant="slide-right">
-            <div className="max-w-2xl">
+            <div className="max-w-3xl">
               {eyebrow && (
-                <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
+                <motion.span
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-md"
+                >
                   {eyebrow}
-                </span>
+                </motion.span>
               )}
-              <h2 className="mt-4 text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
-                {title}
+
+              {/* Animated Title */}
+              <h2 className="mt-6 flex flex-wrap gap-x-4 gap-y-2 leading-none">
+                {words.map((word, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{
+                      opacity: 0,
+                      y: 80,
+                      rotateX: -90,
+                      filter: "blur(10px)",
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      rotateX: 0,
+                      filter: "blur(0px)",
+                    }}
+                    transition={{
+                      delay: index * 0.12,
+                      duration: 0.8,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="inline-block text-6xl font-black tracking-tight text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)] md:text-7xl lg:text-8xl xl:text-[7rem]"
+                  >
+                    {word}
+                  </motion.span>
+                ))}
               </h2>
+
               {description && (
-                <p className="mt-4 text-sm leading-7 text-blue-100/85 md:text-base">
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 1,
+                    delay: 0.8,
+                  }}
+                  className="mt-8 max-w-2xl text-lg leading-8 text-blue-100/90 md:text-xl"
+                >
                   {description}
-                </p>
+                </motion.p>
               )}
             </div>
           </AnimatedSection>
         </div>
       </div>
-      <p className="container-padded py-3 text-xs text-slate-400">
-        Replace the placeholder video file at <code className="text-slate-500">{videoUrl}</code> with the final drone footage.
-      </p>
     </section>
   );
 }

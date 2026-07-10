@@ -17,7 +17,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
       <div className="container-header flex h-[82px] items-center justify-between gap-4">
-        <Link href="/" className="flex items-center rounded-2xl bg-white pr-3 shadow-sm" aria-label="Sumathi IT home">
+        <Link href="/" className="flex items-center rounded-2x pr-3" aria-label="Sumathi IT home">
           <Image src="/images/logo/sumathi-it-logo.png" alt="Sumathi IT" width={220} height={52} priority />
         </Link>
 

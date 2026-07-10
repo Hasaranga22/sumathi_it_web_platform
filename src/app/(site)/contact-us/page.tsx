@@ -20,6 +20,7 @@ export default function ContactUsPage() {
         title="Contact Us"
         description="Send your inquiry and our team will guide you toward the right enterprise, UAV, or end-user technology solution."
         breadcrumbs={[{ label: "Contact Us" }]}
+        backgroundImage="/images/home/conatct us hero.jpg"
       />
       <section className="section-padding bg-white">
         <div className="container-padded overflow-hidden rounded-card bg-brand-purple p-8 text-white shadow-glow sm:p-10 lg:p-12">
@@ -37,8 +38,8 @@ export default function ContactUsPage() {
                 <Info icon={<Mail className="h-4 w-4" />} text={siteConfig.contact.email} />
                 <Info icon={<MapPin className="h-4 w-4" />} text={siteConfig.contact.address} />
               </div>
-              <div className="relative mt-10 h-56 max-w-md opacity-90">
-                <Image src="/images/contact/contact-hero.svg" alt="Sumathi IT contact" fill className="object-contain" />
+              <div className="relative mt-10 h-56 max-w-md overflow-hidden rounded-2xl opacity-90">
+                <Image src="/images/home/sumathiIT-home-image3.jpg" alt="Sumathi IT contact" fill className="object-cover" />
               </div>
             </AnimatedSection>
             <AnimatedSection variant="pop"><ContactForm /></AnimatedSection>
@@ -47,8 +48,8 @@ export default function ContactUsPage() {
       </section>
       <section className="pb-20">
         <div className="container-padded grid gap-5 lg:grid-cols-2">
-          <OfficeCard title="Sumathi IT - System Integration Solutions" image="/images/enterprise/data-center.svg" linkText="Open in Google Maps" />
-          <OfficeCard title="Sumathi IT Geospatial Engineering Solutions" image="/images/uav/uav-hero.svg" linkText="Explore Sumathi Geospatial Engineering solutions" />
+          <OfficeCard title="Sumathi IT - System Integration Solutions" image="/images/home/sumathiIT-home-image4.jpg" linkText="Open in Google Maps" />
+          <OfficeCard title="Sumathi IT Geospatial Engineering Solutions" image="/images/home/sumathiIT-home-image5.jpg" linkText="Explore Sumathi Geospatial Engineering solutions" />
         </div>
       </section>
       <section className="pb-20">

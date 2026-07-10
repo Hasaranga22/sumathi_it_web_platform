@@ -72,7 +72,7 @@ export function LegacyBand() {
           <AnimatedSection variant="pop" className="relative lg:col-span-7">
             <div className="relative h-[320px] overflow-hidden rounded-card shadow-soft sm:h-[420px] lg:h-full lg:min-h-[440px]">
               <Image
-                src="/images/about/legacy-team.jpg"
+                src="/images/home/sumathiit-home-image4.jpg"
                 alt="Sumathi IT engineers collaborating on a client deployment"
                 fill
                 className="object-cover"

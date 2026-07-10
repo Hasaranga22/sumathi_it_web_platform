@@ -15,7 +15,7 @@ export function ImageBand() {
           className="relative h-[280px] w-full overflow-hidden rounded-card shadow-soft sm:h-[340px] lg:h-[400px]"
         >
           <Image
-            src="/images/enterprise/nationwide-infrastructure.jpg"
+            src="/images/home/sumathiIT-home-image2.jpg"
             alt="Sumathi IT infrastructure deployed across Sri Lanka"
             fill
             className="object-cover"

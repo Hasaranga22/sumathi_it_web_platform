@@ -47,7 +47,7 @@ export function WhyChooseUs() {
           <AnimatedSection variant="slide-right" className="relative lg:col-span-4">
             <div className="relative h-64 overflow-hidden rounded-card shadow-soft lg:h-full lg:min-h-[380px]">
               <Image
-                src="/images/enterprise/why-choose-us.jpg"
+                src="/images/home/sumathiIT-home-image6.jpg"
                 alt="Sumathi IT team reviewing an enterprise deployment"
                 fill
                 className="object-cover"

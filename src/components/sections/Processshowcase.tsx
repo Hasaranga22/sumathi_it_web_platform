@@ -102,7 +102,7 @@ export function ProcessShowcase() {
         >
           <div className="relative h-[500px] overflow-hidden rounded-card shadow-soft sm:h-[560px] lg:h-[640px]">
             <Image
-              src="/images/about/how-we-work.jpg"
+              src="/images/home/SumathiIT-home-image5.jpg"
               alt="How We Work"
               fill
               priority

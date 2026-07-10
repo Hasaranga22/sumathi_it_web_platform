@@ -57,7 +57,7 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
         eyebrow="In the Field"
         title={`${solution.title} deployments, done right.`}
         description="From planning to go-live, our engineers deliver every deployment with the same precision and care every enterprise client expects."
-        image={solution.image}
+        image={solution.bannerImage}
         imageAlt={`${solution.title} deployment by Sumathi IT`}
       />
       

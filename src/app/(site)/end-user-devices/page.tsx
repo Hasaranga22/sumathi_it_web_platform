@@ -5,8 +5,8 @@ import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
-import { BrandLogoSlider, type BrandLogo } from "@/components/sections/BrandLogoSlider";
 import { DeviceGallery } from "@/components/sections/Devicegallery";
+import { GlobalPartners } from "@/components/sections/GlobalPartners";
 
 export const metadata = buildMetadata({
   title: "End User Devices - Business Laptops, Workstations & Tablets",
@@ -41,17 +41,6 @@ const offerings = [
   }
 ];
 
-// Real logo paths pulled from your partners logo folder — HP, Apple, ASUS, and MSI
-// weren't in that list yet, so they're marked as placeholders until you add the files.
-const deviceBrands: BrandLogo[] = [
-  { name: "HP", logo: "/images/logo/partners logos/HP-150x80.png", isPlaceholder: true },
-  { name: "Dell", logo: "/images/logo/partners logos/Dell_logo_PNG1-scaled-150x80.png" },
-  { name: "Lenovo", logo: "/images/logo/partners logos/Lenovo_logo_PNG3-scaled-150x80.png" },
-  { name: "Apple MacBooks", logo: "/images/logo/partners logos/Apple-150x80.png", isPlaceholder: true },
-  { name: "ASUS", logo: "/images/logo/partners logos/ASUS-150x80.png", isPlaceholder: true },
-  { name: "MSI", logo: "/images/logo/partners logos/MSI-150x80.png", isPlaceholder: true }
-];
-
 export default function EndUserDevicesPage() {
   return (
     <>
@@ -71,7 +60,7 @@ export default function EndUserDevicesPage() {
               const Icon = item.icon;
               return (
                 <AnimatedSection key={item.title} delay={index * 0.06} variant="pop">
-                  <div className="premium-card p-7">
+                  <div className="premium-card flex h-full flex-col p-7">
                     <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-lavender text-brand-purple"><Icon className="h-6 w-6" /></div>
                     <h3 className="mt-5 text-xl font-semibold text-navy-950">{item.title}</h3>
                     <p className="mt-3 text-sm leading-7 text-slate-600">{item.text}</p>
@@ -117,12 +106,12 @@ export default function EndUserDevicesPage() {
               </div>
             </div>
             <div className="relative h-80 overflow-hidden rounded-card bg-white">
-              <Image src="/images/enterprise/end-user-devices.svg" alt="End User Devices" fill className="object-cover" />
+              <Image src="/images/end user devices/laptops.jpg" alt="End User Devices" fill className="object-cover" />
             </div>
           </AnimatedSection>
         </div>
       </section>
-      <BrandLogoSlider title="Top brands we supply" logos={deviceBrands} />
+      <GlobalPartners />
 
       <DeviceGallery />
 

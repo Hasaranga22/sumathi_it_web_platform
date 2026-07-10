@@ -9,11 +9,10 @@ import { ProductCard } from "@/components/cards/ProductCard";
 import { DroneComparison } from "@/components/product/DroneComparison";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
-import { CategoryVideoHeader } from "@/components/sections/CategoryVideoHeader";
 
 export const metadata = buildMetadata({
-  title: "UAV Solutions, Drones, GNSS, BIM and Scanners",
-  description: "Explore Sumathi IT UAV solutions including drones, software, GNSS, BIM, scanners, and professional UAV services in Sri Lanka.",
+  title: "UAV Solutions, Drones, GNSS (Global Navigation Satellite Systems), BIM (Building Information Modeling) and Scanners",
+  description: "Explore Sumathi IT UAV solutions including drones, software, GNSS (Global Navigation Satellite Systems), BIM (Building Information Modeling), scanners, and professional UAV services in Sri Lanka.",
   path: "/uav-solutions",
   keywords: ["drone solutions Sri Lanka", "UAV mapping Sri Lanka", "GNSS BIM scanners Sri Lanka"]
 });
@@ -27,7 +26,6 @@ const useCases = [
 
 export default function UavSolutionsPage() {
   const featured = products.filter((item) => item.category === "drones").slice(0, 3);
-  const droneCategory = uavCategories.find((category) => category.slug === "drones");
 
   return (
     <>
@@ -36,16 +34,6 @@ export default function UavSolutionsPage() {
         description="Drone, geospatial, mapping and reality capture solutions"
         breadcrumbs={[{ label: "UAV Solutions" }]}
       />
-
-      {droneCategory?.videoUrl && (
-        <CategoryVideoHeader
-          videoUrl={droneCategory.videoUrl}
-          poster={droneCategory.videoPoster}
-          eyebrow="See it in the field"
-          title="One ecosystem, from flight to finished data"
-          description="Drones, GNSS, BIM, scanners and software working together across every mission."
-        />
-      )}
 
       <section className="section-padding bg-white">
         <div className="container-padded">

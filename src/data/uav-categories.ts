@@ -19,33 +19,28 @@ export const uavCategories: {
   /** Drones only: full-width header video */
   videoUrl?: string;
   videoPoster?: string;
-  /** Feature section image */
-  featureImage?: string;
-  /** Applications section image */
-  applicationsImage?: string;
 }[] = [
   {
     title: "Drones",
     slug: "drones",
     summary: "Enterprise UAV platforms for inspection, mapping, agriculture, and public safety.",
-    image: "/images/uav/category-drones.svg",
+    image: "/images/uav/done.jpg",
     tagline: "Better Growth, Better Life",
     description:
       "Revolutionizing Agave Farming: Using Agras T50 Drones to Spray Agave. Agave, a resilient desert plant, is central to the production of tequila, a beverage deeply rooted in Mexican culture. Predominantly cultivated in Jalisco, Mexico, particularly the Tequila region, agave farming has unique challenges and requirements.",
-    videoUrl: "/videos/uav/drone-demo.mp4",
+    videoUrl: "/videos/uav/drone.mp4",
     videoPoster: "/images/uav/drone-video-poster.svg",
-    bannerImage: "/images/uav/banner-drones.svg",
+    bannerImage: "/images/uav/banner-drones.jpg",
     bannerEyebrow: "Enterprise UAV",
     bannerHeading: "Built for the field, trusted for the mission",
     bannerText:
-      "From dock-based automated inspection to compact enterprise platforms, our drone lineup is selected for teams that need repeatable, reliable flight performance across agriculture, infrastructure, and public safety work.",
-    featureImage: "/images/uav/feature-drones.jpg"
+      "From dock-based automated inspection to compact enterprise platforms, our drone lineup is selected for teams that need repeatable, reliable flight performance across agriculture, infrastructure, and public safety work."
   },
   {
     title: "Software",
     slug: "software",
     summary: "Mapping, modeling, mission planning, and data processing software.",
-    image: "/images/uav/category-software.svg",
+    image: "/images/uav/software.jpg",
     description:
       "Unlock the full potential of your drone with our specialized software for flight automation, photogrammetry, and 3D modeling.",
     features: [
@@ -54,18 +49,17 @@ export const uavCategories: {
       "LiDAR Processing - Generate high-accuracy point clouds.",
       "AI Analytics - Automated object detection for agriculture and infrastructure."
     ],
-    bannerImage: "/images/uav/banner-software.svg",
+    bannerImage: "/images/uav/banner-software.jpg",
     bannerEyebrow: "Data Processing",
     bannerHeading: "Turn raw flight data into decisions",
     bannerText:
-      "Our software stack connects flight planning, photogrammetry, and analytics into one workflow, so imagery captured in the field becomes maps, models, and insight without manual guesswork.",
-    featureImage: "/images/uav/feature-software.jpg"
+      "Our software stack connects flight planning, photogrammetry, and analytics into one workflow, so imagery captured in the field becomes maps, models, and insight without manual guesswork."
   },
   {
-    title: "GNSS",
+    title: "GNSS (Global Navigation Satellite Systems)",
     slug: "gnss",
     summary: "Positioning and geospatial accuracy tools for field operations.",
-    image: "/images/uav/category-gnss.svg",
+    image: "/images/uav/GNSS.jpg",
     description:
       "Achieve millimeter-level precision in surveying, construction, and GIS with our advanced GNSS solutions.",
     features: [
@@ -73,18 +67,17 @@ export const uavCategories: {
       "Multi-Constellation Support – GPS, GLONASS, Galileo, and BeiDou.",
       "Rugged & Weatherproof – Built for challenging field conditions."
     ],
-    bannerImage: "/images/uav/banner-gnss.svg",
+    bannerImage: "/images/uav/banner-gnss.jpg",
     bannerEyebrow: "Precision Positioning",
     bannerHeading: "Millimeter accuracy, wherever your team works",
     bannerText:
-      "Multi-constellation GNSS receivers keep survey, construction, and GIS crews confident in every reading, even in demanding field conditions.",
-    featureImage: "/images/uav/feature-gnss.jpg"
+      "Multi-constellation GNSS receivers keep survey, construction, and GIS crews confident in every reading, even in demanding field conditions."
   },
   {
-    title: "BIM",
+    title: "BIM (Building Information Modeling)",
     slug: "bim",
     summary: "Digital construction workflows, 3D visualization, and reality capture support.",
-    image: "/images/uav/category-bim.svg",
+    image: "/images/uav/BIM.jpg",
     description:
       "Revolutionize your construction projects with BIM for smarter planning, collaboration, and execution.",
     features: [
@@ -97,18 +90,17 @@ export const uavCategories: {
       "4D & 5D BIM (Time & cost integration)",
       "Scan-to-BIM (Convert point clouds into BIM models)"
     ],
-    bannerImage: "/images/uav/banner-bim.svg",
+    bannerImage: "/images/uav/banner-bim.jpg",
     bannerEyebrow: "Digital Construction",
     bannerHeading: "Plan, coordinate, and build with confidence",
     bannerText:
-      "BIM workflows connect design, field data, and construction teams in one model, catching clashes early and keeping projects on schedule and on budget.",
-    featureImage: "/images/uav/feature-bim.jpg"
+      "BIM workflows connect design, field data, and construction teams in one model, catching clashes early and keeping projects on schedule and on budget."
   },
   {
     title: "Scanners",
     slug: "scanners",
     summary: "Reality capture and scanning systems for survey and engineering teams.",
-    image: "/images/uav/category-scanners.svg",
+    image: "/images/uav/scanners.jpg",
     description:
       "Capture highly detailed 3D data for architecture, archaeology, and industrial inspections with our advanced scanners.",
     applications: [
@@ -121,19 +113,17 @@ export const uavCategories: {
       "Mobile Mapping – UAV & vehicle-mounted systems.",
       "Handheld Scanners – Portable devices for quick scans."
     ],
-    bannerImage: "/images/uav/banner-scanners.svg",
+    bannerImage: "/images/uav/banner-scanners.png",
     bannerEyebrow: "Reality Capture",
     bannerHeading: "Every detail, captured in 3D",
     bannerText:
-      "Terrestrial, mobile, and handheld scanning systems give architecture, heritage, and mining teams a precise digital record of physical space.",
-    featureImage: "/images/uav/feature-scanners.jpg",
-    applicationsImage: "/images/uav/applications-scanners.jpg"
+      "Terrestrial, mobile, and handheld scanning systems give architecture, heritage, and mining teams a precise digital record of physical space."
   },
   {
     title: "UAV Services",
     slug: "uav-services",
     summary: "Professional drone services for mapping, inspection, and data collection.",
-    image: "/images/uav/category-services.svg",
+    image: "/images/uav/uav repair.jpg",
     description:
       "Beyond sales, we offer expert UAV maintenance, calibration, and repair services to keep your drones operational.",
     services: [
@@ -147,11 +137,10 @@ export const uavCategories: {
       "Quick Turnaround – Minimize downtime.",
       "Genuine Parts – OEM components for longevity"
     ],
-    bannerImage: "/images/uav/banner-services.svg",
+    bannerImage: "/images/uav/banner-services.jpg",
     bannerEyebrow: "Keep Flying",
     bannerHeading: "Maintenance that keeps missions on schedule",
     bannerText:
-      "Certified technicians, genuine parts, and fast turnaround times mean less downtime and more confidence in every flight.",
-    featureImage: "/images/uav/feature-services.jpg"
+      "Certified technicians, genuine parts, and fast turnaround times mean less downtime and more confidence in every flight."
   }
 ];

@@ -1,134 +1,223 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { cn } from "@/lib/utils";
 
 export type DroneSlide = {
   image: string;
-  eyebrow: string;
-  title: string;
-  text: string;
+  /** Accessible description only — no text is rendered over the image. */
+  alt: string;
 };
 
-// Dummy placeholders — replace `image` with your uploaded photography.
-// Slide copy already reflects the real drone use-cases you provided.
+// Dummy placeholders — swap `image` for your uploaded vertical photography.
+// Each image already carries its own caption/branding, so no text is
+// rendered on top of the slides.
 const defaultSlides: DroneSlide[] = [
-  {
-    image: "/images/uav/slider-agriculture.svg",
-    eyebrow: "Agriculture",
-    title: "Revolutionizing agave farming with Agras T50",
-    text: "Agave, the resilient desert plant behind tequila, is grown across Jalisco's Tequila region. Precision spraying drones cut input waste while keeping crews out of harsh field conditions."
-  },
-  {
-    image: "/images/uav/slider-mapping.svg",
-    eyebrow: "Mapping",
-    title: "Field-ready mapping for every terrain",
-    text: "From orchard rows to open plots, automated flight paths turn raw aerial imagery into usable survey and inspection data in a fraction of the time."
-  },
-  {
-    image: "/images/uav/slider-inspection.svg",
-    eyebrow: "Inspection",
-    title: "Consistent, repeatable inspection flights",
-    text: "Dock-based and enterprise platforms fly the same mission every time, so infrastructure and crop health data stays comparable season over season."
-  },
-  {
-    image: "/images/uav/slider-publicsafety.svg",
-    eyebrow: "Public safety",
-    title: "Rapid response from the air",
-    text: "Enterprise UAVs support emergency teams with fast deployment, live feeds, and thermal payloads when minutes matter."
-  }
+  { image: "/images/drone slider/slider1.jpg", alt: "Drone in operation" },
+  { image: "/images/drone slider/slider2.jpg", alt: "Drone aerial view" },
+  { image: "/images/drone slider/slider3.jpg", alt: "Drone field work" },
+  { image: "/images/drone slider/slider4.jpg", alt: "Drone inspection" },
+  { image: "/images/drone slider/slider5.jpg", alt: "Drone mapping" },
+  { image: "/images/drone slider/slider6.jpg", alt: "Drone survey" },
+  { image: "/images/drone slider/slider7.jpg", alt: "Drone deployment" },
+  { image: "/images/drone slider/slider8.jpg", alt: "Drone operation" },
+  { image: "/images/drone slider/slider9.jpg", alt: "Drone flight" },
+  { image: "/images/drone slider/slider10.jpg", alt: "Drone mission" }
 ];
+
+// How many vertical cards are visible at once, per breakpoint.
+const BREAKPOINTS = [
+  { minWidth: 1024, count: 3 },
+  { minWidth: 640, count: 2 },
+  { minWidth: 0, count: 1 }
+] as const;
+
+function getItemsPerView(width: number) {
+  return BREAKPOINTS.find((bp) => width >= bp.minWidth)?.count ?? 4;
+}
 
 export function DroneImageSlider({
   slides = defaultSlides,
-  intervalMs = 5000
+  intervalMs = 3000
 }: {
   slides?: DroneSlide[];
   intervalMs?: number;
 }) {
-  const [active, setActive] = useState(0);
+  const slideCount = slides.length;
+  const [itemsPerView, setItemsPerView] = useState(3);
+  // Position inside the "extended" track (real slides + clones on both ends),
+  // which is what makes the loop feel seamless instead of snapping back.
+  const [trackIndex, setTrackIndex] = useState(itemsPerView);
+  const [animate, setAnimate] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
+  const resetTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Recalculate how many cards fit as the viewport changes.
   useEffect(() => {
-    if (slides.length <= 1) return;
-    const timer = setInterval(() => {
-      setActive((current) => (current + 1) % slides.length);
-    }, intervalMs);
-    return () => clearInterval(timer);
-  }, [slides.length, intervalMs]);
+    const updateItemsPerView = () => {
+      const next = getItemsPerView(window.innerWidth);
+      setItemsPerView(next);
+      setAnimate(false);
+      setTrackIndex(next);
+    };
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, []);
 
-  const current = slides[active];
+  // [ trailing clones ] + [ real slides ] + [ leading clones ]
+  const extendedSlides = [
+    ...slides.slice(slideCount - itemsPerView),
+    ...slides,
+    ...slides.slice(0, itemsPerView)
+  ];
+
+  const step = useCallback((direction: 1 | -1) => {
+    setAnimate(true);
+    setTrackIndex((current) => current + direction);
+  }, []);
+
+  // Auto-slide.
+  useEffect(() => {
+    if (isPaused || slideCount <= itemsPerView) return;
+    const timer = setInterval(() => step(1), intervalMs);
+    return () => clearInterval(timer);
+  }, [isPaused, intervalMs, step, slideCount, itemsPerView]);
+
+  // Once the track drifts into the cloned region, snap invisibly back
+  // into the real range so the loop can continue forever.
+  const handleTransitionEnd = () => {
+    if (trackIndex >= slideCount + itemsPerView) {
+      setAnimate(false);
+      setTrackIndex(trackIndex - slideCount);
+    } else if (trackIndex < itemsPerView) {
+      setAnimate(false);
+      setTrackIndex(trackIndex + slideCount);
+    }
+  };
+
+  // Re-enable the transition on the next tick after a silent snap.
+  useEffect(() => {
+    if (animate) return;
+    if (resetTimeout.current) clearTimeout(resetTimeout.current);
+    resetTimeout.current = setTimeout(() => setAnimate(true), 30);
+    return () => {
+      if (resetTimeout.current) clearTimeout(resetTimeout.current);
+    };
+  }, [animate, trackIndex]);
+
+  const realIndex = ((((trackIndex - itemsPerView) % slideCount) + slideCount) % slideCount);
+
+  const goTo = (targetRealIndex: number) => {
+    setAnimate(true);
+    setTrackIndex(targetRealIndex + itemsPerView);
+  };
 
   return (
     <section className="section-padding bg-slate-50">
       <div className="container-padded">
         <AnimatedSection variant="pop">
-          <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-navy-950 shadow-card">
-            <div className="relative aspect-[16/9] w-full md:aspect-[21/9]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.image}
-                  initial={{ opacity: 0, scale: 1.04 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={current.image}
-                    alt={current.title}
-                    fill
-                    sizes="100vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/50 to-navy-950/10" />
-                </motion.div>
-              </AnimatePresence>
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--gold)]">
+                Field Gallery
+              </span>
+              <h2 className="mt-2 text-2xl font-semibold text-navy-950 md:text-3xl">
+                Drone Image Gallery
+              </h2>
+            </div>
+            <div className="hidden shrink-0 items-center gap-2 sm:flex">
+              <button
+                type="button"
+                aria-label="Previous images"
+                onClick={() => step(-1)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-navy-950 transition hover:border-[var(--gold)] hover:text-[var(--gold)]"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next images"
+                onClick={() => step(1)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-navy-950 transition hover:border-[var(--gold)] hover:text-[var(--gold)]"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
 
-              <div className="absolute inset-x-0 bottom-0 p-6 md:p-12">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={current.title}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.5 }}
-                    className="max-w-2xl"
+          <div
+            className="relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="overflow-hidden rounded-[24px]">
+              <div
+                onTransitionEnd={handleTransitionEnd}
+                className={cn(
+                  "flex",
+                  animate && "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                )}
+                style={{
+                  transform: `translateX(-${trackIndex * (100 / itemsPerView)}%)`
+                }}
+              >
+                {extendedSlides.map((slide, i) => (
+                  <div
+                    key={`${slide.image}-${i}`}
+                    className="shrink-0 px-3"
+                    style={{ width: `${100 / itemsPerView}%` }}
                   >
-                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--gold)]">
-                      {current.eyebrow}
-                    </span>
-                    <h3 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
-                      {current.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-blue-100/85 md:text-base">
-                      {current.text}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
+                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-slate-200 bg-navy-950 shadow-card">
+                      <Image
+                        src={slide.image}
+                        alt={slide.alt}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-2 border-t border-white/10 bg-navy-950 py-4">
-              {slides.map((slide, index) => (
-                <button
-                  key={slide.image}
-                  aria-label={`Show slide ${index + 1}`}
-                  onClick={() => setActive(index)}
-                  className={cn(
-                    "h-1.5 rounded-full transition-all duration-500",
-                    index === active ? "w-8 bg-[var(--gold)]" : "w-4 bg-white/25 hover:bg-white/40"
-                  )}
-                />
-              ))}
-            </div>
+            {/* Compact arrows for small screens, overlaid on the images */}
+            <button
+              type="button"
+              aria-label="Previous images"
+              onClick={() => step(-1)}
+              className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-navy-950/70 text-white backdrop-blur transition hover:bg-navy-950 sm:hidden"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next images"
+              onClick={() => step(1)}
+              className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-navy-950/70 text-white backdrop-blur transition hover:bg-navy-950 sm:hidden"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-2">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.image}
+                aria-label={`Go to image ${index + 1}`}
+                onClick={() => goTo(index)}
+                className={cn(
+                  "h-1.5 rounded-full transition-all duration-500",
+                  index === realIndex ? "w-8 bg-[var(--gold)]" : "w-4 bg-slate-300 hover:bg-slate-400"
+                )}
+              />
+            ))}
           </div>
         </AnimatedSection>
-        <p className="mt-3 text-xs text-slate-400">
-          Placeholder imagery — swap the SVGs in <code className="text-slate-500">public/images/uav/slider-*.svg</code> for your uploaded drone photography.
-        </p>
       </div>
     </section>
   );

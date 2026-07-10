@@ -19,7 +19,7 @@ export default function ChairmanMessagePage() {
   return (
     <>
 
-      <AnniversaryCelebration>
+      <AnniversaryCelebration logoSrc="/images/logo/logo_white.png" companyName="Sumathi IT" years={25}>
         <section className="section-padding bg-white">
           <div className="container-padded grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
             <aside className="space-y-5">
@@ -28,7 +28,7 @@ export default function ChairmanMessagePage() {
                 className="rounded-card border border-gold-100 bg-white p-6 text-center shadow-card"
               >
                 <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-gold-200 sm:h-48 sm:w-48">
-                  <Image src="/images/team/chairman.svg" alt="Chandima Wickramatunge" fill className="object-cover" />
+                  <Image src="/images/anniversary/ceo.jpg" alt="Chandima Wickramatunge" fill className="object-cover" />
                 </div>
 
                 <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-full border border-gold-300 text-sm font-semibold tracking-wide text-gold-600">

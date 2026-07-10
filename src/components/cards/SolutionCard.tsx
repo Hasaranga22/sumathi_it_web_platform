@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
 export function SolutionCard({
   title,
@@ -42,10 +41,6 @@ export function SolutionCard({
           </p>
         </div>
       </div>
-
-      <span className="absolute right-6 top-6 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-md transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-navy-950 group-hover:rotate-45">
-        <ArrowUpRight className="h-5 w-5" />
-      </span>
     </Link>
   );
 }

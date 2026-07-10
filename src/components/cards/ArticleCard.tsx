@@ -23,7 +23,7 @@ export function ArticleCard({
       <Card className="flex h-full flex-col overflow-hidden transition duration-500 hover:-translate-y-1 hover:border-brand-purple/30 hover:shadow-glow">
         <div className="relative h-52 overflow-hidden bg-brand-lavender shrink-0">
           <Image src={image} alt={title} fill className="object-cover transition duration-1000 group-hover:scale-110" />
-          <div className="absolute bottom-5 left-5 rounded-full bg-white/92 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-purple shadow-card">
+          <div className="absolute bottom-5 left-5 rounded-full bg-white/92 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-card">
             {category}
           </div>
         </div>
@@ -34,7 +34,7 @@ export function ArticleCard({
         </CardContent>
         <CardFooter className="px-6 pb-6 shrink-0">
           <span className="inline-flex items-center gap-2 text-sm font-semibold text-brand-purple">
-            Read more <ArrowRight className="h-4 w-4 transition duration-500 group-hover:translate-x-1" />
+            Read more
           </span>
         </CardFooter>
       </Card>

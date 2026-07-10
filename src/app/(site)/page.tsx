@@ -16,6 +16,8 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { TestimonialSlider } from "@/components/common/TestimonialSlider";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { ProcessShowcase } from "@/components/sections/Processshowcase";
+import { GlobalPartners } from "@/components/sections/GlobalPartners";
+import { BackgroundVideo } from "@/components/common/BackgroundVideo";
 
 export const metadata = buildMetadata({
   title: "Enterprise IT, UAV and System Integration Solutions",
@@ -29,33 +31,20 @@ const processSteps = [
   { title: "Deliver And Support", description: "We focus on delivering high-quality, on-time results with a seamless process. Post-launch, we remain committed through ongoing support, improvements, and optimization—ensuring your investment continues to perform and adapt to evolving business needs." }
 ];
 
-const partners = [
-  { name: "Acronis", logo: "/images/logo/partners logos/Acronis-150x80.png" },
-  { name: "Check Point", logo: "/images/logo/partners logos/Check-Point-150x80.png" },
-  { name: "Coral", logo: "/images/logo/partners logos/Coral-Logo-150x80.png" },
-  { name: "Dahua", logo: "/images/logo/partners logos/Dahua_Technology_logo-150x80.png" },
-  { name: "Dell", logo: "/images/logo/partners logos/Dell_logo_PNG1-scaled-150x80.png" },
-  { name: "Fortinet", logo: "/images/logo/partners logos/Fortinet-150x80.png" },
-  { name: "Hikvision", logo: "/images/logo/partners logos/Hikvision-Logo-150x80.png" },
-  { name: "Huawei", logo: "/images/logo/partners logos/Huawei-150x80.png" },
-  { name: "Juniper", logo: "/images/logo/partners logos/Juniper-150x80.png" },
-  { name: "Kaspersky", logo: "/images/logo/partners logos/Kaspersky-150x80.png" },
-  { name: "Lenovo", logo: "/images/logo/partners logos/Lenovo_logo_PNG3-scaled-150x80.png" },
-  { name: "Sonicwall", logo: "/images/logo/partners logos/Sonicwall-150x80.png" },
-  { name: "Synology", logo: "/images/logo/partners logos/Synology_logo-150x80.png" },
-  { name: "VMware", logo: "/images/logo/partners logos/VMware-Logo-150x80.png" },
-  { name: "Veeam", logo: "/images/logo/partners logos/Veeam-logo-150x80.png" },
-  { name: "Cohesity", logo: "/images/logo/partners logos/cohesity-jpg-150x80.png" },
-  { name: "Grandstream", logo: "/images/logo/partners logos/grandstream-logo-150x80.png" }
-];
-
 export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="container-padded grid gap-12 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+        {/* Background Video */}
+        <BackgroundVideo />
+        {/* Optional white overlay to soften the video even more */}
+        <div className="absolute inset-0 bg-white/30" />
+        {/* Content */}
+        <div className="relative z-10 container-padded grid gap-12 lg:grid-cols-[1fr_0.92fr] lg:items-center">
           <AnimatedSection>
-            <p className="inline-flex rounded-full px-4 py-2 text-md font-semibold uppercase tracking-[0.22em] text-brand-purple">Sumathi IT</p>
+            <p className="inline-flex rounded-full px-4 py-2 text-md font-semibold uppercase tracking-[0.22em] text-brand-purple">
+              Sumathi IT
+            </p>
             <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.1] tracking-normal text-navy-950 sm:text-5xl lg:text-6xl">
               Reliable IT Services for Your Organisation.
             </h1>
@@ -63,49 +52,44 @@ export default function HomePage() {
               We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of today.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/enterprise-solutions">Explore Solutions</ButtonLink>
-              <ButtonLink href="/contact-us" variant="secondary">Talk to an Expert</ButtonLink>
+              <ButtonLink href="/enterprise-solutions">
+                Explore Solutions
+              </ButtonLink>
+              <ButtonLink href="/contact-us" variant="secondary">
+                Talk to an Expert
+              </ButtonLink>
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.15} variant="pop" className="relative">
             <div className="absolute -left-6 -top-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
-              <p className="text-4xl font-semibold tracking-normal text-brand-purple">30+</p>
-              <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">Years of IT experience</p>
+              <p className="text-4xl font-semibold tracking-normal text-brand-purple">
+                30+
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
+                Years of IT experience
+              </p>
             </div>
             <div className="absolute -right-6 -bottom-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
-              <p className="text-4xl font-semibold tracking-normal text-brand-purple">99%</p>
-              <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">Happy Customers</p>
+              <p className="text-4xl font-semibold tracking-normal text-brand-purple">
+                99%
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
+                Happy Customers
+              </p>
             </div>
             <div className="relative h-[360px] overflow-hidden rounded-card bg-brand-lavender shadow-soft sm:h-[480px]">
-              <Image src="/images/hero/home-hero.svg" alt="Sumathi IT team and technology solutions" fill className="object-cover transition duration-1000 hover:scale-[1.03]" priority />
+              <Image
+                src="/images/home/SumathiIT-Hero-Image.jpg"
+                alt="Sumathi IT team and technology solutions"
+                fill
+                className="object-cover transition duration-1000 hover:scale-[1.03]"
+                priority
+              />
             </div>
           </AnimatedSection>
         </div>
       </section>
-
-      <section className="border-y border-slate-200 bg-white py-12">
-        <div className="container-padded overflow-hidden">
-          <h2 className="text-center text-2xl font-semibold tracking-normal text-navy-950 mb-[6rem]">
-            OUR GLOBAL PARTNERS
-          </h2>
-          <div className="relative w-full mt-100">
-            <div className="flex w-max animate-[marquee_60s_linear_infinite] gap-20 hover:[animation-play-state:paused]">
-              {[...partners, ...partners, ...partners].map((item, index) => (
-                <div key={`${item.name}-${index}`} className="flex items-center justify-center opacity-60 grayscale transition hover:grayscale-0 hover:opacity-100">
-                  <Image 
-                    src={item.logo} 
-                    alt={item.name} 
-                    width={150}
-                    height={80}
-                    className="h-16 w-auto object-contain"
-                    unoptimized
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <GlobalPartners />
 
       {/* NEW: "Done right, with precision and care" band */}
       <LegacyBand />
@@ -179,7 +163,7 @@ export default function HomePage() {
             </div>
           </AnimatedSection>
           <AnimatedSection className="relative h-[400px] overflow-hidden rounded-card bg-brand-lavender shadow-soft" variant="pop">
-            <Image src="/images/enterprise/networking.svg" alt="Technology solutions" fill className="object-cover transition duration-700 hover:scale-[1.03]" />
+            <Image src="/images/home/Sumathiit-home-image3.jpg" alt="Technology solutions" fill className="object-cover transition duration-700 hover:scale-[1.03]" />
           </AnimatedSection>
         </div>
       </section>
@@ -215,19 +199,44 @@ export default function HomePage() {
       </section>
 
       <section className="section-padding bg-white">
-        <div className="container-padded grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <AnimatedSection className="relative h-[360px] overflow-hidden rounded-card bg-brand-lavender shadow-soft" variant="pop">
-            <Image src="/images/uav/uav-hero.svg" alt="UAV solutions and drone technology" fill className="object-cover transition duration-700 hover:scale-[1.03]" />
-          </AnimatedSection>
-          <AnimatedSection variant="slide-left">
-            <SectionHeader eyebrow="UAV and geospatial" title="Drone, mapping, GNSS, BIM and scanning workflows in one ecosystem" description="Support your field teams with practical UAV solutions, product guidance, software, and geospatial workflows." />
-            <div className="mt-6">
-              <AnimatedList items={["Enterprise drones and dock-based deployment", "Mapping and photogrammetry software", "GNSS, BIM, scanners, and UAV services"]} />
-            </div>
-            <ButtonLink href="/uav-solutions" className="mt-8">Explore UAV Solutions</ButtonLink>
-          </AnimatedSection>
-        </div>
-      </section>
+  <div className="container-padded grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+    <AnimatedSection
+      className="overflow-hidden rounded-card shadow-soft h-[500px] lg:h-[650px]"
+      variant="pop"
+    >
+      <Image
+        src="/images/home/sumathiit-home-image7.jpg"
+        alt="UAV solutions and drone technology"
+        width={1200}
+        height={900}
+        className="w-full h-full object-cover transition duration-700 hover:scale-[1.03]"
+        priority
+      />
+    </AnimatedSection>
+
+    <AnimatedSection variant="slide-left">
+      <SectionHeader
+        eyebrow="UAV and geospatial"
+        title="Drone, mapping, GNSS, BIM and scanning workflows in one ecosystem"
+        description="Support your field teams with practical UAV solutions, product guidance, software, and geospatial workflows."
+      />
+
+      <div className="mt-6">
+        <AnimatedList
+          items={[
+            "Enterprise drones and dock-based deployment",
+            "Mapping and photogrammetry software",
+            "GNSS, BIM, scanners, and UAV services",
+          ]}
+        />
+      </div>
+
+      <ButtonLink href="/uav-solutions" className="mt-8">
+        Explore UAV Solutions
+      </ButtonLink>
+    </AnimatedSection>
+  </div>
+</section>
 
       <section className="section-padding bg-slate-50">
         <div className="container-padded">
