@@ -8,6 +8,7 @@ import { ChevronDown, Facebook, Instagram, Linkedin, MapPin, Phone, Menu, X, Che
 import { motion, AnimatePresence } from "motion/react";
 import { navigation } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
+import type { NavItem } from "@/types/site";
 
 export function Header() {
   const pathname = usePathname();
@@ -23,7 +24,7 @@ export function Header() {
   };
 
   // Check if current path matches any child route
-  const isChildActive = (children?: any[]) => {
+  const isChildActive = (children?: NavItem[]) => {
     return children?.some(child => pathname === child.href);
   };
 
@@ -55,7 +56,7 @@ export function Header() {
                 </div>
                 {hasChildren && (
                   <div className="invisible absolute left-0 top-full w-[330px] translate-y-3 rounded-[1.4rem] border border-slate-200 bg-white p-3 opacity-0 shadow-soft transition duration-500 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                    {item.children.map((child) => (
+                    {item.children?.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
@@ -144,7 +145,7 @@ export function Header() {
                             className="overflow-hidden"
                           >
                             <div className="mt-1 grid gap-1 pl-4 pb-2">
-                              {item.children.map((child) => (
+                              {item.children?.map((child) => (
                                 <Link 
                                   key={child.href} 
                                   href={child.href} 
