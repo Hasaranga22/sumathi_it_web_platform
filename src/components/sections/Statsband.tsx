@@ -13,8 +13,8 @@ const stats = [
 ];
 
 const banners = [
-  { src: "/images/home/sumathiit-home-image6.jpg", alt: "Engineering team on a UAV field survey" },
-  { src: "/images/home/sumathiit-home-image3.jpg", alt: "Sumathi IT engineers at the workshop" },
+  { src: "/images/home/sumathiIT-home-image6.jpg", alt: "Engineering team on a UAV field survey" },
+  { src: "/images/home/Sumathiit-home-image3.jpg", alt: "Sumathi IT engineers at the workshop" },
   { src: "/images/home/sumathiIT-home-image2.jpg", alt: "Equipment handover with a partner client" }
 ];
 

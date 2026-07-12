@@ -39,7 +39,7 @@ export default function ContactUsPage() {
                 <Info icon={<MapPin className="h-4 w-4" />} text={siteConfig.contact.address} />
               </div>
               <div className="relative mt-10 h-56 max-w-md overflow-hidden rounded-2xl opacity-90">
-                <Image src="/images/home/sumathiIT-home-image3.jpg" alt="Sumathi IT contact" fill className="object-cover" />
+                <Image src="/images/home/Sumathiit-home-image3.jpg" alt="Sumathi IT contact" fill className="object-cover" />
               </div>
             </AnimatedSection>
             <AnimatedSection variant="pop"><ContactForm /></AnimatedSection>
@@ -48,7 +48,7 @@ export default function ContactUsPage() {
       </section>
       <section className="pb-20">
         <div className="container-padded grid gap-5 lg:grid-cols-2">
-          <OfficeCard title="Sumathi IT - System Integration Solutions" image="/images/home/sumathiIT-home-image4.jpg" linkText="Open in Google Maps" />
+          <OfficeCard title="Sumathi IT - System Integration Solutions" image="/images/home/sumathiit-home-image4.jpg" linkText="Open in Google Maps" />
           <OfficeCard title="Sumathi IT Geospatial Engineering Solutions" image="/images/home/sumathiIT-home-image5.jpg" linkText="Explore Sumathi Geospatial Engineering solutions" />
         </div>
       </section>
