@@ -13,7 +13,6 @@ import { AnimatedList } from "@/components/common/AnimatedList";
 import { CategoryVideoHeader } from "@/components/sections/CategoryVideoHeader";
 import { ImageTextBanner } from "@/components/sections/ImageTextBanner";
 import { DroneImageSlider } from "@/components/sections/DroneImageSlider";
-// import { PartnersSlider } from "@/components/sections/PartnersSlider";
 
 export function generateStaticParams() {
   return uavCategories.map((category) => ({ category: category.slug }));
@@ -52,7 +51,7 @@ export default async function UavCategoryPage({ params }: { params: Promise<{ ca
           description={item.description}
         />
       )}
-      <HeroBlock eyebrow="UAV Category" title={item.title} description={item.summary} image={item.image} />
+      <HeroBlock eyebrow="UAV Category" title={item.title} description={item.summary} image={item.image} useVideo={!isDrones} />
 
       {item.tagline && !item.videoUrl && (
         <section className="section-padding bg-brand-purple text-white">

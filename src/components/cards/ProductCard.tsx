@@ -42,7 +42,7 @@ export function ProductCard({
 
         {/* Title over image */}
         <div className="absolute inset-x-0 bottom-0 p-5">
-          <h3 className="text-lg font-semibold leading-snug text-white drop-shadow-sm">
+          <h3 className="text-lg font-semibold tracking-[0.02em] leading-[1.3] text-white drop-shadow-sm">
             {title}
           </h3>
         </div>

@@ -30,7 +30,7 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
   return (
     <>
       <Breadcrumbs items={[{ label: "Enterprise Solutions", href: "/enterprise-solutions" }, { label: solution.title }]} />
-      <HeroBlock eyebrow="Enterprise Solution" title={solution.title} description={solution.summary} image={solution.image} />
+      <HeroBlock eyebrow="Enterprise Solution" title={solution.title} description={solution.summary} image={solution.image} useVideo={true} />
       <section className="section-padding relative bg-white">
         <div className="absolute inset-0 z-0">
           <Image 

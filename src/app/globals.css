@@ -151,3 +151,12 @@ video {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+/* Hide horizontal scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

@@ -35,7 +35,7 @@ export function SolutionCard({
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--gold)]">
             UAV Solution
           </span>
-          <h3 className="mt-2 text-2xl font-semibold text-white">{title}</h3>
+          <h3 className="mt-2 text-2xl font-semibold tracking-[0.02em] leading-[1.2] text-white">{title}</h3>
           <p className="mt-2 max-w-xs text-sm leading-6 text-blue-100/90 line-clamp-2">
             {summary}
           </p>

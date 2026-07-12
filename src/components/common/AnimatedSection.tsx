@@ -30,7 +30,7 @@ export function AnimatedSection({
       initial={selected.initial}
       whileInView={selected.animate}
       viewport={{ once: true, margin: "-90px" }}
-      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay }}
+      transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay }}
       className={cn(className)}
     >
       {children}

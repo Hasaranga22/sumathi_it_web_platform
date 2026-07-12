@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import Image from "next/image";
 
 interface ConfettiPiece {
   id: number;
@@ -45,6 +46,15 @@ function generateConfetti(count: number): ConfettiPiece[] {
  * that mints the milestone number into place with a coin-stamp impact,
  * flanked by a logo slot and falling confetti — then hands off to the
  * page content beneath it. Respects prefers-reduced-motion.
+ *
+ * IMPORTANT: the whole reveal is gated behind a `mounted` flag. Nothing
+ * that belongs to the intro (medallion number, caption copy, company name)
+ * is rendered on the very first paint/hydration pass — only a plain gold
+ * flash to the same navy backdrop is shown, then the real reveal fades in
+ * once React has mounted and the animations are wired up. This is what
+ * stops the old "0 / years of trust & excellence / Sumathi IT" flash of
+ * unstyled text on refresh: that text now simply doesn't exist in the DOM
+ * until it's ready to animate in properly.
  */
 export function AnniversaryCelebration({
   children,
@@ -54,6 +64,7 @@ export function AnniversaryCelebration({
   years = 25,
   tagline = "Years of Trust & Excellence"
 }: AnniversaryCelebrationProps) {
+  const [mounted, setMounted] = useState(false);
   const [phase, setPhase] = useState<"intro" | "leaving" | "done">("intro");
   const [confetti, setConfetti] = useState<ConfettiPiece[]>([]);
   const [skip, setSkip] = useState(false);
@@ -62,6 +73,8 @@ export function AnniversaryCelebration({
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    setMounted(true);
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) {
       setSkip(true);
@@ -111,7 +124,10 @@ export function AnniversaryCelebration({
 
   return (
     <>
-      {phase !== "done" && (
+      {/* Seamless placeholder shown only until React mounts — same backdrop, no text, no numbers. */}
+      {!mounted && <div aria-hidden="true" className="anniv-overlay anniv-preload" />}
+
+      {mounted && phase !== "done" && (
         <div
           aria-hidden="true"
           className={`anniv-overlay ${phase === "leaving" ? "anniv-overlay-leave" : ""}`}
@@ -139,7 +155,7 @@ export function AnniversaryCelebration({
           <div className="anniv-stage">
             <div className="anniv-logo-frame">
               {logoSrc ? (
-                <img src={logoSrc} alt={logoAlt} className="anniv-logo-img" />
+                <Image src={logoSrc} alt={logoAlt} className="anniv-logo-img" width={100} height={100} />
               ) : (
                 <span className="anniv-logo-fallback">{companyName?.[0]?.toUpperCase() ?? "✦"}</span>
               )}
@@ -206,6 +222,10 @@ export function AnniversaryCelebration({
         .anniv-overlay-leave {
           opacity: 0;
           pointer-events: none;
+        }
+        .anniv-preload {
+          /* Identical backdrop to .anniv-overlay so the hand-off from
+             preload -> real reveal is invisible to the eye. */
         }
 
         .anniv-glow {

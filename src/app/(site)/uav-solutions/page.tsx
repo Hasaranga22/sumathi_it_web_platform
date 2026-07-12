@@ -33,6 +33,7 @@ export default function UavSolutionsPage() {
         title="UAV Solutions"
         description="Drone, geospatial, mapping and reality capture solutions"
         breadcrumbs={[{ label: "UAV Solutions" }]}
+        useVideo={true}
       />
 
       <section className="section-padding bg-white">

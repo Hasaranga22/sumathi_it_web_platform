@@ -3,10 +3,14 @@ import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { CountUpStat } from "@/components/common/CountUpStat";
 import { TestimonialSlider } from "@/components/common/TestimonialSlider";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { GlobalPartners } from "@/components/sections/GlobalPartners";
+import { WhyChooseUs_au } from "@/components/sections/WhyChooseUs-aboutUs";
+import { StatsBand } from "@/components/sections/Statsband";
+import { JourneyTimeline } from "@/components/sections/Journeytimeline";
+import { AwardsShowcase } from "@/components/sections/Awardsshowcase";
+import { FloatingImage } from "@/components/common/Floatingimage";
 
 export const metadata = buildMetadata({
   title: "About Us",
@@ -14,13 +18,6 @@ export const metadata = buildMetadata({
   path: "/about-us",
   keywords: ["about Sumathi IT", "Sumathi Holdings IT company", "Sri Lanka system integration company"]
 });
-
-const stats = [
-  { value: "30+", label: "Years of proven experience", icon: "shield" as const },
-  { value: "95%", label: "Customer satisfaction focus", icon: "smile" as const },
-  { value: "250+", label: "Projects completed", icon: "network" as const },
-  { value: "25+", label: "Technology partnerships", icon: "handshake" as const }
-];
 
 const leadership = [
   { name: "Jagath Sumathipala", role: "Chairman / Managing Director", image: "/images/team/person1.webp" },
@@ -37,30 +34,55 @@ export default function AboutUsPage() {
         title="About Sumathi IT"
         description="A trusted technology partner under Sumathi Holdings"
         breadcrumbs={[{ label: "About Us" }]}
-        backgroundImage="/images/home/sumathiIT-home-image2.jpg"
+        backgroundImage="/images/home/sumathiit-home-image4.jpg"
       />
+
+      {/* Mission & Vision */}
       <section className="section-padding bg-slate-50">
-        <div className="container-padded grid gap-8 lg:grid-cols-2">
+        <div className="container-padded grid items-stretch gap-12 lg:grid-cols-[1fr_1fr_1fr]">
           <AnimatedSection variant="pop">
-            <div className="premium-card p-8">
+            <FloatingImage
+              src="/images/home/sumathiit-home-image3.jpg"
+              alt="Sumathi IT engineers collaborating on a project"
+              className="h-full min-h-[280px] w-full"
+            />
+          </AnimatedSection>
+
+          <AnimatedSection variant="pop" delay={0.05}>
+            <div className="premium-card flex h-full flex-col justify-center p-8">
               <h2 className="text-2xl font-semibold text-navy-950">Our Mission</h2>
-              <p className="mt-4 leading-8 text-slate-600">To help organizations operate smarter, faster, and more securely through practical technology solutions and reliable implementation support.</p>
+              <p className="mt-4 leading-8 text-slate-600">
+                Being in the people business can mean difficult decisions and tough conversations. We go into every
+                meeting with a desire and ability to be genuine and compassionate. We&apos;re here to help you move
+                forward, without risk or judgment.
+              </p>
             </div>
           </AnimatedSection>
-          <AnimatedSection variant="pop" delay={0.08}>
-            <div className="premium-card p-8">
-              <h2 className="text-2xl font-semibold text-navy-950">Our Vision</h2>
-              <p className="mt-4 leading-8 text-slate-600">To be a trusted technology partner for digital transformation, enterprise infrastructure, geospatial innovation, and UAV-driven business value.</p>
+
+          <AnimatedSection variant="pop" delay={0.1}>
+            <div className="premium-card flex h-full flex-col justify-center p-8">
+              <h2 className="text-2xl font-semibold text-navy-950">Our Vision &amp; Our Purpose</h2>
+              <p className="mt-4 leading-8 text-slate-600">
+                We are a Sri Lankan technology partner committed to collaborating with business leaders on their
+                most critical challenges, backed by a global community of Sumathi Holdings expertise.
+              </p>
+              <p className="mt-4 leading-8 text-slate-600">
+                Our engineers apply a deep, practice-tested pool of knowledge to deliver solutions that meet each
+                client&apos;s needs, expectations and budget.
+              </p>
             </div>
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Why choose us + feature grid */}
+      <WhyChooseUs_au />
+
+      {/* Animated counters + banner imagery */}
+      <StatsBand />
+
+      {/* Leadership team */}
       <section className="section-padding bg-white">
-        <div className="container-padded grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => <CountUpStat key={stat.label} value={stat.value} label={stat.label} icon={stat.icon} />)}
-        </div>
-      </section>
-      <section className="section-padding bg-slate-50">
         <div className="container-padded">
           <SectionHeader title="Leadership team" description="Meet the experienced professionals driving Sumathi IT's vision and growth." />
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -80,33 +102,26 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
-      <section className="section-padding bg-slate-50">
-        <div className="container-padded">
-          <SectionHeader title="Leadership message" description="The 25th anniversary connects Sumathi IT’s legacy, customer trust, and future-ready technology direction." />
-          <AnimatedSection variant="pop" className="mt-8 grid gap-8 rounded-card bg-white p-6 shadow-card lg:grid-cols-[340px_1fr] lg:items-center">
-            <div className="relative h-80 overflow-hidden rounded-card bg-brand-lavender">
-              <Image src="/images/anniversary/ceo.jpg" alt="Chairman" fill className="object-cover" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-gold-500">25th anniversary</p>
-              <h3 className="mt-3 text-2xl font-semibold text-navy-950">25 years of trust, technology and service excellence</h3>
-              <p className="mt-4 leading-8 text-slate-600">The anniversary page is designed as a special campaign touchpoint with a gold, white and black visual treatment to highlight legacy and victory.</p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+
+      {/* Our journey — scroll-animated timeline (replaces the old static journey cards) */}
+      <JourneyTimeline />
+
+      {/* Awards & recognition gallery (replaces the chairman message section) */}
+      <AwardsShowcase />
+
+      {/* Testimonials */}
       <section className="section-padding bg-white">
         <div className="container-padded">
           <SectionHeader
             title="Customer testimonials"
             description="What our clients say about working with Sumathi IT."
           />
-
           <div className="mt-8">
             <TestimonialSlider />
           </div>
         </div>
       </section>
+
       <GlobalPartners />
       <CtaBand />
     </>

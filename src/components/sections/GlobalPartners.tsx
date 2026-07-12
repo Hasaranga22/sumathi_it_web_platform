@@ -22,7 +22,7 @@ const partners = [
 
 export function GlobalPartners() {
   return (
-    <section className="border-y border-slate-200 bg-white py-12">
+    <section className="border-y border-slate-200 bg-white py-12 mt-20">
       <div className="container-padded overflow-hidden">
         <h2 className="text-center text-2xl font-semibold tracking-normal text-navy-950 mb-[6rem]">
           OUR GLOBAL PARTNERS

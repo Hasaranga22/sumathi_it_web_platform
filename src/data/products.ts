@@ -359,7 +359,7 @@ export const products: Product[] = [
     summary: "Professional UAV mapping and inspection service for businesses, projects, and public-sector operations.",
     description:
       "Our UAV mapping service supports project teams with professional data capture, inspection, aerial imagery, and survey-ready deliverables.",
-    images: ["/images/products/uav-service-1.svg"],
+    images: ["/images/uav/banner-services.jpg"],
     features: ["Aerial mapping", "Inspection support", "Survey deliverables", "Data processing", "Professional field operation"],
     specifications: {
       "Product type": "Service",

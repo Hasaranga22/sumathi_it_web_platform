@@ -11,7 +11,6 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { AnimatedList } from "@/components/common/AnimatedList";
-import { ButtonLink } from "@/components/common/ButtonLink";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));

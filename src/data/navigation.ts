@@ -19,8 +19,8 @@ export const navigation: NavItem[] = [
     children: [
       { label: "Drones", href: "/uav-solutions/drones" },
       { label: "Software", href: "/uav-solutions/software" },
-      { label: "GNSS", href: "/uav-solutions/gnss" },
-      { label: "BIM", href: "/uav-solutions/bim" },
+      { label: "GNSS (Global Navigation Satellite Systems)", href: "/uav-solutions/gnss" },
+      { label: "BIM (Building Information Modeling)", href: "/uav-solutions/bim" },
       { label: "Scanners", href: "/uav-solutions/scanners" },
       { label: "UAV Services", href: "/uav-solutions/uav-services" }
     ]

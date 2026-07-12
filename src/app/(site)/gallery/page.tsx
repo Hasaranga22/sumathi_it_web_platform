@@ -18,6 +18,7 @@ export default function GalleryPage() {
         title="Gallery"
         description="A curated view of our work, people, and technology moments"
         breadcrumbs={[{ label: "Gallery" }]}
+        backgroundImage="/images/home/sumathiIT-home-image2.jpg"
       />
       <section className="section-padding relative bg-white">
         <div className="absolute inset-0 z-0">

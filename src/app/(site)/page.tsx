@@ -14,7 +14,6 @@ import { LegacyBand } from "@/components/sections/LegacyBand";
 import { ImageBand } from "@/components/sections/ImageBand";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { TestimonialSlider } from "@/components/common/TestimonialSlider";
-import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { ProcessShowcase } from "@/components/sections/Processshowcase";
 import { GlobalPartners } from "@/components/sections/GlobalPartners";
 import { BackgroundVideo } from "@/components/common/BackgroundVideo";
@@ -40,53 +39,55 @@ export default function HomePage() {
         {/* Optional white overlay to soften the video even more */}
         <div className="absolute inset-0 bg-white/30" />
         {/* Content */}
-        <div className="relative z-10 container-padded grid gap-12 lg:grid-cols-[1fr_0.92fr] lg:items-center">
-          <AnimatedSection>
-            <p className="inline-flex rounded-full px-4 py-2 text-md font-semibold uppercase tracking-[0.22em] text-brand-purple">
-              Sumathi IT
-            </p>
-            <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.1] tracking-normal text-navy-950 sm:text-5xl lg:text-6xl">
-              Reliable IT Services for Your Organisation.
-            </h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-              We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of today.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/enterprise-solutions">
-                Explore Solutions
-              </ButtonLink>
-              <ButtonLink href="/contact-us" variant="secondary">
-                Talk to an Expert
-              </ButtonLink>
-            </div>
-          </AnimatedSection>
-          <AnimatedSection delay={0.15} variant="pop" className="relative">
-            <div className="absolute -left-6 -top-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
-              <p className="text-4xl font-semibold tracking-normal text-brand-purple">
-                30+
+        <div className="relative z-10 container-padded">
+          <div className="grid gap-12 lg:grid-cols-[1fr_0.92fr] lg:items-center mt-6">
+            <AnimatedSection>
+              <p className="inline-flex rounded-full px-4 py-2 text-md font-semibold uppercase tracking-[0.22em] text-brand-purple">
+                Sumathi IT
               </p>
-              <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
-                Years of IT experience
+              <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.1] tracking-normal text-navy-950 sm:text-5xl lg:text-6xl">
+                Reliable IT Services for Your Organisation.
+              </h1>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+                We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of today.
               </p>
-            </div>
-            <div className="absolute -right-6 -bottom-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
-              <p className="text-4xl font-semibold tracking-normal text-brand-purple">
-                99%
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
-                Happy Customers
-              </p>
-            </div>
-            <div className="relative h-[360px] overflow-hidden rounded-card bg-brand-lavender shadow-soft sm:h-[480px]">
-              <Image
-                src="/images/home/SumathiIT-Hero-Image.jpg"
-                alt="Sumathi IT team and technology solutions"
-                fill
-                className="object-cover transition duration-1000 hover:scale-[1.03]"
-                priority
-              />
-            </div>
-          </AnimatedSection>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <ButtonLink href="/enterprise-solutions">
+                  Explore Solutions
+                </ButtonLink>
+                <ButtonLink href="/contact-us" variant="secondary">
+                  Talk to an Expert
+                </ButtonLink>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.15} variant="pop" className="relative">
+              <div className="absolute -left-6 -top-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
+                <p className="text-4xl font-semibold tracking-normal text-brand-purple">
+                  30+
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
+                  Years of IT experience
+                </p>
+              </div>
+              <div className="absolute -right-6 -bottom-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
+                <p className="text-4xl font-semibold tracking-normal text-brand-purple">
+                  99%
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
+                  Happy Customers
+                </p>
+              </div>
+              <div className="relative h-[360px] overflow-hidden rounded-card bg-brand-lavender shadow-soft sm:h-[480px]">
+                <Image
+                  src="/images/home/SumathiIT-Hero-Image.jpg"
+                  alt="Sumathi IT team and technology solutions"
+                  fill
+                  className="object-cover transition duration-1000 hover:scale-[1.03]"
+                  priority
+                />
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
       <GlobalPartners />
@@ -123,6 +124,24 @@ export default function HomePage() {
       </section>
 
       <ImageBand />
+
+      <section className="section-padding bg-slate-50">
+        <div className="container-padded grid gap-8 lg:grid-cols-2">
+          <AnimatedSection variant="pop">
+            <div className="premium-card p-8">
+              <h2 className="text-2xl font-semibold text-navy-950">Our Mission</h2>
+              <p className="mt-4 leading-8 text-slate-600">Being in the people business can mean difficult decisions and tough conversations. We believe in going into every meeting with a desire and ability to be genuine and compassionate. We are all people, and people make mistakes. We&apos;re here to help you fix those, without risk or judgment, and move forward. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </AnimatedSection>
+          <AnimatedSection variant="pop" delay={0.08}>
+            <div className="premium-card p-8">
+              <h2 className="text-2xl font-semibold text-navy-950">Our Vision & Our Purpose</h2>
+              <p className="mt-4 leading-8 text-slate-600">At SumathiIT, we are a renowned global consulting firm committed to collaborating with business and societal leaders in overcoming their most critical challenges and seizing their greatest opportunities. Our achievements are rooted in fostering deep collaboration and cultivating a global community of diverse individuals who are dedicated.</p>
+              <p className="mt-4 leading-8 text-slate-600">We have highly skilled engineers with excellent technical knowledge and experience in using the latest software standards. We have built a large pool of knowledge that we apply to deliver solutions that meet client&apos;s needs, expectations and budget.</p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
       <section className="section-padding bg-white">
         <div className="container-padded grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
@@ -252,7 +271,6 @@ export default function HomePage() {
       </section>
 
       <CtaBand />
-      <ScrollToTop />
     </>
   );
 }

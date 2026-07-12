@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { ChevronLeft, ChevronRight, Camera } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryItems } from "@/data/gallery";
 import { ImageLightbox } from "@/components/common/ImageLightbox";
 
@@ -112,20 +112,6 @@ export function GalleryGrid() {
                     priority={isCenter}
                   />
 
-                  {isCenter && (
-                    <>
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/5 to-transparent" />
-                      <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 p-4">
-                        <span className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full bg-white/20 text-white backdrop-blur-md">
-                          <Camera className="h-4 w-4" />
-                        </span>
-                        <div className="min-w-0">
-                          <p className="truncate text-sm font-semibold text-white">{item.title}</p>
-                          <p className="truncate text-xs text-blue-100/80">{item.category}</p>
-                        </div>
-                      </div>
-                    </>
-                  )}
                 </div>
               </motion.div>
             );

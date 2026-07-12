@@ -29,6 +29,7 @@ export default function EnterpriseSolutionsPage() {
         title="Enterprise Solutions"
         description="Future-ready IT infrastructure for your business"
         breadcrumbs={[{ label: "Enterprise Solutions" }]}
+        useVideo={true}
       />
       <section className="bg-white py-10">
         <div className="container-padded grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

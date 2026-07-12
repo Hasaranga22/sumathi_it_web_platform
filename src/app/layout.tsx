@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
+import { ScrollToTop } from "@/components/common/ScrollToTop";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Enterprise IT Solutions Sri Lanka`,
-    template: `%s | ${siteConfig.name}`
+    default: siteConfig.name,
+    template: siteConfig.name
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg"
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "16x16", type: "image/png" }
+    ],
+    apple: "/favicon.png",
+    shortcut: "/favicon.png"
   },
   category: "technology",
   applicationName: siteConfig.name,
@@ -45,7 +49,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ScrollToTop />
+      </body>
     </html>
   );
 }

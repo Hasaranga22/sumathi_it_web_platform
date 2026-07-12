@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { GitCompareArrows} from "lucide-react";
 import { droneProducts } from "@/data/products";
 import type { Product } from "@/types/product";
 
