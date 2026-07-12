@@ -11,7 +11,12 @@ export function ImageBand() {
           initial={{ opacity: 0, y: -90, scale: 0.94 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ type: "spring", stiffness: 220, damping: 14, mass: 0.8 }}
+          transition={{
+          type: "spring",
+          stiffness: 30,
+          damping: 20,
+          mass: 2,
+        }}
           className="relative h-[280px] w-full overflow-hidden rounded-card shadow-soft sm:h-[340px] lg:h-[400px]"
         >
           <Image
