@@ -20,7 +20,13 @@ export function PageHero({ title, description, breadcrumbs, backgroundImage = "/
         </>
       ) : (
         <div className="absolute inset-0 opacity-20">
-          <Image src={backgroundImage} alt="" fill className="object-cover object-top" priority />
+          <Image
+  src={backgroundImage}
+  alt=""
+  fill
+  className="object-cover object-[bottom_10%]"
+  priority
+/>
         </div>
       )}
       <div className="container-padded relative z-10">

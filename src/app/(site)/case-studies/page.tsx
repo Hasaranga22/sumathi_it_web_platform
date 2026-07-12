@@ -18,7 +18,7 @@ export default function CaseStudiesPage() {
         title="Case Studies"
         description="Proof of practical technology execution"
         breadcrumbs={[{ label: "Case Studies" }]}
-        backgroundImage="/images/home/sumathiIT-home-image6.jpg"
+        backgroundImage="/images/home/sumathiIT-home-image2.jpg"
       />
       <section className="section-padding bg-slate-50">
         <div className="container-padded grid gap-6 md:grid-cols-2">

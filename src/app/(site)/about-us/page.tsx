@@ -34,7 +34,7 @@ export default function AboutUsPage() {
         title="About Sumathi IT"
         description="A trusted technology partner under Sumathi Holdings"
         breadcrumbs={[{ label: "About Us" }]}
-        backgroundImage="/images/home/sumathiit-home-image4.jpg"
+        backgroundImage="/images/home/sumathiIT-home-image2.jpg"
       />
 
       {/* Mission & Vision */}
@@ -42,7 +42,7 @@ export default function AboutUsPage() {
         <div className="container-padded grid items-stretch gap-12 lg:grid-cols-[1fr_1fr_1fr]">
           <AnimatedSection variant="pop">
             <FloatingImage
-              src="/images/home/sumathiit-home-image3.jpg"
+              src="/images/home/Sumathiit-home-image3.jpg"
               alt="Sumathi IT engineers collaborating on a project"
               className="h-full min-h-[280px] w-full"
             />
