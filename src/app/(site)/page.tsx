@@ -33,7 +33,7 @@ const processSteps = [
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24 !h-[49rem]">
         {/* Background Video */}
         <BackgroundVideo />
         {/* Optional white overlay to soften the video even more */}
