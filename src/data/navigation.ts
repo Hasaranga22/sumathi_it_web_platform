@@ -6,11 +6,11 @@ export const navigation: NavItem[] = [
     label: "Enterprise Solutions",
     href: "/enterprise-solutions",
     children: [
-      { label: "Networking Solutions", href: "/enterprise-solutions/networking-solutions" },
-      { label: "Unified Communication Solutions", href: "/enterprise-solutions/unified-communication-solutions" },
-      { label: "Data Center Solution", href: "/enterprise-solutions/data-center-solution" },
-      { label: "Information Security Solution", href: "/enterprise-solutions/information-security-solution" },
-      { label: "Smart Infrastructure / ELV Solution", href: "/enterprise-solutions/smart-infrastructure-elv-solution" }
+      { label: "Networking", href: "/enterprise-solutions/networking-solutions" },
+      { label: "Unified Communication", href: "/enterprise-solutions/unified-communication-solutions" },
+      { label: "Data Center", href: "/enterprise-solutions/data-center-solution" },
+      { label: "Information Security", href: "/enterprise-solutions/information-security-solution" },
+      { label: "Smart Infrastructure / ELV", href: "/enterprise-solutions/smart-infrastructure-elv-solution" }
     ]
   },
   {
