@@ -29,7 +29,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.25fr_0.75fr_0.9fr_1fr]">
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.75fr_0.9fr_1fr]">
           <div>
             <Image src="/images/logo/logo_white.png" alt="Sumathi IT" width={380} height={54} className=" p-2" />
             <p className="mt-5 max-w-sm text-sm leading-7 text-blue-100">

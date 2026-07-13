@@ -24,9 +24,9 @@ function cardStyle(diff: number) {
   const sign = Math.sign(diff);
   const steps = [
     { scale: 1, x: 0, rotate: 0, z: 50, opacity: 1 },
-    { scale: 0.84, x: 15, rotate: 10, z: 40, opacity: 0.92 },
-    { scale: 0.7, x: 27, rotate: 17, z: 30, opacity: 0.65 },
-    { scale: 0.58, x: 37, rotate: 22, z: 20, opacity: 0.32 }
+    { scale: 0.84, x: 12, rotate: 8, z: 40, opacity: 0.92 },
+    { scale: 0.7, x: 22, rotate: 14, z: 30, opacity: 0.65 },
+    { scale: 0.58, x: 30, rotate: 18, z: 20, opacity: 0.32 }
   ];
   const step = steps[Math.min(abs, steps.length - 1)];
   const hidden = abs >= steps.length;

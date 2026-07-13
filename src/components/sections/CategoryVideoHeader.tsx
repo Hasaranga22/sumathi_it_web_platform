@@ -43,7 +43,7 @@ export function CategoryVideoHeader({
         {/* Content */}
         <div className="container-padded relative z-10 flex h-full items-center">
           <AnimatedSection variant="slide-right">
-            <div className="max-w-3xl">
+            <div className="max-w-3xl hidden sm:block">
               {eyebrow && (
                 <motion.span
                   initial={{ opacity: 0, x: -40 }}

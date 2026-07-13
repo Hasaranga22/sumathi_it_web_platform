@@ -33,7 +33,7 @@ const processSteps = [
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24 !h-[49rem]">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24 h-auto lg:!h-[49rem]">
         {/* Background Video */}
         <BackgroundVideo />
         {/* Optional white overlay to soften the video even more */}
@@ -62,7 +62,7 @@ export default function HomePage() {
             </AnimatedSection>
             <AnimatedSection delay={0.15} variant="pop" className="relative">
   <div
-    className="absolute -right-12 -top-12 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card animate-fade-in-up opacity-0"
+    className="absolute -right-4 -top-4 sm:-right-12 sm:-top-12 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card animate-fade-in-up opacity-0"
     style={{ animationDelay: "0.4s" }}
   >
     <p className="text-4xl tracking-normal text-brand-purple">30+</p>
@@ -72,7 +72,7 @@ export default function HomePage() {
   </div>
 
   <div
-    className="absolute -left-12 -bottom-12 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card animate-fade-in-up opacity-0"
+    className="absolute -left-4 -bottom-4 sm:-left-12 sm:-bottom-12 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card animate-fade-in-up opacity-0"
     style={{ animationDelay: "1.2s" }}
   >
     <p className="text-4xl tracking-normal text-brand-purple">99%</p>
@@ -137,14 +137,14 @@ export default function HomePage() {
           <AnimatedSection variant="pop">
             <div className="premium-card p-8">
               <h2 className="text-2xl font-semibold text-navy-950">Our Mission</h2>
-              <p className="mt-4 leading-8 text-slate-600">Being in the people business can mean difficult decisions and tough conversations. We believe in going into every meeting with a desire and ability to be genuine and compassionate. We are all people, and people make mistakes. We&apos;re here to help you fix those, without risk or judgment, and move forward. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p className="mt-4 leading-8 text-slate-600">Being in the people business can mean difficult decisions and tough conversations. We go into every meeting with a desire and ability to be genuine and compassionate. We&apos;re here to help you move forward, without risk or judgment.</p>
             </div>
           </AnimatedSection>
           <AnimatedSection variant="pop" delay={0.08}>
             <div className="premium-card p-8">
               <h2 className="text-2xl font-semibold text-navy-950">Our Vision & Our Purpose</h2>
-              <p className="mt-4 leading-8 text-slate-600">At SumathiIT, we are a renowned global consulting firm committed to collaborating with business and societal leaders in overcoming their most critical challenges and seizing their greatest opportunities. Our achievements are rooted in fostering deep collaboration and cultivating a global community of diverse individuals who are dedicated.</p>
-              <p className="mt-4 leading-8 text-slate-600">We have highly skilled engineers with excellent technical knowledge and experience in using the latest software standards. We have built a large pool of knowledge that we apply to deliver solutions that meet client&apos;s needs, expectations and budget.</p>
+              <p className="mt-4 leading-8 text-slate-600">We are a Sri Lankan technology partner committed to collaborating with business leaders on their most critical challenges, backed by a global community of Sumathi Holdings expertise.</p>
+              <p className="mt-4 leading-8 text-slate-600">Our engineers apply a deep, practice-tested pool of knowledge to deliver solutions that meet each client&apos;s needs, expectations and budget.</p>
             </div>
           </AnimatedSection>
         </div>

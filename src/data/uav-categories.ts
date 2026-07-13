@@ -34,7 +34,7 @@ export const uavCategories: {
     bannerEyebrow: "Enterprise UAV",
     bannerHeading: "Built for the field, trusted for the mission",
     bannerText:
-      "From dock-based automated inspection to compact enterprise platforms, our drone lineup is selected for teams that need repeatable, reliable flight performance across agriculture, infrastructure, and public safety work."
+      "Reliable drone solutions for agriculture, infrastructure, and public safety operations."
   },
   {
     title: "Software",
@@ -54,7 +54,7 @@ export const uavCategories: {
     bannerEyebrow: "Data Processing",
     bannerHeading: "Turn raw flight data into decisions",
     bannerText:
-      "Our software stack connects flight planning, photogrammetry, and analytics into one seamless workflow, so imagery captured in the field becomes maps, models, and insight without manual guesswork or fragmented toolchains. Teams spend less time stitching data together and more time acting on results."
+      "Our software connects flight planning, photogrammetry, and analytics into one seamless workflow. Transform field imagery into maps and insights without manual data stitching."
   },
   {
     title: "GNSS (Global Navigation Satellite Systems)",
@@ -121,7 +121,7 @@ export const uavCategories: {
     bannerEyebrow: "Reality Capture",
     bannerHeading: "Every detail, captured in 3D",
     bannerText:
-      "Terrestrial, mobile, and handheld scanning systems give architecture, heritage, and mining teams a precise digital record of physical space, ready to support design, preservation, and volumetric analysis."
+      "Scanning systems provide precise 3D digital records for architecture, heritage, and mining projects."
   },
   {
     title: "UAV Services",

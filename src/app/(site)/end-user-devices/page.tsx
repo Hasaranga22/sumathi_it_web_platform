@@ -88,11 +88,11 @@ export default function EndUserDevicesPage() {
       </section>
 
       {/* Enterprise Endpoints */}
-      <section className="section-padding bg-white">
-        <div className="container-padded">
+      <section className="section-padding bg-white  ">
+        <div className="container-padded ">
           <AnimatedSection
-            variant="pop"
-            className="grid gap-10 rounded-card bg-brand-lavender p-8 shadow-card lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
+            // variant="pop"
+            className="grid gap-10 rounded-card bg-brand-lavender p-8 shadow-card lg:grid-cols-[0.9fr_1.1fr] lg:items-center !w-[90rem]"
           >
             {/* Text Content */}
             <div>
