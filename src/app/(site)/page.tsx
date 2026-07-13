@@ -61,32 +61,39 @@ export default function HomePage() {
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.15} variant="pop" className="relative">
-              <div className="absolute -left-6 -top-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
-                <p className="text-4xl font-semibold tracking-normal text-brand-purple">
-                  30+
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
-                  Years of IT experience
-                </p>
-              </div>
-              <div className="absolute -right-6 -bottom-6 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card">
-                <p className="text-4xl font-semibold tracking-normal text-brand-purple">
-                  99%
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
-                  Happy Customers
-                </p>
-              </div>
-              <div className="relative h-[360px] overflow-hidden rounded-card bg-brand-lavender shadow-soft sm:h-[480px]">
-                <Image
-                  src="/images/home/SumathiIT-Hero-Image.jpg"
-                  alt="Sumathi IT team and technology solutions"
-                  fill
-                  className="object-cover transition duration-1000 hover:scale-[1.03]"
-                  priority
-                />
-              </div>
-            </AnimatedSection>
+  <div
+    className="absolute -right-12 -top-12 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card animate-fade-in-up opacity-0"
+    style={{ animationDelay: "0.4s" }}
+  >
+    <p className="text-4xl tracking-normal text-brand-purple">30+</p>
+    <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
+      Years of IT experience
+    </p>
+  </div>
+
+  <div
+    className="absolute -left-12 -bottom-12 z-10 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card animate-fade-in-up opacity-0"
+    style={{ animationDelay: "1.2s" }}
+  >
+    <p className="text-4xl tracking-normal text-brand-purple">99%</p>
+    <p className="text-xs font-semibold uppercase tracking-normal text-slate-500">
+      Happy Customers
+    </p>
+  </div>
+
+  <div
+    className="relative h-[360px] overflow-hidden rounded-card bg-brand-lavender shadow-soft sm:h-[480px] animate-fade-in-up opacity-0"
+    style={{ animationDelay: "0s" }}
+  >
+    <Image
+      src="/images/home/SumathiIT-Hero-Image.jpg"
+      alt="Sumathi IT team and technology solutions"
+      fill
+      className="object-cover transition duration-1000 hover:scale-[1.03]"
+      priority
+    />
+  </div>
+</AnimatedSection>
           </div>
         </div>
       </section>
