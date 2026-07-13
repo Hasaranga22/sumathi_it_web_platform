@@ -28,10 +28,12 @@ export function HeroBlock({
           <div className="absolute inset-0 bg-white/80" />
         </>
       )}
-      <div className="container-padded grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center relative z-10">
+      <div className="container-padded max-w-[91rem] mx-auto grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center relative z-10">
         <AnimatedSection>
           {eyebrow ? <p className="inline-flex rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-purple">{eyebrow}</p> : null}
-          <h1 className="mt-5 max-w-4xl text-4xl font-semibold tracking-[0.02em] leading-[1.15] text-navy-950 sm:text-5xl lg:text-6xl">{title}</h1>
+          <h1 className="mt-5 max-w-4xl !text-[40px] font-semibold tracking-[0.02em] leading-[1.15] text-navy-950 sm:text-5xl lg:text-6xl">
+            {title}
+          </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">{description}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
