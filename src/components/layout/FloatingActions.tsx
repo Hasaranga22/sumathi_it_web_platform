@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/data/site";
 
 function WhatsappIcon() {
@@ -11,7 +12,13 @@ function WhatsappIcon() {
 }
 
 export function FloatingActions() {
+  const pathname = usePathname();
   const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`;
+
+  // Hide on home page and enterprise solutions page
+  if (pathname === "/" || pathname === "/enterprise-solutions") {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-5 right-5 z-50">

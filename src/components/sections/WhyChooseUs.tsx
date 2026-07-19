@@ -54,16 +54,6 @@ export function WhyChooseUs() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-navy-950/0 to-transparent" />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 flex gap-3">
-              <div className="flex-1 rounded-xl border border-white/15 bg-white/90 px-4 py-3 text-center shadow-card backdrop-blur">
-                <p className="text-lg font-semibold text-navy-950">500+</p>
-                <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">Deployments</p>
-              </div>
-              <div className="flex-1 rounded-xl border border-white/15 bg-white/90 px-4 py-3 text-center shadow-card backdrop-blur">
-                <p className="text-lg font-semibold text-navy-950">24/7</p>
-                <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">Support</p>
-              </div>
-            </div>
           </AnimatedSection>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:col-span-8">

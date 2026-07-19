@@ -22,8 +22,8 @@ export const metadata = buildMetadata({
 const leadership = [
   { name: "Jagath Sumathipala", role: "Chairman / Managing Director", image: "/images/team/person1.webp" },
   { name: "Chadu Sumathipala", role: "Executive Director", image: "/images/team/person 2.webp" },
-  { name: "Chathula Sumathipala", role: "Director - Business Development and Strategies", image: "/images/team/person3.webp" },
   { name: "Chandima Wickramatunge", role: "CEO - IT Cluster", image: "/images/anniversary/ceo.jpg" },
+  { name: "Siva", role: "Director", image: "/images/team/person4.webp" },
   { name: "Ravi Sivasithamparam", role: "Chief Sales Officer", image: "/images/team/person4.webp" }
 ];
 

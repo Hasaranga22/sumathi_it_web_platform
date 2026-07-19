@@ -31,11 +31,8 @@ export default function ChairmanMessagePage() {
                   <Image src="/images/anniversary/ceo.jpg" alt="Chandima Wickramatunge" fill className="object-cover" />
                 </div>
 
-                <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-full border border-gold-300 text-sm font-semibold tracking-wide text-gold-600">
-                  25
-                </div>
-
-                <h2 className="mt-3 text-2xl font-semibold text-navy-950">25 Years of Progress</h2>
+                <h2 className="mt-4 text-xl font-semibold text-navy-950">Jagath Sumathipala</h2>
+                <p className="mt-1 text-sm font-medium text-gold-700">Chairman / Managing Director</p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
                   A dedicated anniversary page honouring the trust, partnership and legacy built over
                   a quarter century.

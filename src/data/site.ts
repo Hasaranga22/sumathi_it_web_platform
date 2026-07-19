@@ -17,7 +17,7 @@ export const siteConfig = {
     "Digital transformation"
   ],
   contact: {
-    address: "532/2, Sirikotha Lane, Colombo",
+    address: "2nd floor, Sumathi Holdings, 491 Galle Rd, Colombo 3",
     email: "info@sumathiit.com",
     phone: "+94 115 553 311",
     callToday: "+94 112273757",

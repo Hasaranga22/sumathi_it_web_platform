@@ -67,8 +67,8 @@ export function LegacyBand() {
           </AnimatedSection>
         </div>
 
-        {/* Image + mission card */}
-        <div className="mt-10 grid gap-6 lg:grid-cols-12">
+        {/* Image + supporting copy / checklist / CTA, side by side */}
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-center">
           <AnimatedSection variant="pop" className="relative lg:col-span-7">
             <div className="relative h-[320px] overflow-hidden rounded-card shadow-soft sm:h-[420px] lg:h-full lg:min-h-[440px]">
               <Image
@@ -80,83 +80,9 @@ export function LegacyBand() {
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/0 to-transparent" />
             </div>
 
-            {/* Experience badge - static, no float/pulse animation */}
-            <div className="absolute -bottom-6 left-6 z-10 flex items-center gap-4 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card sm:left-10">
-              <span className="text-3xl font-bold leading-none text-brand-purple">30+</span>
-              <span className="text-[11px] font-semibold uppercase leading-tight tracking-wide text-slate-500">
-                Years of
-                <br />
-                IT Excellence
-              </span>
-            </div>
           </AnimatedSection>
 
-          <AnimatedSection variant="slide-left" delay={0.1} className="flex lg:col-span-5">
-            <div
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-              className="relative flex w-full flex-col justify-between overflow-hidden rounded-card bg-gradient-to-br from-brand-purple to-navy-950 p-8 text-white sm:p-10"
-            >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-white/10 blur-3xl"
-              />
-              <Quote className="h-9 w-9 text-white/30" strokeWidth={1.5} />
-
-              <div className="mt-6 min-h-[168px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={active}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                  >
-                    <h3 className="text-lg font-semibold">{missionSlides[active].label}</h3>
-                    <p className="mt-3 text-sm leading-7 text-blue-50/90">
-                      {missionSlides[active].text}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              <div className="mt-8 flex items-center justify-between">
-                <div className="flex gap-1.5">
-                  {missionSlides.map((slide, index) => (
-                    <button
-                      key={slide.label}
-                      onClick={() => setActive(index)}
-                      aria-label={`Show ${slide.label}`}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        index === active ? "w-6 bg-white" : "w-1.5 bg-white/30"
-                      }`}
-                    />
-                  ))}
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={prev}
-                    aria-label="Previous"
-                    className="grid h-9 w-9 place-items-center rounded-full border border-white/25 transition hover:bg-white/10"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={next}
-                    aria-label="Next"
-                    className="grid h-9 w-9 place-items-center rounded-full border border-white/25 transition hover:bg-white/10"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-
-        {/* Supporting copy + checklist + CTA */}
-        <div className="mt-10 grid gap-8 border-t border-slate-200 pt-8 lg:grid-cols-12">
-          <AnimatedSection variant="fade-up" className="lg:col-span-7">
+          <AnimatedSection variant="fade-up" delay={0.1} className="lg:col-span-5">
             <p className="text-sm leading-7 text-slate-600">
               With over three decades of proven excellence, Sumathi System Integration
               Solutions has earned its place as one of Sri Lanka&apos;s most trusted
@@ -167,9 +93,9 @@ export function LegacyBand() {
             <div className="mt-6">
               <AnimatedList items={checklist} />
             </div>
-          </AnimatedSection>
-          <AnimatedSection variant="fade-up" delay={0.1} className="flex items-end lg:col-span-5 lg:justify-end">
-            <ButtonLink href="/about-us">Read More About Us</ButtonLink>
+            <div className="mt-8">
+              <ButtonLink href="/about-us">Read More About Us</ButtonLink>
+            </div>
           </AnimatedSection>
         </div>
       </div>

@@ -7,17 +7,19 @@ export function SolutionCard({
   title,
   summary,
   image,
-  href
+  href,
+  tag
 }: {
   title: string;
   summary: string;
   image: string;
   href: string;
+  tag?: string;
 }) {
   return (
     <Link
       href={href}
-      className="group relative flex h-full min-h-[320px] flex-col justify-end overflow-hidden rounded-[28px] border border-slate-200 shadow-card transition-all duration-500 hover:-translate-y-1.5 hover:shadow-glow"
+      className="group relative flex h-full min-h-[400px] flex-col justify-end overflow-hidden rounded-[28px] border border-slate-200 shadow-card transition-all duration-500 hover:-translate-y-1.5 hover:shadow-glow"
     >
       <div className="absolute inset-0">
         <Image
@@ -32,9 +34,11 @@ export function SolutionCard({
 
       <div className="relative z-10 flex items-center justify-between p-6">
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--gold)]">
-            UAV Solution
-          </span>
+          {tag && (
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--gold)]">
+              {tag}
+            </span>
+          )}
           <h3 className="mt-2 text-2xl font-semibold tracking-[0.02em] leading-[1.2] text-white">{title}</h3>
           <p className="mt-2 max-w-xs text-sm leading-6 text-blue-100/90 line-clamp-2">
             {summary}

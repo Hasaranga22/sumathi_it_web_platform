@@ -16,10 +16,10 @@ export const metadata = buildMetadata({
 });
 
 const highlights = [
-  { label: "18+ Years of Expertise", icon: Award },
-  { label: "Vendor-Agnostic Approach", icon: Handshake },
-  { label: "End-to-End Support", icon: Settings2 },
-  { label: "Proven Track Record", icon: ShieldCheck }
+  { label: "25+ Years of Expertise", description: "Over two decades of delivering enterprise IT solutions across Sri Lanka with proven technical excellence.", icon: Award },
+  { label: "Vendor-Agnostic Approach", description: "Technology-agnostic solutions focused on your business needs, not product constraints.", icon: Handshake },
+  { label: "End-to-End Support", description: "Complete lifecycle support from consultation and deployment to ongoing maintenance and optimization.", icon: Settings2 },
+  { label: "Proven Track Record", description: "Trusted by leading enterprises across banking, healthcare, government, and manufacturing sectors.", icon: ShieldCheck }
 ];
 
 export default function EnterpriseSolutionsPage() {
@@ -37,9 +37,10 @@ export default function EnterpriseSolutionsPage() {
             const Icon = item.icon;
             return (
               <AnimatedSection key={item.label} delay={index * 0.04} variant="pop">
-                <div className="premium-card p-5 text-center text-sm font-semibold text-navy-950">
-                  <div className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-brand-lavender text-brand-purple"><Icon className="h-5 w-5" /></div>
-                  {item.label}
+                <div className="premium-card flex h-full flex-col items-center p-6 text-center">
+                  <div className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-lavender text-brand-purple"><Icon className="h-6 w-6" /></div>
+                  <h3 className="mt-4 text-base font-semibold text-navy-950">{item.label}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
                 </div>
               </AnimatedSection>
             );
@@ -47,26 +48,19 @@ export default function EnterpriseSolutionsPage() {
         </div>
       </section>
       <section className="section-padding bg-slate-50">
-        <div className="container-padded grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <AnimatedSection>
-            <SectionHeader
-              eyebrow="How we create value"
-              title="Infrastructure decisions should be based on business need, not product pressure."
-              description="Our enterprise approach is designed to reduce downtime, improve security, simplify operations, and build long-term technology stability."
-            />
-            <div className="mt-7 rounded-card bg-white p-6 shadow-card">
-              <AnimatedList items={["Architecture-led solution planning", "Multi-vendor deployment capability", "Implementation, handover, and support readiness", "Scalable designs for future business growth"]} />
-            </div>
-          </AnimatedSection>
-          <div>
-            <SectionHeader title="Explore our enterprise solution areas" description="Each solution page is SEO-ready and structured with benefits, industries, related solutions, and clear CTA actions." />
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
-              {enterpriseSolutions.map((solution, index) => (
-                <AnimatedSection key={solution.slug} delay={index * 0.05} variant="pop">
-                  <SolutionCard {...solution} href={`/enterprise-solutions/${solution.slug}`} />
-                </AnimatedSection>
-              ))}
-            </div>
+        <div className="container-padded">
+          <SectionHeader title="Explore our enterprise solution areas" description="Each solution page is SEO-ready and structured with benefits, industries, related solutions, and clear CTA actions." />
+
+          <div className="mt-7 rounded-card bg-white p-6 shadow-card">
+            <AnimatedList items={["Architecture-led solution planning", "Multi-vendor deployment capability", "Implementation, handover, and support readiness", "Scalable designs for future business growth"]} />
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {enterpriseSolutions.map((solution, index) => (
+              <AnimatedSection key={solution.slug} delay={index * 0.05} variant="pop">
+                <SolutionCard {...solution} href={`/enterprise-solutions/${solution.slug}`} tag="Enterprise Solution" />
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>

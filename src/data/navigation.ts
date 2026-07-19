@@ -25,9 +25,18 @@ export const navigation: NavItem[] = [
       { label: "UAV Services", href: "/uav-solutions/uav-services" }
     ]
   },
-  { label: "End User Devices", href: "/end-user-devices" },
+  {
+    label: "End User Devices",
+    href: "/end-user-devices",
+    children: [
+      { label: "Laptops", href: "/end-user-devices/laptops" },
+      { label: "Desktop", href: "/end-user-devices/desktop" },
+      { label: "Tablets", href: "/end-user-devices/tablets" },
+      { label: "Workstations", href: "/end-user-devices/workstations" }
+    ]
+  },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Gallery", href: "/gallery" },
+  // { label: "Gallery", href: "/gallery" },
   { label: "About Us", href: "/about-us" },
   { label: "Contact Us", href: "/contact-us" }
 ];

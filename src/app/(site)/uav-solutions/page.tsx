@@ -66,6 +66,7 @@ export default function UavSolutionsPage() {
                   summary={category.tagline || category.summary}
                   image={category.image}
                   href={`/uav-solutions/${category.slug}`}
+                  tag="UAV Solution"
                 />
               </AnimatedSection>
             ))}
