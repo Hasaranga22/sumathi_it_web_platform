@@ -215,7 +215,7 @@ export function Header() {
 
               <div className="mt-8 grid gap-4">
                 <InfoBlock title="Main Office" value="532/2 Sirikotha Ln, Colombo" icon={<MapPin className="h-5 w-5" />} />
-                <InfoBlock title="Contact with us" value="Call Consulting: +94 115 553 311" icon={<Phone className="h-5 w-5" />} />
+                <InfoBlock title="Contact with us" value="Call Consulting: 0115 553 311" icon={<Phone className="h-5 w-5" />} />
                 <InfoBlock title="Working time" value="Mon - Fri: 8.15am - 05.30pm\nHoliday : Closed" icon={<ChevronDown className="h-5 w-5" />} />
               </div>
 

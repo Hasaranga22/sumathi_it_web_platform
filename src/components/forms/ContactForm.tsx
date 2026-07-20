@@ -19,18 +19,36 @@ const serviceOptions = [
 
 export function ContactForm() {
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: serviceOptions[0], message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   function update(field: keyof typeof form, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
   }
 
-  function submit(event: React.FormEvent<HTMLFormElement>) {
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const subject = encodeURIComponent(`Website Inquiry - ${form.service}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nService: ${form.service}\n\nMessage:\n${form.message}`
-    );
-    window.location.href = `mailto:${siteConfig.contact.email}?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setForm({ name: "", phone: "", email: "", service: serviceOptions[0], message: "" });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -73,11 +91,32 @@ export function ContactForm() {
         <Field label="Message" className="mt-4">
           <textarea required placeholder="Briefly describe your challenge or goals..." rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} className="form-input min-h-40 resize-y" />
         </Field>
-        <button className="group mt-6 inline-flex items-center gap-3 rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-card transition-colors hover:bg-brand-purple" type="submit">
-          <span className="button-flip-text"><span>Get Your Free Consultation</span><span aria-hidden="true">Get Your Free Consultation</span></span>
-          <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+        <button 
+          className="group mt-6 inline-flex items-center gap-3 rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-card transition-colors hover:bg-brand-purple disabled:opacity-50 disabled:cursor-not-allowed" 
+          type="submit" 
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <span>Sending...</span>
+          ) : (
+            <>
+              <span className="button-flip-text"><span>Get Your Free Consultation</span><span aria-hidden="true">Get Your Free Consultation</span></span>
+              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+            </>
+          )}
         </button>
-        <p className="mt-4 text-xs leading-6 text-slate-500">Your data is used only to prepare the inquiry email. Backend submission can be connected in the next phase.</p>
+        
+        {submitStatus === "success" && (
+          <p className="mt-4 text-sm font-semibold text-green-600">
+            Thank you! Your inquiry has been submitted successfully.
+          </p>
+        )}
+        
+        {submitStatus === "error" && (
+          <p className="mt-4 text-sm font-semibold text-red-600">
+            Something went wrong. Please try again or contact us directly.
+          </p>
+        )}
       </div>
     </form>
   );

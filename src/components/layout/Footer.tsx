@@ -38,12 +38,12 @@ export function Footer() {
             <div className="mt-6 grid gap-3 text-sm text-blue-100">
               <span className="inline-flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 text-gold-300" /> {siteConfig.contact.address}</span>
               <a className="inline-flex items-center gap-3 hover:text-white" href={`mailto:${siteConfig.contact.email}`}><Mail className="h-4 w-4 text-gold-300" /> {siteConfig.contact.email}</a>
-              <a className="inline-flex items-center gap-3 hover:text-white" href="tel:+94115553311"><Phone className="h-4 w-4 text-gold-300" /> {siteConfig.contact.phone}</a>
+              <a className="inline-flex items-center gap-3 hover:text-white" href="tel:0115553311"><Phone className="h-4 w-4 text-gold-300" /> {siteConfig.contact.phone}</a>
             </div>
             <div className="mt-6 flex gap-3">
-              <a href="#" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 hover:text-gold-300"><Facebook className="h-4 w-4" /></a>
-              <a href="#" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 hover:text-gold-300"><Instagram className="h-4 w-4" /></a>
-              <a href="#" aria-label="LinkedIn" className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 hover:text-gold-300"><Linkedin className="h-4 w-4" /></a>
+              <a href="https://www.facebook.com/SumathiITSriLanka" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 hover:text-gold-300"><Facebook className="h-4 w-4" /></a>
+              <a href="https://www.instagram.com/sumathiit/" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 hover:text-gold-300"><Instagram className="h-4 w-4" /></a>
+              <a href="https://www.linkedin.com/company/sumathi-information-technologies/" aria-label="LinkedIn" className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 hover:text-gold-300"><Linkedin className="h-4 w-4" /></a>
             </div>
           </div>
 

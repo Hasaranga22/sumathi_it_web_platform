@@ -19,7 +19,7 @@ export const siteConfig = {
   contact: {
     address: "2nd floor, Sumathi Holdings, 491 Galle Rd, Colombo 3",
     email: "info@sumathiit.com",
-    phone: "+94 115 553 311",
+    phone: "0115 553 311",
     callToday: "+94 112273757",
     whatsapp: "+94 77 1234567",
     hotline: "0115 583 311"

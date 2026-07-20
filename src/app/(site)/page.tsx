@@ -143,7 +143,7 @@ export default function HomePage() {
             >
               <Link
                 href="/uav-solutions"
-                className="hero-btn group inline-flex items-center justify-center gap-2 rounded-full bg-brand-purple px-8 py-3.5 text-[15px] font-medium text-white shadow-xl shadow-brand-purple/25 transition-all duration-300 hover:bg-brand-purple/90"
+                className="hero-btn group inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-purple bg-brand-purple px-8 py-3.5 text-[15px] font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-transparent hover:bg-white hover:text-brand-purple"
               >
                 UAV Solutions
                 <svg
