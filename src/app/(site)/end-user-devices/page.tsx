@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Laptop, Monitor, TabletSmartphone } from "lucide-react";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeader } from "@/components/common/SectionHeader";
@@ -25,18 +25,27 @@ export const metadata = buildMetadata({
 const offerings = [
   {
     title: "Laptops",
-    icon: Laptop,
     text: "Business, gaming, and ultraportable laptop models for modern teams, from everyday productivity to demanding creative and technical workloads.",
+    image: "/images/end user devices/subpages/laptops.jpg",
+    link: "/end-user-devices/laptops"
   },
   {
-    title: "Desktops & Workstations",
-    icon: Monitor,
-    text: "Custom-built desktops and workstations for CAD, AI, 3D visualization, and multimedia production, sized for professionals, businesses, and educational institutions.",
+    title: "Desktops",
+    text: "Reliable desktop solutions for office productivity and demanding business applications with expandable configurations.",
+    image: "/images/end user devices/subpages/dextop.png",
+    link: "/end-user-devices/desktop"
   },
   {
-    title: "Tablets & Hybrid Devices",
-    icon: TabletSmartphone,
+    title: "Workstations",
+    text: "High-performance workstations for CAD, 3D modeling, video editing, and data-intensive applications with professional graphics.",
+    image: "/images/end user devices/subpages/workstation.jpg",
+    link: "/end-user-devices/workstations"
+  },
+  {
+    title: "Tablets",
     text: "Portable devices for fieldwork, presentations, and flexible work, built for teams that move between the office and the field.",
+    image: "/images/end user devices/subpages/tabs.jpg",
+    link: "/end-user-devices/tablets"
   },
 ];
 
@@ -57,29 +66,34 @@ export default function EndUserDevicesPage() {
             description="High-performance computing devices for professionals, businesses, and educational institutions — structured for quotation-driven B2B users who need reliable supply, brand options, and practical guidance."
           />
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {offerings.map((item, index) => {
-              const Icon = item.icon;
-
               return (
                 <AnimatedSection
                   key={item.title}
                   delay={index * 0.06}
                   variant="pop"
                 >
-                  <div className="premium-card flex h-full flex-col p-7">
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-lavender text-brand-purple">
-                      <Icon className="h-6 w-6" />
+                  <Link href={item.link} className="block h-full">
+                    <div className="premium-card flex h-full flex-col p-7 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+                      <div className="relative h-[250px] w-full overflow-hidden rounded-lg bg-brand-lavender mb-5">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+
+                      <h3 className="mt-5 text-xl font-semibold text-navy-950">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-7 text-slate-600">
+                        {item.text}
+                      </p>
                     </div>
-
-                    <h3 className="mt-5 text-xl font-semibold text-navy-950">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-3 text-sm leading-7 text-slate-600">
-                      {item.text}
-                    </p>
-                  </div>
+                  </Link>
                 </AnimatedSection>
               );
             })}
@@ -124,31 +138,11 @@ export default function EndUserDevicesPage() {
                   centralized control, policy enforcement, and security
                   compliance.
                 </p>
-
-                <p>
-                  We supply business laptops from HP, Dell, and Lenovo, Apple
-                  MacBooks for creative professionals, and ASUS and MSI machines
-                  for gaming and high-performance computing — alongside
-                  custom-built desktops and workstations for CAD, AI, 3D
-                  visualization, and multimedia, plus tablets and hybrid devices
-                  for fieldwork and presentations.
-                </p>
-
-                <p>
-                  Through our End User Devices &amp; Managed Services portfolio,
-                  Sumathi IT delivers end-to-end services including device
-                  provisioning, standard image deployment, endpoint management
-                  (MDM/UEM), patching, asset lifecycle management, and secure
-                  configuration aligned with enterprise security frameworks —
-                  giving organizations a standardized, secure, and scalable
-                  endpoint ecosystem that reduces operational overhead while
-                  improving user productivity and IT governance.
-                </p>
               </div>
             </div>
 
             {/* Larger Image */}
-            <div className="relative h-[700px] overflow-hidden rounded-card bg-white">
+            <div className="relative h-[500px] overflow-hidden rounded-card bg-white">
               <Image
                 src="/images/end user devices/laptops.jpg"
                 alt="End User Devices"
