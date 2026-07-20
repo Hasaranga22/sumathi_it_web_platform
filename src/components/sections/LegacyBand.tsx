@@ -1,27 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "motion/react";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { AnimatedList } from "@/components/common/AnimatedList";
 import { ButtonLink } from "@/components/common/ButtonLink";
-
-const missionSlides = [
-  {
-    label: "Our Mission",
-    text: "We go into every engagement to be genuine and thorough, not to sell the biggest package. Good IT work is invisible \u2014 you only notice it when it's missing.",
-  },
-  {
-    label: "Our Promise",
-    text: "Mistakes happen, to everyone. When something breaks, we're already on the call fixing it \u2014 no blame games, no billing surprises.",
-  },
-  {
-    label: "Our Approach",
-    text: "We size every solution to the problem in front of you, then build in room to grow, so today's fix doesn't become tomorrow's bottleneck.",
-  },
-];
 
 const checklist = [
   "Certified engineers across every major vendor stack",
@@ -30,23 +12,8 @@ const checklist = [
 ];
 
 export function LegacyBand() {
-  const [active, setActive] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const next = () => setActive((prev) => (prev + 1) % missionSlides.length);
-  const prev = () => setActive((prev) => (prev - 1 + missionSlides.length) % missionSlides.length);
-
-  // Auto-transition through Mission / Promise / Approach, pauses while hovered
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % missionSlides.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, [isPaused]);
-
   return (
-    <section className="section-padding overflow-hidden bg-white">
+    <section className="section-padding py-16 overflow-hidden bg-white">
       <div className="container-padded">
         {/* Header row */}
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">

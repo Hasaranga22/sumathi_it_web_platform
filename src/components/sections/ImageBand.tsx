@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 export function ImageBand() {
   return (
-    <section className="bg-white py-4 sm:py-6">
+    <section className="bg-white py-12 sm:py-16">
       <div className="container-padded">
         <motion.div
           initial={{ opacity: 0, y: -90, scale: 0.94 }}

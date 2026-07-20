@@ -4,7 +4,7 @@ import { AnimatedSection } from "@/components/common/AnimatedSection";
 
 export function CoreSolutions() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding py-16 bg-white">
       <div className="container-padded">
         <AnimatedSection variant="fade-up">
           <div className="max-w-2xl">
@@ -40,9 +40,6 @@ export function CoreSolutions() {
                 </p>
                 <div className="mt-4 flex items-center text-sm font-semibold text-[var(--gold)] group-hover:translate-x-2 transition-transform">
                   Explore Solutions
-                  <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
                 </div>
               </div>
             </Link>
@@ -66,9 +63,6 @@ export function CoreSolutions() {
                 </p>
                 <div className="mt-4 flex items-center text-sm font-semibold text-[var(--gold)] group-hover:translate-x-2 transition-transform">
                   Explore Solutions
-                  <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
                 </div>
               </div>
             </Link>

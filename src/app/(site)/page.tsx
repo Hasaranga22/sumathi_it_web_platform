@@ -1,82 +1,193 @@
-import Image from "next/image";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { blogs } from "@/data/blogs";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { AnimatedList } from "@/components/common/AnimatedList";
-import { ButtonLink } from "@/components/common/ButtonLink";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ArticleCard } from "@/components/cards/ArticleCard";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { LegacyBand } from "@/components/sections/LegacyBand";
 import { ImageBand } from "@/components/sections/ImageBand";
 import { TestimonialSlider } from "@/components/common/TestimonialSlider";
-import { ProcessShowcase } from "@/components/sections/Processshowcase";
 import { GlobalPartners } from "@/components/sections/GlobalPartners";
 import { BackgroundVideo } from "@/components/common/BackgroundVideo";
 import { CoreSolutions } from "@/components/sections/CoreSolutions";
 
 export const metadata = buildMetadata({
   title: "Enterprise IT, UAV and System Integration Solutions",
-  description: "Sumathi IT delivers enterprise IT infrastructure, system integration, cybersecurity, data center, UAV, geospatial, and digital transformation solutions in Sri Lanka.",
-  keywords: ["Sumathi IT website", "IT system integration Colombo", "enterprise IT Sri Lanka"]
+  description:
+    "Sumathi IT delivers enterprise IT infrastructure, system integration, cybersecurity, data center, UAV, geospatial, and digital transformation solutions in Sri Lanka.",
+  keywords: ["Sumathi IT website", "IT system integration Colombo", "enterprise IT Sri Lanka"],
 });
 
 const processSteps = [
-  { title: "Understand Your Needs", description: "We begin every project by carefully understanding your unique business goals, challenges, and audience. This deep discovery process ensures we create a solution that's not only relevant but also built around your specific needs and expectations." },
-  { title: "Design Tailored Solutions", description: "Our team transforms insights into strategic, creative, and scalable solutions. Every element is customized to align with your vision, ensuring the final product is both impactful and functional—designed to solve real problems and deliver measurable results." },
-  { title: "Deliver And Support", description: "We focus on delivering high-quality, on-time results with a seamless process. Post-launch, we remain committed through ongoing support, improvements, and optimization—ensuring your investment continues to perform and adapt to evolving business needs." }
+  {
+    title: "Understand Your Needs",
+    description:
+      "We begin every project by carefully understanding your unique business goals, challenges, and audience. This deep discovery process ensures we create a solution that's not only relevant but also built around your specific needs and expectations.",
+  },
+  {
+    title: "Design Tailored Solutions",
+    description:
+      "Our team transforms insights into strategic, creative, and scalable solutions. Every element is customized to align with your vision, ensuring the final product is both impactful and functional—designed to solve real problems and deliver measurable results.",
+  },
+  {
+    title: "Deliver And Support",
+    description:
+      "We focus on delivering high-quality, on-time results with a seamless process. Post-launch, we remain committed through ongoing support, improvements, and optimization—ensuring your investment continues to perform and adapt to evolving business needs.",
+  },
 ];
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24 h-auto lg:!h-[49rem]">
+      <section className="relative isolate flex min-h-screen items-center overflow-hidden bg-navy-950">
         {/* Background Video */}
         <BackgroundVideo />
-        {/* Optional white overlay to soften the video even more */}
-        <div className="absolute inset-0 bg-white/30" />
-        {/* Content */}
-        <div className="relative z-10 container-padded">
-          <div className="grid gap-12 lg:grid-cols-[1fr_0.92fr] lg:items-center mt-6">
-            <AnimatedSection>
-              <p className="inline-flex rounded-full px-4 py-2 text-md font-semibold uppercase tracking-[0.22em] text-brand-purple">
-                Sumathi IT
-              </p>
-              <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.1] tracking-normal text-navy-950 sm:text-5xl lg:text-6xl">
-                Reliable IT Services for Your Organisation.
-              </h1>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-                We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of today.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/enterprise-solutions">
-                  Explore Solutions
-                </ButtonLink>
-                <ButtonLink href="/contact-us" variant="secondary">
-                  Talk to an Expert
-                </ButtonLink>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.15} variant="pop" className="relative">
-  <div
-    className="relative h-[360px] overflow-hidden rounded-card bg-brand-lavender shadow-soft sm:h-[480px] animate-fade-in-up opacity-0"
-    style={{ animationDelay: "0s" }}
-  >
-    <Image
-      src="/images/home/SumathiIT-Hero-Image.jpg"
-      alt="Sumathi IT team and technology solutions"
-      fill
-      className="object-cover transition duration-1000 hover:scale-[1.03]"
-      priority
-    />
-  </div>
-</AnimatedSection>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-navy-950/80 via-navy-950/35 to-navy-950/20" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-navy-950/70 via-navy-950/20 to-transparent" />
+
+        {/* Animations */}
+        <style>{`
+          @keyframes heroFadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(24px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes shine {
+            from {
+              transform: translateX(-150%) skewX(-20deg);
+            }
+            to {
+              transform: translateX(250%) skewX(-20deg);
+            }
+          }
+
+          .hero-fade {
+            opacity: 0;
+            animation: heroFadeIn .8s ease forwards;
+          }
+
+          .hero-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all .35s ease;
+          }
+
+          .hero-btn:hover {
+            transform: translateY(-4px);
+          }
+
+          .hero-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            left: -150%;
+            width: 55%;
+            background: linear-gradient(
+              120deg,
+              transparent,
+              rgba(255,255,255,.35),
+              transparent
+            );
+          }
+
+          .hero-btn:hover::before {
+            animation: shine .9s ease;
+          }
+        `}</style>
+
+        <div className="relative z-10 container-padded w-full">
+          <div className="max-w-3xl">
+            {/* Company */}
+            <p
+              className="hero-fade text-sm font-medium uppercase tracking-[0.38em] text-white/90 md:text-base lg:text-lg"
+              style={{ animationDelay: ".1s" }}
+            >
+              Sumathi IT
+            </p>
+
+            {/* Heading */}
+            <h1
+              className="hero-fade mt-6 text-5xl font-medium leading-[1.05] tracking-[-0.03em] text-white sm:text-6xl lg:text-[4.5rem] xl:text-[5rem]"
+              style={{ animationDelay: ".25s" }}
+            >
+              Reliable IT Services
+              <br />
+              For Your Organisation.
+            </h1>
+
+            {/* Description */}
+            <p
+              className="hero-fade mt-6 max-w-xl text-base leading-7 text-slate-300 md:text-[17px]"
+              style={{ animationDelay: ".4s" }}
+            >
+              We empower organizations with secure, scalable, and
+              future-ready technology solutions that accelerate innovation,
+              improve operational efficiency, and support sustainable
+              business growth.
+            </p>
+
+            {/* Buttons */}
+            <div
+              className="hero-fade mt-9 flex flex-col gap-4 sm:flex-row"
+              style={{ animationDelay: ".55s" }}
+            >
+              <Link
+                href="/uav-solutions"
+                className="hero-btn group inline-flex items-center justify-center gap-2 rounded-full bg-brand-purple px-8 py-3.5 text-[15px] font-medium text-white shadow-xl shadow-brand-purple/25 transition-all duration-300 hover:bg-brand-purple/90"
+              >
+                UAV Solutions
+                <svg
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 12h14M13 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+
+              <Link
+                href="/enterprise-solutions"
+                className="hero-btn group inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/5 px-8 py-3.5 text-[15px] font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-white hover:bg-white hover:text-navy-950"
+              >
+                Enterprise Solutions
+                <svg
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 12h14M13 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
+
       <GlobalPartners />
 
-      {/* NEW: "Done right, with precision and care" band */}
+      {/* "Done right, with precision and care" band */}
       <LegacyBand />
 
       <CoreSolutions />
@@ -90,14 +201,22 @@ export default function HomePage() {
               description="We transform ideas into powerful digital solutions through a structured, collaborative approach."
             />
             <div className="mt-7 rounded-card bg-brand-lavender p-6">
-              <AnimatedList items={["Deep understanding of your business needs", "Customized solutions aligned with your vision", "Ongoing support and optimization"]} />
+              <AnimatedList
+                items={[
+                  "Deep understanding of your business needs",
+                  "Customized solutions aligned with your vision",
+                  "Ongoing support and optimization",
+                ]}
+              />
             </div>
           </AnimatedSection>
           <div className="grid gap-4">
             {processSteps.map((step, index) => (
               <AnimatedSection key={step.title} delay={index * 0.06} variant="pop">
                 <div className="premium-card flex items-start gap-4 p-5">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-purple text-sm font-bold text-white">{index + 1}</span>
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-purple text-sm font-bold text-white">
+                    {index + 1}
+                  </span>
                   <div>
                     <h3 className="font-semibold text-navy-950">{step.title}</h3>
                     <p className="mt-2 text-sm leading-7 text-slate-600">{step.description}</p>
@@ -126,7 +245,11 @@ export default function HomePage() {
 
       <section className="section-padding bg-slate-50">
         <div className="container-padded">
-          <SectionHeader eyebrow="Insights" title="Latest news and technology updates" description="Keep this section updated using JSON now, then migrate to Supabase CMS in the next phase." />
+          <SectionHeader
+            eyebrow="Insights"
+            title="Latest news and technology updates"
+            description="Keep this section updated using JSON now, then migrate to Supabase CMS in the next phase."
+          />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {blogs.map((blog, index) => (
               <AnimatedSection key={blog.slug} delay={index * 0.06} variant="pop">

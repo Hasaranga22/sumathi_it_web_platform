@@ -3,13 +3,15 @@
 export function BackgroundVideo() {
   return (
     <video
-      className="absolute inset-0 h-full w-full object-cover opacity-[0.7] pointer-events-none"
+      className="absolute inset-0 z-0 h-full w-full object-cover"
       autoPlay
       muted
       loop
       playsInline
+      preload="auto"
     >
-      <source src="/videos/home-hero.mp4" type="video/mp4" />
+      <source src="/videos/website main video.mp4" type="video/mp4" />
+      Your browser does not support the background video.
     </video>
   );
 }

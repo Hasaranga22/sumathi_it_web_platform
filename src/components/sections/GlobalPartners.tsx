@@ -22,12 +22,12 @@ const partners = [
 
 export function GlobalPartners() {
   return (
-    <section className="border-y border-slate-200 bg-white py-12 mt-20">
+    <section className="border-y border-slate-200 bg-white py-16">
       <div className="container-padded overflow-hidden">
-        <h2 className="text-center text-2xl font-semibold tracking-normal text-navy-950 mb-[6rem]">
+        <h2 className="text-center text-2xl font-semibold tracking-normal text-navy-950 mb-12">
           OUR GLOBAL PARTNERS
         </h2>
-        <div className="relative w-full mt-100">
+        <div className="relative w-full">
           <div className="flex w-max animate-[marquee_60s_linear_infinite] gap-20 hover:[animation-play-state:paused]">
             {[...partners, ...partners, ...partners].map((item, index) => (
               <div key={`${item.name}-${index}`} className="flex items-center justify-center opacity-60 grayscale transition hover:grayscale-0 hover:opacity-100">
