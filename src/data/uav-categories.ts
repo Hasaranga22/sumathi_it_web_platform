@@ -27,7 +27,7 @@ export const uavCategories: {
     image: "/images/uav/done.jpg",
     tagline: "Better Growth, Better Life",
     description:
-      "Revolutionizing Agave Farming: Using Agras T50 Drones to Spray Agave. Agave, a resilient desert plant, is central to the production of tequila, a beverage deeply rooted in Mexican culture. Predominantly cultivated in Jalisco, Mexico, particularly the Tequila region, agave farming has unique challenges and requirements.",
+    "Revolutionizing Agave Farming with Agras T50 Drones: Using drones to improve agave spraying efficiency and support tequila production in Mexico.",
     videoUrl: "/videos/uav/drone.mp4",
     videoPoster: "/images/uav/drone-video-poster.svg",
     bannerImage: "/images/uav/banner-drones.jpg",

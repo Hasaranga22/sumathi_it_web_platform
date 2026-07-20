@@ -3,7 +3,6 @@ import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { TestimonialSlider } from "@/components/common/TestimonialSlider";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { GlobalPartners } from "@/components/sections/GlobalPartners";
 import { WhyChooseUs_au } from "@/components/sections/WhyChooseUs-aboutUs";
@@ -20,7 +19,6 @@ export const metadata = buildMetadata({
 });
 
 const leadership = [
-  { name: "Jagath Sumathipala", role: "Chairman / Managing Director", image: "/images/team/person1.webp" },
   { name: "Chadu Sumathipala", role: "Executive Director", image: "/images/team/person 2.webp" },
   { name: "Chandima Wickramatunge", role: "CEO - IT Cluster", image: "/images/anniversary/ceo.jpg" },
   { name: "Sivayoganathan Sivasankar", role: "Chief Technology Officer", image: "/images/team/sivakumar.jpg" },
@@ -116,9 +114,6 @@ export default function AboutUsPage() {
             title="Customer testimonials"
             description="What our clients say about working with Sumathi IT."
           />
-          <div className="mt-8">
-            <TestimonialSlider />
-          </div>
         </div>
       </section>
 

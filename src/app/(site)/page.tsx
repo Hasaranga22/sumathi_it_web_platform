@@ -12,6 +12,7 @@ import { TestimonialSlider } from "@/components/common/TestimonialSlider";
 import { GlobalPartners } from "@/components/sections/GlobalPartners";
 import { BackgroundVideo } from "@/components/common/BackgroundVideo";
 import { CoreSolutions } from "@/components/sections/CoreSolutions";
+import { ProcessShowcase } from "@/components/sections/Processshowcase";
 
 export const metadata = buildMetadata({
   title: "Enterprise IT, UAV and System Integration Solutions",
@@ -142,10 +143,10 @@ export default function HomePage() {
               style={{ animationDelay: ".55s" }}
             >
               <Link
-                href="/uav-solutions"
-                className="hero-btn group inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-purple bg-brand-purple px-8 py-3.5 text-[15px] font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-transparent hover:bg-white hover:text-brand-purple"
+                href="/enterprise-solutions"
+                className="hero-btn group inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/5 px-8 py-3.5 text-[15px] font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-white hover:bg-white hover:text-navy-950"
               >
-                UAV Solutions
+                Enterprise Solutions
                 <svg
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
                   fill="none"
@@ -160,12 +161,12 @@ export default function HomePage() {
                   />
                 </svg>
               </Link>
-
+              
               <Link
-                href="/enterprise-solutions"
-                className="hero-btn group inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/5 px-8 py-3.5 text-[15px] font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-white hover:bg-white hover:text-navy-950"
+                href="/uav-solutions"
+                className="hero-btn group inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-purple bg-brand-purple px-8 py-3.5 text-[15px] font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-transparent hover:bg-white hover:text-brand-purple"
               >
-                Enterprise Solutions
+                UAV Solutions
                 <svg
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
                   fill="none"
@@ -229,7 +230,7 @@ export default function HomePage() {
       </section>
 
       <ImageBand />
-
+      <ProcessShowcase/>
       <section className="section-padding bg-slate-50">
         <div className="container-padded">
           <SectionHeader

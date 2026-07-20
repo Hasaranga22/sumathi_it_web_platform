@@ -27,7 +27,7 @@ export function LegacyBand() {
           </AnimatedSection>
           <AnimatedSection variant="fade-up" delay={0.1} className="lg:col-span-5">
             <p className="text-base leading-8 text-slate-600">
-              For over 30 years, Sumathi IT has been the technology partner Sri Lankan
+              For over 25 years, Sumathi IT has been the technology partner Sri Lankan
               enterprises turn to when systems absolutely have to work. We don&apos;t just
               install infrastructure &mdash; we stay accountable for it.
             </p>

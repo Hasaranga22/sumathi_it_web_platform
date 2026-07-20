@@ -77,7 +77,7 @@ export function CategoryVideoHeader({
                       duration: 0.8,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="inline-block text-6xl font-black tracking-tight text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)] md:text-7xl lg:text-8xl xl:text-[7rem]"
+                    className="inline-block text-6xl font-medium tracking-tight text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)] md:text-7xl lg:text-8xl xl:text-[7rem]"
                   >
                     {word}
                   </motion.span>
