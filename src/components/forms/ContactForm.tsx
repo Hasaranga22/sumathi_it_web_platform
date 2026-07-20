@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { siteConfig } from "@/data/site";
 
 const serviceOptions = [
   "Networking and System Integration",
@@ -44,7 +43,7 @@ export function ContactForm() {
       } else {
         setSubmitStatus("error");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
