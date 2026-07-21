@@ -62,7 +62,7 @@ export default function AboutUsPage() {
 
     <AnimatedSection variant="pop" delay={0.1}>
       <div className="premium-card flex h-full flex-col items-start gap-4 border border-purple-100 bg-white/80 p-8 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-100">
-        <h2 className="text-2xl font-semibold text-navy-950">Our Vision &amp; Purpose</h2>
+        <h2 className="text-2xl font-semibold text-navy-950">Our Vision</h2>
         <p className="leading-8 text-slate-600">
           We are a Sri Lankan technology partner committed to collaborating with business leaders on their
           most critical challenges, backed by a global community of Sumathi Holdings expertise.
