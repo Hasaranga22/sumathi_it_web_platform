@@ -29,7 +29,7 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95">
       <div className="container-header flex h-[82px] items-center justify-between gap-4">
         <Link href="/" className="flex items-center rounded-2x pr-3" aria-label="Sumathi IT home">
           <Image src="/images/logo/sumathi-it-logo.png" alt="Sumathi IT" width={220} height={52} priority />
@@ -216,19 +216,19 @@ export function Header() {
               <div className="mt-8 grid gap-4">
                 <InfoBlock title="Main Office" value="532/2 Sirikotha Ln, Colombo" icon={<MapPin className="h-5 w-5" />} />
                 <InfoBlock title="Contact with us" value="Call Consulting: 0115 553 311" icon={<Phone className="h-5 w-5" />} />
-                <InfoBlock title="Working time" value="Mon - Fri: 8.15am - 05.30pm\nHoliday : Closed" icon={<ChevronDown className="h-5 w-5" />} />
+                <InfoBlock title="Working time" value={`Mon - Fri: 8.15am - 05.30pm\nHoliday: Closed`} icon={<ChevronDown className="h-5 w-5" />} />
               </div>
 
               <div className="mt-8 rounded-card bg-brand-lavender p-5">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-purple">Follow Sumathi IT</p>
                 <div className="mt-4 flex gap-3">
-                  <a href="#" aria-label="Facebook" className="grid h-11 w-11 place-items-center rounded-full bg-white text-brand-purple shadow-sm transition hover:bg-navy-950 hover:text-white">
+                  <a href="https://www.facebook.com/SumathiITSriLanka" aria-label="Facebook" className="grid h-11 w-11 place-items-center rounded-full bg-white text-brand-purple shadow-sm transition hover:bg-navy-950 hover:text-white">
                     <Facebook className="h-5 w-5" />
                   </a>
-                  <a href="#" aria-label="Instagram" className="grid h-11 w-11 place-items-center rounded-full bg-white text-brand-purple shadow-sm transition hover:bg-navy-950 hover:text-white">
+                  <a href="https://www.instagram.com/sumathiit/" aria-label="Instagram" className="grid h-11 w-11 place-items-center rounded-full bg-white text-brand-purple shadow-sm transition hover:bg-navy-950 hover:text-white">
                     <Instagram className="h-5 w-5" />
                   </a>
-                  <a href="#" aria-label="LinkedIn" className="grid h-11 w-11 place-items-center rounded-full bg-white text-brand-purple shadow-sm transition hover:bg-navy-950 hover:text-white">
+                  <a href="https://www.linkedin.com/company/sumathi-information-technologies/" aria-label="LinkedIn" className="grid h-11 w-11 place-items-center rounded-full bg-white text-brand-purple shadow-sm transition hover:bg-navy-950 hover:text-white">
                     <Linkedin className="h-5 w-5" />
                   </a>
                 </div>

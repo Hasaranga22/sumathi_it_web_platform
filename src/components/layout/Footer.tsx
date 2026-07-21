@@ -49,7 +49,6 @@ export function Footer() {
 
           <FooterColumn title="Quick Links">
             <Link href="/about-us">About Us</Link>
-            <Link href="/careers">Careers</Link>
             <Link href="/case-studies">Case Studies</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/news">News & Blog</Link>
