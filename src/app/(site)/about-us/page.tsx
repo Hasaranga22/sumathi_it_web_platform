@@ -5,7 +5,6 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { GlobalPartners } from "@/components/sections/GlobalPartners";
-import { WhyChooseUs_au } from "@/components/sections/WhyChooseUs-aboutUs";
 import { StatsBand } from "@/components/sections/Statsband";
 import { JourneyTimeline } from "@/components/sections/Journeytimeline";
 import { AwardsShowcase } from "@/components/sections/Awardsshowcase";
@@ -36,48 +35,46 @@ export default function AboutUsPage() {
       />
 
       {/* Mission & Vision */}
-      <section className="section-padding bg-slate-50">
-        <div className="container-padded grid items-stretch gap-12 lg:grid-cols-[1fr_1fr_1fr]">
-          <AnimatedSection variant="pop">
-            <FloatingImage
-              src="/images/home/Sumathiit-home-image3.jpg"
-              alt="Sumathi IT engineers collaborating on a project"
-              className="h-full min-h-[280px] w-full"
-            />
-          </AnimatedSection>
+<section className="section-padding relative overflow-hidden bg-gradient-to-b from-purple-50/60 via-white to-purple-50/40">
+  {/* soft ambient glow, purely decorative */}
+  <div className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-brand-purple/10 blur-3xl" />
+  <div className="pointer-events-none absolute bottom-0 left-1/4 h-64 w-64 rounded-full bg-brand-lavender/20 blur-3xl" />
 
-          <AnimatedSection variant="pop" delay={0.05}>
-            <div className="premium-card flex h-full flex-col justify-center p-8">
-              <h2 className="text-2xl font-semibold text-navy-950">Our Mission</h2>
-              <p className="mt-4 leading-8 text-slate-600">
-                Being in the people business can mean difficult decisions and tough conversations. We go into every
-                meeting with a desire and ability to be genuine and compassionate. We&apos;re here to help you move
-                forward, without risk or judgment.
-              </p>
-            </div>
-          </AnimatedSection>
+  <div className="container-padded relative grid items-stretch gap-12 lg:grid-cols-[1fr_1fr_1fr]">
+    <AnimatedSection variant="pop">
+      <FloatingImage
+        src="/images/home/Sumathiit-home-image3.jpg"
+        alt="Sumathi IT engineers collaborating on a project"
+        className="h-full min-h-[280px] w-full"
+      />
+    </AnimatedSection>
 
-          <AnimatedSection variant="pop" delay={0.1}>
-            <div className="premium-card flex h-full flex-col justify-center p-8">
-              <h2 className="text-2xl font-semibold text-navy-950">Our Vision &amp; Our Purpose</h2>
-              <p className="mt-4 leading-8 text-slate-600">
-                We are a Sri Lankan technology partner committed to collaborating with business leaders on their
-                most critical challenges, backed by a global community of Sumathi Holdings expertise.
-              </p>
-              <p className="mt-4 leading-8 text-slate-600">
-                Our engineers apply a deep, practice-tested pool of knowledge to deliver solutions that meet each
-                client&apos;s needs, expectations and budget.
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+    <AnimatedSection variant="pop" delay={0.05}>
+      <div className="premium-card flex h-full flex-col items-start gap-4 border border-purple-100 bg-white/80 p-8 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-100">
+        <h2 className="text-2xl font-semibold text-navy-950">Our Mission</h2>
+        <p className="leading-8 text-slate-600">
+          Being in the people business can mean difficult decisions and tough conversations. We go into every
+          meeting with a desire and ability to be genuine and compassionate. We&apos;re here to help you move
+          forward, without risk or judgment.
+        </p>
+      </div>
+    </AnimatedSection>
 
-      {/* Why choose us + feature grid */}
-      <WhyChooseUs_au />
-
-      {/* Animated counters + banner imagery */}
-      <StatsBand />
+    <AnimatedSection variant="pop" delay={0.1}>
+      <div className="premium-card flex h-full flex-col items-start gap-4 border border-purple-100 bg-white/80 p-8 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-100">
+        <h2 className="text-2xl font-semibold text-navy-950">Our Vision &amp; Purpose</h2>
+        <p className="leading-8 text-slate-600">
+          We are a Sri Lankan technology partner committed to collaborating with business leaders on their
+          most critical challenges, backed by a global community of Sumathi Holdings expertise.
+        </p>
+        <p className="leading-8 text-slate-600">
+          Our engineers apply a deep, practice-tested pool of knowledge to deliver solutions that meet each
+          client&apos;s needs, expectations and budget.
+        </p>
+      </div>
+    </AnimatedSection>
+  </div>
+</section>
 
       {/* Leadership team */}
       <section className="section-padding bg-white">
@@ -101,21 +98,14 @@ export default function AboutUsPage() {
         </div>
       </section>
 
+      {/* Animated counters + banner imagery */}
+      <StatsBand />
+
       {/* Our journey — scroll-animated timeline (replaces the old static journey cards) */}
       <JourneyTimeline />
 
       {/* Awards & recognition gallery (replaces the chairman message section) */}
       <AwardsShowcase />
-
-      {/* Testimonials */}
-      <section className="section-padding bg-white">
-        <div className="container-padded">
-          <SectionHeader
-            title="Customer testimonials"
-            description="What our clients say about working with Sumathi IT."
-          />
-        </div>
-      </section>
 
       <GlobalPartners />
       <CtaBand />

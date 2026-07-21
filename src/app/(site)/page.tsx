@@ -2,7 +2,6 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { blogs } from "@/data/blogs";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
-import { AnimatedList } from "@/components/common/AnimatedList";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ArticleCard } from "@/components/cards/ArticleCard";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -20,24 +19,6 @@ export const metadata = buildMetadata({
     "Sumathi IT delivers enterprise IT infrastructure, system integration, cybersecurity, data center, UAV, geospatial, and digital transformation solutions in Sri Lanka.",
   keywords: ["Sumathi IT website", "IT system integration Colombo", "enterprise IT Sri Lanka"],
 });
-
-const processSteps = [
-  {
-    title: "Understand Your Needs",
-    description:
-      "We begin every project by carefully understanding your unique business goals, challenges, and audience. This deep discovery process ensures we create a solution that's not only relevant but also built around your specific needs and expectations.",
-  },
-  {
-    title: "Design Tailored Solutions",
-    description:
-      "Our team transforms insights into strategic, creative, and scalable solutions. Every element is customized to align with your vision, ensuring the final product is both impactful and functional—designed to solve real problems and deliver measurable results.",
-  },
-  {
-    title: "Deliver And Support",
-    description:
-      "We focus on delivering high-quality, on-time results with a seamless process. Post-launch, we remain committed through ongoing support, improvements, and optimization—ensuring your investment continues to perform and adapt to evolving business needs.",
-  },
-];
 
 export default function HomePage() {
   return (
@@ -192,42 +173,6 @@ export default function HomePage() {
       <LegacyBand />
 
       <CoreSolutions />
-
-      <section className="section-padding bg-white">
-        <div className="container-padded grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
-          <AnimatedSection variant="slide-right">
-            <SectionHeader
-              eyebrow="How We Work"
-              title="How We Deliver Innovation and Excellence"
-              description="We transform ideas into powerful digital solutions through a structured, collaborative approach."
-            />
-            <div className="mt-7 rounded-card bg-brand-lavender p-6">
-              <AnimatedList
-                items={[
-                  "Deep understanding of your business needs",
-                  "Customized solutions aligned with your vision",
-                  "Ongoing support and optimization",
-                ]}
-              />
-            </div>
-          </AnimatedSection>
-          <div className="grid gap-4">
-            {processSteps.map((step, index) => (
-              <AnimatedSection key={step.title} delay={index * 0.06} variant="pop">
-                <div className="premium-card flex items-start gap-4 p-5">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-purple text-sm font-bold text-white">
-                    {index + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-navy-950">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-600">{step.description}</p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <ImageBand />
       <ProcessShowcase/>
