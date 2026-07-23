@@ -29,7 +29,7 @@ export const uavCategories: {
     description:
     "Revolutionizing Agave Farming with Agras T50 Drones: Using drones to improve agave spraying efficiency and support tequila production in Mexico.",
     videoUrl: "/videos/uav/drone.mp4",
-    videoPoster: "/images/uav/drone-video-poster.svg",
+    videoPoster: "/images/uav/banner-drones.jpg",
     bannerImage: "/images/uav/banner-drones.jpg",
     bannerEyebrow: "Enterprise UAV",
     bannerHeading: "Built for the field, trusted for the mission",

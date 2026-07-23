@@ -62,7 +62,7 @@ export function StatsBand() {
   return (
     <section className="relative overflow-hidden bg-brand-purple">
       <div className="absolute inset-0">
-        <Image src="/images/about/stats-backdrop.jpg" alt="" fill className="object-cover opacity-40" priority={false} />
+        <Image src="/images/home/sumathiIT-home-image6.jpg" alt="" fill className="object-cover opacity-40" priority={false} />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-purple/85 via-brand-purple/75 to-brand-purple" />
       </div>
 
