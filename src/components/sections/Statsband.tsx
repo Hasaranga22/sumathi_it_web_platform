@@ -6,10 +6,10 @@ import { motion, useInView } from "framer-motion";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 
 const stats = [
-  { value: 30, suffix: "+", label: "Years of proven experience" },
+  { value: 25, suffix: "+", label: "Years of proven experience" },
   { value: 95, suffix: "%", label: "Customer satisfaction focus" },
-  { value: 250, suffix: "+", label: "Projects completed" },
-  { value: 25, suffix: "+", label: "Technology partnerships" }
+  { value: 750, suffix: "+", label: "Projects completed" },
+  { value: 30, suffix: "+", label: "Technology partnerships" }
 ];
 
 const banners = [
