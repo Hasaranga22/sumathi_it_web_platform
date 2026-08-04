@@ -4,6 +4,7 @@ import { buildMetadata } from "@/lib/seo";
 
 import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
+import { AnniversaryCelebration } from "@/components/sections/AnniversaryCelebration";
 
 export const metadata = buildMetadata({
   title: "25th Anniversary Message",
@@ -15,7 +16,14 @@ export const metadata = buildMetadata({
 
 export default function ChairmanMessagePage() {
   return (
-    <div className="font-poppins">
+    <AnniversaryCelebration
+      years={25}
+      tagline="Celebrating 25 Years of Excellence"
+      companyName="Sumathi IT"
+      logoSrc="/images/logo/logo_white.png"
+      logoAlt="Sumathi IT Logo"
+    >
+      <div className="font-poppins">
       {/* ---------- Main content ---------- */}
       <section className="section-padding bg-white">
         <div className="container-padded grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
@@ -157,6 +165,7 @@ export default function ChairmanMessagePage() {
         title="Continue the next chapter with Sumathi IT"
         description="Connect with Sumathi IT for future-ready enterprise IT, UAV, geospatial and system integration solutions."
       />
-    </div>
+      </div>
+    </AnniversaryCelebration>
   );
 }

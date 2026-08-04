@@ -24,37 +24,46 @@ interface AnniversaryCelebrationProps {
   /** The milestone number the medallion counts up to. Defaults to 25. */
   years?: number;
   tagline?: string;
+  /** Small label above the medallion, e.g. "CELEBRATING" */
+  eyebrow?: string;
 }
 
-const CONFETTI_COLORS = ["#D4AF37", "#F1D592", "#F4E9D0", "#8A6A1E", "#FFFFFF"];
+const CONFETTI_COLORS = ["#D4AF37", "#F1D592", "#F4E9D0", "#8A6A1E"];
 
 function generateConfetti(count: number): ConfettiPiece[] {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     left: Math.random() * 100,
-    size: 5 + Math.random() * 7,
-    duration: 2.8 + Math.random() * 1.8,
-    delay: 0.2 + Math.random() * 1.2,
+    size: 4 + Math.random() * 6,
+    duration: 3.6 + Math.random() * 2.2,
+    delay: 0.3 + Math.random() * 2,
     rotation: Math.random() * 360,
     color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
-    shape: Math.random() > 0.55 ? "dot" : "rect"
+    shape: Math.random() > 0.6 ? "dot" : "rect"
   }));
 }
 
 /**
  * Plays a brief victory/celebration reveal on page load — a gold medallion
  * that mints the milestone number into place with a coin-stamp impact,
- * flanked by a logo slot and falling confetti — then hands off to the
- * page content beneath it. Respects prefers-reduced-motion.
+ * flanked by a logo slot and gently falling confetti — then hands off to
+ * the page content beneath it. Respects prefers-reduced-motion.
+ *
+ * Timing overview (from mount):
+ *   0.00s        overlay appears
+ *   0.00–0.50s   logo + ring + rays settle in
+ *   0.50–2.70s   number counts up 0 -> years, eased
+ *   2.70s        impact flash / shockwave
+ *   3.20s        caption rises in
+ *   3.40s        company name rises in
+ *   5.40s        overlay begins fading out
+ *   6.00s        overlay removed, page content revealed
  *
  * IMPORTANT: the whole reveal is gated behind a `mounted` flag. Nothing
  * that belongs to the intro (medallion number, caption copy, company name)
  * is rendered on the very first paint/hydration pass — only a plain gold
  * flash to the same navy backdrop is shown, then the real reveal fades in
- * once React has mounted and the animations are wired up. This is what
- * stops the old "0 / years of trust & excellence / Sumathi IT" flash of
- * unstyled text on refresh: that text now simply doesn't exist in the DOM
- * until it's ready to animate in properly.
+ * once React has mounted and the animations are wired up.
  */
 export function AnniversaryCelebration({
   children,
@@ -62,7 +71,8 @@ export function AnniversaryCelebration({
   logoAlt = "Company logo",
   companyName,
   years = 25,
-  tagline = "Years of Trust & Excellence"
+  tagline = "Years of Trust & Excellence",
+  eyebrow = "Celebrating"
 }: AnniversaryCelebrationProps) {
   const [mounted, setMounted] = useState(false);
   const [phase, setPhase] = useState<"intro" | "leaving" | "done">("intro");
@@ -83,11 +93,11 @@ export function AnniversaryCelebration({
       return;
     }
 
-    setConfetti(generateConfetti(60));
+    setConfetti(generateConfetti(46));
 
     // Count the medallion number up from 0, eased, then trigger the impact flash.
-    const countDelayMs = 300;
-    const countDurationMs = 1000;
+    const countDelayMs = 500;
+    const countDurationMs = 2200;
     let start: number | null = null;
 
     const tick = (now: number) => {
@@ -108,8 +118,8 @@ export function AnniversaryCelebration({
     };
     rafRef.current = requestAnimationFrame(tick);
 
-    const leaveTimer = setTimeout(() => setPhase("leaving"), 2950);
-    const doneTimer = setTimeout(() => setPhase("done"), 3500);
+    const leaveTimer = setTimeout(() => setPhase("leaving"), 5400);
+    const doneTimer = setTimeout(() => setPhase("done"), 6000);
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
@@ -132,6 +142,7 @@ export function AnniversaryCelebration({
           aria-hidden="true"
           className={`anniv-overlay ${phase === "leaving" ? "anniv-overlay-leave" : ""}`}
         >
+          <div className="anniv-vignette" />
           <div className="anniv-glow" />
 
           <div className="anniv-confetti">
@@ -161,6 +172,8 @@ export function AnniversaryCelebration({
               )}
             </div>
 
+            {eyebrow && <p className="anniv-eyebrow">{eyebrow}</p>}
+
             <div className="anniv-medallion">
               <div className="anniv-rays">
                 {Array.from({ length: 24 }).map((_, i) => (
@@ -169,16 +182,20 @@ export function AnniversaryCelebration({
                     className="anniv-ray"
                     style={{
                       transform: `rotate(${i * 15}deg)`,
-                      animationDelay: `${0.45 + i * 0.015}s`
+                      animationDelay: `${0.55 + i * 0.02}s`
                     }}
                   />
                 ))}
               </div>
 
               <div className={`anniv-ring ${impact ? "is-impact" : ""}`}>
+                <span className="anniv-ring-inner" />
                 <span className="anniv-shockwave" />
                 <span className="anniv-shockwave anniv-shockwave-delay" />
-                <span className="anniv-number">{count}</span>
+                <div className="anniv-number-wrap">
+                  <span className="anniv-number">{count}</span>
+                  <span className="anniv-number-label">Years</span>
+                </div>
               </div>
             </div>
 
@@ -196,7 +213,7 @@ export function AnniversaryCelebration({
       <div className={`anniv-content ${phase === "done" ? "is-visible" : ""}`}>{children}</div>
 
       <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap");
 
         :root {
           --anniv-ink: #0a0a0a;
@@ -216,7 +233,7 @@ export function AnniversaryCelebration({
           justify-content: center;
           background: radial-gradient(circle at 50% 42%, var(--anniv-ink-soft) 0%, var(--anniv-ink) 70%);
           opacity: 1;
-          transition: opacity 0.55s ease-out;
+          transition: opacity 0.7s ease-out;
           overflow: hidden;
         }
         .anniv-overlay-leave {
@@ -228,13 +245,20 @@ export function AnniversaryCelebration({
              preload -> real reveal is invisible to the eye. */
         }
 
+        .anniv-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+          pointer-events: none;
+        }
+
         .anniv-glow {
           position: absolute;
           width: min(70vw, 640px);
           height: min(70vw, 640px);
           border-radius: 50%;
           background: radial-gradient(circle, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0) 70%);
-          animation: anniv-glow-pulse 2.4s ease-in-out infinite;
+          animation: anniv-glow-pulse 3s ease-in-out infinite;
         }
 
         .anniv-confetti {
@@ -272,9 +296,9 @@ export function AnniversaryCelebration({
           display: flex;
           align-items: center;
           justify-content: center;
-          width: clamp(90px, 14vw, 120px);
-          height: clamp(90px, 14vw, 120px);
-          margin-bottom: clamp(24px, 4vw, 36px);
+          width: clamp(88px, 13vw, 116px);
+          height: clamp(88px, 13vw, 116px);
+          margin-bottom: clamp(16px, 3vw, 22px);
           border-radius: 50%;
           background: rgba(244, 233, 208, 0.05);
           border: 1px solid rgba(212, 175, 55, 0.45);
@@ -293,14 +317,26 @@ export function AnniversaryCelebration({
           color: var(--anniv-gold-light);
         }
 
+        .anniv-eyebrow {
+          margin: 0 0 clamp(10px, 2vw, 16px);
+          font-family: "Inter", sans-serif;
+          font-size: clamp(11px, 1.8vw, 13px);
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.38em;
+          color: rgba(241, 213, 146, 0.65);
+          opacity: 0;
+          animation: anniv-caption-rise 0.6s ease-out 0.3s both;
+        }
+
         /* Medallion */
         .anniv-medallion {
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: clamp(150px, 32vw, 200px);
-          height: clamp(150px, 32vw, 200px);
+          width: clamp(190px, 36vw, 250px);
+          height: clamp(190px, 36vw, 250px);
         }
 
         .anniv-rays {
@@ -312,7 +348,7 @@ export function AnniversaryCelebration({
           top: 50%;
           left: 50%;
           width: 1px;
-          height: clamp(90px, 20vw, 128px);
+          height: clamp(105px, 22vw, 145px);
           margin-left: -0.5px;
           transform-origin: top center;
           background: linear-gradient(to bottom, rgba(212, 175, 55, 0.55), rgba(212, 175, 55, 0));
@@ -325,14 +361,14 @@ export function AnniversaryCelebration({
           display: flex;
           align-items: center;
           justify-content: center;
-          width: clamp(120px, 24vw, 152px);
-          height: clamp(120px, 24vw, 152px);
+          width: clamp(150px, 28vw, 190px);
+          height: clamp(150px, 28vw, 190px);
           border-radius: 50%;
           background: var(--anniv-ink);
           border: 1px solid rgba(212, 175, 55, 0.55);
           box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.15) inset, 0 0 32px rgba(212, 175, 55, 0.18);
           opacity: 0;
-          animation: anniv-ring-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+          animation: anniv-ring-pop 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
         }
         .anniv-ring::before {
           content: "";
@@ -345,11 +381,18 @@ export function AnniversaryCelebration({
             rgba(241, 213, 146, 0.9) 8%,
             rgba(212, 175, 55, 0) 20%
           );
-          animation: anniv-ring-sheen 3.2s linear infinite;
+          animation: anniv-ring-sheen 4s linear infinite;
+        }
+        .anniv-ring-inner {
+          position: absolute;
+          inset: 10px;
+          border-radius: 50%;
+          border: 1px solid rgba(212, 175, 55, 0.28);
+          pointer-events: none;
         }
         .anniv-ring.is-impact {
-          animation: anniv-ring-punch 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-          box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35) inset, 0 0 46px rgba(212, 175, 55, 0.4);
+          animation: anniv-ring-punch 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+          box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35) inset, 0 0 50px rgba(212, 175, 55, 0.42);
         }
 
         .anniv-shockwave {
@@ -360,20 +403,26 @@ export function AnniversaryCelebration({
           opacity: 0;
         }
         .anniv-ring.is-impact .anniv-shockwave {
-          animation: anniv-shockwave-expand 0.9s ease-out;
+          animation: anniv-shockwave-expand 1.1s ease-out;
         }
         .anniv-ring.is-impact .anniv-shockwave-delay {
-          animation-delay: 0.12s;
+          animation-delay: 0.15s;
+        }
+
+        .anniv-number-wrap {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2px;
         }
 
         .anniv-number {
-          position: relative;
           font-family: "Cormorant Garamond", serif;
-          font-size: clamp(48px, 9vw, 64px);
+          font-size: clamp(64px, 12vw, 88px);
           font-weight: 600;
           line-height: 1;
           letter-spacing: -0.01em;
-          color: var(--anniv-gold-light);
           background: linear-gradient(
             120deg,
             var(--anniv-gold-pale) 0%,
@@ -386,20 +435,29 @@ export function AnniversaryCelebration({
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.45));
-          animation: anniv-number-shimmer 2.4s linear infinite;
+          filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.45));
+          animation: anniv-number-shimmer 2.8s linear infinite;
+        }
+
+        .anniv-number-label {
+          font-family: "Inter", sans-serif;
+          font-size: clamp(10px, 1.6vw, 12px);
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.3em;
+          color: rgba(244, 233, 208, 0.55);
         }
 
         .anniv-caption-wrap {
           display: flex;
           align-items: center;
-          gap: 0.85rem;
-          margin-top: clamp(22px, 4vw, 32px);
+          gap: 0.9rem;
+          margin-top: clamp(26px, 4.5vw, 36px);
           opacity: 0;
-          animation: anniv-caption-rise 0.6s ease-out 1.5s both;
+          animation: anniv-caption-rise 0.6s ease-out 3.2s both;
         }
         .anniv-rule {
-          width: clamp(18px, 4vw, 32px);
+          width: clamp(20px, 4vw, 36px);
           height: 1px;
           background: linear-gradient(to right, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.7));
         }
@@ -409,27 +467,28 @@ export function AnniversaryCelebration({
         .anniv-caption {
           margin: 0;
           font-family: "Inter", sans-serif;
-          font-size: clamp(11px, 2vw, 13px);
+          font-size: clamp(14px, 2.4vw, 18px);
           font-weight: 500;
           text-transform: uppercase;
-          letter-spacing: 0.32em;
+          letter-spacing: 0.24em;
           color: var(--anniv-gold-pale);
         }
 
         .anniv-company {
-          margin: 0.6rem 0 0;
-          font-family: "Inter", sans-serif;
-          font-size: clamp(11px, 1.8vw, 12px);
-          letter-spacing: 0.08em;
-          color: rgba(244, 233, 208, 0.55);
+          margin: 0.75rem 0 0;
+          font-family: "Cormorant Garamond", serif;
+          font-size: clamp(16px, 2.6vw, 20px);
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          color: rgba(244, 233, 208, 0.75);
           opacity: 0;
-          animation: anniv-caption-rise 0.6s ease-out 1.7s both;
+          animation: anniv-caption-rise 0.6s ease-out 3.4s both;
         }
 
         .anniv-content {
           opacity: 0;
           transform: translateY(12px);
-          transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .anniv-content.is-visible {
           opacity: 1;
@@ -443,7 +502,7 @@ export function AnniversaryCelebration({
         @keyframes anniv-confetti-fall {
           0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
           8% { opacity: 1; }
-          100% { transform: translateY(112vh) rotate(320deg); opacity: 0.85; }
+          100% { transform: translateY(112vh) rotate(320deg); opacity: 0.8; }
         }
         @keyframes anniv-logo-in {
           0% { opacity: 0; transform: translateY(-6px) scale(0.9); }
@@ -464,12 +523,12 @@ export function AnniversaryCelebration({
         }
         @keyframes anniv-ring-punch {
           0% { transform: scale(1); }
-          40% { transform: scale(1.12); }
+          40% { transform: scale(1.1); }
           100% { transform: scale(1); }
         }
         @keyframes anniv-shockwave-expand {
           0% { transform: scale(1); opacity: 0.9; border-width: 2px; }
-          100% { transform: scale(2.6); opacity: 0; border-width: 1px; }
+          100% { transform: scale(2.7); opacity: 0; border-width: 1px; }
         }
         @keyframes anniv-number-shimmer {
           0% { background-position: 0% 50%; }
@@ -484,6 +543,7 @@ export function AnniversaryCelebration({
           .anniv-glow,
           .anniv-confetti-piece,
           .anniv-logo-frame,
+          .anniv-eyebrow,
           .anniv-ray,
           .anniv-ring,
           .anniv-ring::before,
