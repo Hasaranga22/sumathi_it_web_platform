@@ -333,7 +333,7 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
           {/* AI Infrastructure Platform Section */}
           <section className="section-padding relative overflow-hidden bg-navy-950">
             <div
-              className="pointer-events-none absolute inset-0 z-0 bg-scroll bg-cover bg-center opacity-[0.08] md:bg-fixed"
+              className="pointer-events-none absolute inset-0 z-0 bg-scroll bg-cover bg-center opacity-[0.5] md:bg-fixed"
               style={{
                 backgroundImage:
                   "url('/images/enterprise%20solutions/data-center/partner-logos/ai%20infa%20background.png')",
