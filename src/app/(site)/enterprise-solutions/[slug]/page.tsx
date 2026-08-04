@@ -159,7 +159,7 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
       <HeroBlock eyebrow="Enterprise Solution" title={solution.title} description={solution.summary} image={solution.image} useVideo={true} />
 
       <section className="section-padding relative bg-white">
-        {/* Decorative background — no longer eagerly loaded, it's below the fold on slow connections and was competing with the hero for bandwidth */}
+        {/* Decorative background — lazy-loaded, not competing with the hero for bandwidth */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/background/Back_ground_visual.png"
@@ -211,7 +211,6 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
                     delay={index * 0.08}
                     className="premium-card group relative overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
                   >
-                    {/* Icon: background chip removed per feedback, size bumped up so it reads as a real visual anchor */}
                     <div className="mb-4 flex h-14 w-14 items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                       <svg className="h-10 w-10 text-brand-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         {capability.icon}
@@ -249,21 +248,29 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
                 </p>
               </AnimatedSection>
 
+              {/*
+                PERF FIX: previously every single logo tile (20+ of them)
+                was its own AnimatedSection — a separate scroll-triggered
+                animation instance each. That's what caused the jank/stuck
+                feeling: dozens of concurrent viewport observers + transform
+                animations firing as you scroll. Now only each CATEGORY
+                fades in once (4 animations total instead of 20+), and each
+                individual logo tile just uses plain CSS transitions for
+                its hover state — cheap, GPU-composited, no JS observer.
+              */}
               <div className="space-y-14">
                 {partnerCategories.map((category, categoryIndex) => (
-                  <AnimatedSection key={category.label} variant="pop" delay={categoryIndex * 0.1}>
+                  <AnimatedSection key={category.label} variant="pop" delay={categoryIndex * 0.06}>
                     <h3 className="text-sm font-semibold uppercase tracking-wide text-navy-950/70 mb-6">
                       {category.label}
                     </h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-10">
-                      {category.logos.map((logo, logoIndex) => (
-                        <AnimatedSection
+                      {category.logos.map((logo) => (
+                        <div
                           key={logo.name}
-                          variant="pop"
-                          delay={categoryIndex * 0.1 + logoIndex * 0.04}
-                          className="group flex h-24 items-center justify-center rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                          className="group flex h-24 items-center justify-center rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-100 transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-md"
                         >
-                          <div className="relative h-full w-full opacity-90 transition-all duration-300 group-hover:opacity-100 flex items-center justify-center">
+                          <div className="relative h-full w-full opacity-90 transition-opacity duration-200 ease-out group-hover:opacity-100">
                             <Image
                               src={`${PARTNER_LOGO_PATH}/${logo.file}`}
                               alt={logo.name}
@@ -273,26 +280,28 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
                               sizes="(min-width: 1024px) 160px, (min-width: 640px) 22vw, 40vw"
                             />
                           </div>
-                        </AnimatedSection>
+                        </div>
                       ))}
                     </div>
                   </AnimatedSection>
                 ))}
               </div>
 
-              {/* Continuous logo marquee for ambient motion */}
+              {/* Continuous logo marquee — hover a logo to pause the strip, see it at full color, and scale up */}
               <div className="partner-marquee-mask mt-28 border-t border-slate-200 pt-10 overflow-hidden">
                 <div className="partner-marquee flex w-max items-center gap-16">
                   {[...allPartnerLogos, ...allPartnerLogos].map((logo, index) => (
-                    <div key={`${logo.name}-${index}`} className="relative h-9 w-28 flex-shrink-0 opacity-60 flex items-center justify-center">
+                    <div
+                      key={`${logo.name}-${index}`}
+                      className="group relative h-9 w-28 flex-shrink-0 flex items-center justify-center opacity-60 transition-all duration-200 ease-out hover:z-10 hover:scale-125 hover:opacity-100"
+                    >
                       <Image
                         src={`${PARTNER_LOGO_PATH}/${logo.file}`}
-                        alt=""
+                        alt={logo.name}
                         fill
                         loading="lazy"
                         className="object-contain"
                         sizes="120px"
-                        aria-hidden="true"
                       />
                     </div>
                   ))}
@@ -305,6 +314,7 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
                 }
                 .partner-marquee {
                   animation: partner-marquee-scroll 34s linear infinite;
+                  will-change: transform;
                 }
                 .partner-marquee-mask:hover .partner-marquee {
                   animation-play-state: paused;
@@ -323,7 +333,7 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
           {/* AI Infrastructure Platform Section */}
           <section className="section-padding relative overflow-hidden bg-navy-950">
             <div
-              className="pointer-events-none absolute inset-0 z-0 bg-scroll bg-cover bg-center opacity-[0.35] md:bg-fixed"
+              className="pointer-events-none absolute inset-0 z-0 bg-scroll bg-cover bg-center opacity-[0.08] md:bg-fixed"
               style={{
                 backgroundImage:
                   "url('/images/enterprise%20solutions/data-center/partner-logos/ai%20infa%20background.png')",
@@ -343,27 +353,27 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
                 </p>
               </AnimatedSection>
 
+              {/*
+                PERF FIX: the two cards below used to wrap every single
+                benefit/platform row in its own AnimatedSection (7 extra
+                scroll-triggered animations on top of the 2 card
+                animations). Trimmed to just the 2 card-level animations;
+                rows fade in together with their parent card and use plain
+                CSS for hover — same visual fluidity, far fewer moving
+                parts for the browser to track.
+              */}
               <div className="mt-16 grid gap-10 lg:grid-cols-2">
-                {/*
-                  Cards are now a solid, mostly-opaque navy panel
-                  (bg-navy-950/85 + backdrop-blur-md) instead of a barely-
-                  there bg-white/5. With the busy circuit-board background
-                  image behind them, a near-transparent card let that
-                  artwork show straight through and wash out the light
-                  text — that was the legibility bug. A solid dark panel
-                  blocks the noise and gives the white/slate-100 text a
-                  clean, consistent surface to sit on.
-                */}
                 <AnimatedSection
                   variant="pop"
                   delay={0.08}
-                  className="rounded-2xl border border-white/10 bg-navy-950/85 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-navy-950/95 hover:border-brand-purple/30"
+                  className="rounded-2xl border border-white/10 bg-navy-950/85 p-8 shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-navy-950/95 hover:border-brand-purple/30"
                 >
                   <h3 className="text-2xl font-semibold text-white mb-6">Why GPU Servers?</h3>
                   <ul className="space-y-6">
                     {gpuBenefits.map((benefit) => (
                       <li key={benefit.label} className="flex items-start gap-4">
-                        <span className="flex-shrink-0 rounded-full bg-sky-500 px-3 py-1.5 text-xs font-semibold text-white">
+                        {/* Sky blue toned down (was a flat, saturated bg-sky-500) to a softer, dialed-back tint */}
+                        <span className="flex-shrink-0 rounded-full bg-sky-500/70 px-3 py-1.5 text-xs font-semibold text-white">
                           {benefit.stat}
                         </span>
                         <span className="text-slate-100 leading-relaxed">{benefit.label}</span>
@@ -375,18 +385,16 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
                 <AnimatedSection
                   variant="pop"
                   delay={0.16}
-                  className="rounded-2xl border border-white/10 bg-navy-950/85 p-8 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-navy-950/95 hover:border-brand-purple/30"
+                  className="rounded-2xl border border-white/10 bg-navy-950/85 p-8 shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-navy-950/95 hover:border-brand-purple/30"
                 >
                   <h3 className="text-2xl font-semibold text-white mb-6">Leading Platforms</h3>
                   <div className="divide-y divide-white/10">
-                    {leadingPlatforms.map((platform, index) => (
-                      <AnimatedSection
+                    {leadingPlatforms.map((platform) => (
+                      <div
                         key={platform.name}
-                        variant="pop"
-                        delay={0.2 + index * 0.08}
-                        className="group flex items-center gap-5 py-5 first:pt-0 last:pb-0 transition-all duration-300"
+                        className="group flex items-center gap-5 py-5 first:pt-0 last:pb-0"
                       >
-                        <div className="relative h-11 w-20 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+                        <div className="relative h-11 w-20 flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-110">
                           <Image
                             src={`${PARTNER_LOGO_PATH}/${platform.file}`}
                             alt={platform.name}
@@ -400,7 +408,7 @@ export default async function EnterpriseSolutionDetailPage({ params }: { params:
                           <p className="text-white font-semibold leading-tight">{platform.name}</p>
                           <p className="text-slate-400 text-sm mt-1">{platform.detail}</p>
                         </div>
-                      </AnimatedSection>
+                      </div>
                     ))}
                   </div>
                 </AnimatedSection>
