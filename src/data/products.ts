@@ -983,7 +983,7 @@ export const products: Product[] = [
     summary: "Professional agricultural drone for precision spraying and spreading with advanced flight control.",
     description:
       "DJI Agras T70P is a professional agricultural drone designed for precision spraying and spreading operations. With advanced flight control systems and precise payload management, the T70P delivers accurate application for orchards, vineyards, and precision agriculture where targeted treatment is essential.",
-    images: ["/images/uav/drone products/agras t70p/Ag_T70P2.jpg", "/images/uav/drone products/agras t70p/Ag_T70P4.jpg", "/images/uav/drone products/agras t70p/Ag_t70P-Controller_crop.jpg"],
+    images: ["/images/uav/drone products/agras t70p/Ag_T70P4.jpg","/images/uav/drone products/agras t70p/Ag_T70P2.jpg", "/images/uav/drone products/agras t70p/Ag_t70P-Controller_crop.jpg"],
     features: ["Precision spraying", "Advanced flight control", "Orchard optimized", "Targeted application", "Professional agriculture"],
     specifications: {
       "Use case": "Precision spraying, orchard management, targeted application",
