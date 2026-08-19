@@ -40,6 +40,7 @@ export default function WorkstationsPage() {
               src="/images/end user devices/subpages/workstation.jpg"
               alt="Professional Workstations"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
           </AnimatedSection>
@@ -101,6 +102,7 @@ export default function WorkstationsPage() {
                 width={400}
                 height={400}
                 className="object-contain"
+                style={{ width: "auto", height: "auto" }}
               />
             </div>
           </AnimatedSection>

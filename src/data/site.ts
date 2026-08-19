@@ -3,7 +3,7 @@ export const siteConfig = {
   legalName: "Sumathi Information Technologies",
   url: "https://www.sumathiit.com",
   description:
-    "Sumathi IT is a leading Sri Lankan IT solutions and system integration company specializing in enterprise networking, cybersecurity, data center, geospatial engineering, UAV solutions, and digital transformation services.",
+    "Sumathi IT is a leading Sri Lankan IT solutions and system integration company specializing in enterprise networking, cybersecurity, data center, geospatial engineering, and digital transformation services.",
   keywords: [
     "Sumathi IT",
     "Sri Lanka IT solutions",
@@ -11,7 +11,7 @@ export const siteConfig = {
     "Enterprise networking",
     "Cybersecurity Sri Lanka",
     "Data center solutions",
-    "UAV solutions Sri Lanka",
+    "Geospatial solutions Sri Lanka",
     "Drone solutions Sri Lanka",
     "Geospatial engineering",
     "Digital transformation"

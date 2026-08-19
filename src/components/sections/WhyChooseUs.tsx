@@ -50,6 +50,7 @@ export function WhyChooseUs() {
                 src="/images/home/sumathiIT-home-image6.jpg"
                 alt="Sumathi IT team reviewing an enterprise deployment"
                 fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-navy-950/0 to-transparent" />

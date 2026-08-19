@@ -60,6 +60,7 @@ export function ContactForm() {
             src="/images/logo/sumathi-it-logo.png"
             alt="Sumathi IT"
             fill
+            sizes="160px"
             className="object-contain object-left"
           />
         </div>

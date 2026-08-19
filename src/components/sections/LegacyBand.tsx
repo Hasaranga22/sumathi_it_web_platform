@@ -42,6 +42,7 @@ export function LegacyBand() {
                 src="/images/home/sumathiit-home-image4.jpg"
                 alt="Sumathi IT engineers collaborating on a client deployment"
                 fill
+                sizes="(min-width: 1024px) 58vw, 100vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/0 to-transparent" />

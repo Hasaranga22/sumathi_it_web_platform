@@ -21,7 +21,7 @@ export function ArticleCard({
     <Link href={href} className="group block h-full">
       <Card className="flex h-full flex-col overflow-hidden transition duration-500 hover:-translate-y-1 hover:border-brand-purple/30 hover:shadow-glow">
         <div className="relative h-52 overflow-hidden bg-brand-lavender shrink-0">
-          <Image src={image} alt={title} fill className="object-cover transition duration-1000 group-hover:scale-110" />
+          <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-1000 group-hover:scale-110" />
           <div className="absolute bottom-5 left-5 rounded-full bg-brand-purple px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-card">
             {category}
           </div>

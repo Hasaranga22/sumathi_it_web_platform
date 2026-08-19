@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 
 const stats = [
@@ -62,7 +62,7 @@ export function StatsBand() {
   return (
     <section className="relative overflow-hidden bg-brand-purple">
       <div className="absolute inset-0">
-        <Image src="/images/home/sumathiIT-home-image6.jpg" alt="" fill className="object-cover opacity-40" priority={false} />
+        <Image src="/images/home/sumathiIT-home-image6.jpg" alt="" fill sizes="100vw" className="object-cover opacity-40" priority={false} />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-purple/85 via-brand-purple/75 to-brand-purple" />
       </div>
 
@@ -82,7 +82,7 @@ export function StatsBand() {
           {banners.map((banner, index) => (
             <AnimatedSection key={banner.src} variant="pop" delay={index * 0.08}>
               <div className="relative h-64 overflow-hidden rounded-card">
-                <Image src={banner.src} alt={banner.alt} fill className="object-cover transition duration-700 hover:scale-110" />
+                <Image src={banner.src} alt={banner.alt} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover transition duration-700 hover:scale-110" />
               </div>
             </AnimatedSection>
           ))}

@@ -85,7 +85,7 @@ export default function AboutUsPage() {
               <AnimatedSection key={person.name} delay={index * 0.06} variant="pop">
                 <div className="premium-card overflow-hidden p-0 text-center">
                   <div className="relative h-96 overflow-hidden bg-brand-lavender">
-                    <Image src={person.image} alt={person.name} fill className="object-cover transition duration-1000 hover:scale-110" />
+                    <Image src={person.image} alt={person.name} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-1000 hover:scale-110" />
                   </div>
                   <div className="p-8">
                     <h3 className="text-xl font-semibold text-navy-950">{person.name}</h3>

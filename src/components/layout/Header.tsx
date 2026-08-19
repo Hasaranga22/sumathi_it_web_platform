@@ -32,7 +32,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95">
       <div className="container-header flex h-[82px] items-center justify-between gap-4">
         <Link href="/" className="flex items-center rounded-2x pr-3" aria-label="Sumathi IT home">
-          <Image src="/images/logo/sumathi-it-logo.png" alt="Sumathi IT" width={220} height={52} priority />
+          <Image src="/images/logo/sumathi-it-logo.png" alt="Sumathi IT" width={220} height={52} priority style={{ width: "auto", height: "auto" }} />
         </Link>
 
         {/* Desktop Navigation */}
@@ -198,7 +198,7 @@ export function Header() {
               className="fixed right-0 top-0 z-[90] h-dvh w-full max-w-md overflow-y-auto bg-white p-7 shadow-soft hidden 2xl:block"
             >
               <div className="flex items-center justify-between gap-4">
-                <Image src="/images/logo/sumathi-it-logo.png" alt="Sumathi IT" width={250} height={62} />
+                <Image src="/images/logo/sumathi-it-logo.png" alt="Sumathi IT" width={250} height={62} style={{ width: "auto", height: "auto" }} />
                 <button 
                   type="button" 
                   onClick={() => setPanelOpen(false)} 

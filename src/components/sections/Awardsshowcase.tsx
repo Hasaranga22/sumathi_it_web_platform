@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const awards = [
@@ -81,7 +81,7 @@ export function AwardsShowcase() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0"
             >
-              <Image src={active.src} alt={active.alt} fill priority className="object-cover" />
+              <Image src={active.src} alt={active.alt} fill sizes="100vw" priority className="object-cover" />
 
               {/* Base gradient, always faintly present so the slide reads as clickable */}
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/10 to-transparent" />

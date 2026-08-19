@@ -44,6 +44,7 @@ export function TestimonialSlider() {
                       src={testimonial.image}
                       alt={testimonial.name}
                       fill
+                      sizes="144px"
                       className="object-cover"
                     />
                   </div>

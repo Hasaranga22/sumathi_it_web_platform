@@ -14,15 +14,17 @@ export const navigation: NavItem[] = [
     ]
   },
   {
-    label: "UAV Solutions",
+    label: "Geospatial Solutions",
     href: "/uav-solutions",
     children: [
       { label: "Drones", href: "/uav-solutions/drones" },
+      { label: "Payloads", href: "/uav-solutions/payloads" },
+      { label: "Accessories", href: "/uav-solutions/accessories" },
       { label: "Software", href: "/uav-solutions/software" },
-      { label: "GNSS (Global Navigation Satellite Systems)", href: "/uav-solutions/gnss" },
-      { label: "BIM (Building Information Modeling)", href: "/uav-solutions/bim" },
       { label: "Scanners", href: "/uav-solutions/scanners" },
-      { label: "UAV Services", href: "/uav-solutions/uav-services" }
+      { label: "GNSS System", href: "/uav-solutions/gnss" },
+      { label: "BIM & Digital Construction", href: "/uav-solutions/bim" },
+      { label: "Repair & Servicing", href: "/uav-solutions/repair-servicing" }
     ]
   },
   {

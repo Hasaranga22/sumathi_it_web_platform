@@ -23,6 +23,7 @@ export function ImageBand() {
             src="/images/home/sumathiIT-home-image2.jpg"
             alt="Sumathi IT infrastructure deployed across Sri Lanka"
             fill
+            sizes="(max-width: 1024px) 100vw, 1280px"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/60 to-navy-950/10" />

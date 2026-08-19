@@ -42,7 +42,7 @@ export function HeroBlock({
         </AnimatedSection>
         {image ? (
           <AnimatedSection delay={0.15} variant="pop" className="relative h-[320px] overflow-hidden rounded-card bg-brand-lavender shadow-soft sm:h-[440px]">
-            <Image src={image} alt={title} fill className="object-cover transition duration-1000 hover:scale-[1.03]" priority />
+            <Image src={image} alt={title} fill sizes="(min-width: 1024px) 45vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-1000 hover:scale-[1.03]" priority />
             <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/40" />
           </AnimatedSection>
         ) : null}

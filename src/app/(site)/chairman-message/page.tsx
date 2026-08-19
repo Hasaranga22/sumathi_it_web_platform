@@ -37,7 +37,7 @@ export default function ChairmanMessagePage() {
                 className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-gold-50 to-transparent"
               />
               <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-gold-200 shadow-md sm:h-48 sm:w-48">
-                <Image src="/images/anniversary/ceo.jpg" alt="Chandima Wickramatunge" fill className="object-cover" />
+                <Image src="/images/anniversary/ceo.jpg" alt="Chandima Wickramatunge" fill sizes="192px" className="object-cover" />
               </div>
 
               <h2 className="relative mt-4 font-serif text-xl font-semibold text-navy-950">

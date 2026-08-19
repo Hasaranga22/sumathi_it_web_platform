@@ -1,4 +1,4 @@
-import { Compass, Map, Plane, ScanLine } from "lucide-react";
+import { Compass, Map, Plane, ScanLine, Wrench } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { uavCategories } from "@/data/uav-categories";
 import { products } from "@/data/products";
@@ -11,10 +11,10 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { AnimatedSection } from "@/components/common/AnimatedSection";
 
 export const metadata = buildMetadata({
-  title: "UAV Solutions, Drones, GNSS (Global Navigation Satellite Systems), BIM (Building Information Modeling) and Scanners",
-  description: "Explore Sumathi IT UAV solutions including drones, software, GNSS (Global Navigation Satellite Systems), BIM (Building Information Modeling), scanners, and professional UAV services in Sri Lanka.",
+  title: "Geospatial Solutions, Drones, GNSS (Global Navigation Satellite Systems), BIM (Building Information Modeling) and Scanners",
+  description: "Explore Sumathi IT Geospatial solutions including drones, payloads, accessories, software, GNSS (Global Navigation Satellite Systems), BIM (Building Information Modeling), scanners, and professional UAV services in Sri Lanka.",
   path: "/uav-solutions",
-  keywords: ["drone solutions Sri Lanka", "UAV mapping Sri Lanka", "GNSS BIM scanners Sri Lanka"]
+  keywords: ["Geospatial solutions Sri Lanka", "drone solutions Sri Lanka", "UAV mapping Sri Lanka", "GNSS BIM scanners Sri Lanka"]
 });
 
 const useCases = [
@@ -30,9 +30,9 @@ export default function UavSolutionsPage() {
   return (
     <>
       <PageHero
-        title="UAV Solutions"
+        title="Geospatial Solutions"
         description="Drone, geospatial, mapping and reality capture solutions"
-        breadcrumbs={[{ label: "UAV Solutions" }]}
+        breadcrumbs={[{ label: "Geospatial Solutions" }]}
         useVideo={true}
       />
 
@@ -70,6 +70,15 @@ export default function UavSolutionsPage() {
                 />
               </AnimatedSection>
             ))}
+            <AnimatedSection delay={0.4} variant="pop">
+              <SolutionCard
+                title="Repair & Servicing"
+                summary="Professional DJI drone repair, maintenance, and after-sales support with certified technicians."
+                image="/images/uav/repair services/drone test.jpg"
+                href="/uav-solutions/repair-servicing"
+                tag="Service"
+              />
+            </AnimatedSection>
           </div>
         </div>
       </section>

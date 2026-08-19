@@ -39,7 +39,7 @@ export default function ContactUsPage() {
                 <Info icon={<MapPin className="h-4 w-4" />} text={siteConfig.contact.address} />
               </div>
               <div className="relative mt-10 h-40 w-full max-w-md overflow-hidden rounded-2xl opacity-90 sm:mt-12 sm:h-48 lg:h-56">
-                <Image src="/images/home/Sumathiit-home-image3.jpg" alt="Sumathi IT contact" fill className="object-cover" />
+                <Image src="/images/home/Sumathiit-home-image3.jpg" alt="Sumathi IT contact" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
               </div>
             </AnimatedSection>
             <AnimatedSection variant="pop"><ContactForm /></AnimatedSection>
@@ -102,7 +102,7 @@ function OfficeCard({ title, image, linkText }: { title: string; image: string; 
           </a>
         </div>
         <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-brand-lavender sm:h-48 md:h-full">
-          <Image src={image} alt={title} fill className="object-cover" />
+          <Image src={image} alt={title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
         </div>
       </div>
     </AnimatedSection>

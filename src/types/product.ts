@@ -1,4 +1,4 @@
-export type ProductCategory = "drones" | "software" | "gnss" | "bim" | "scanners" | "uav-services";
+export type ProductCategory = "drones" | "payloads" | "accessories" | "software" | "gnss" | "bim" | "scanners" | "uav-services";
 
 export type DroneComparisonSpecs = {
   rechargeTime?: string;

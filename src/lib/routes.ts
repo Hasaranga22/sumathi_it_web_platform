@@ -1,7 +1,7 @@
 export const routes = {
   home: "/",
   enterprise: "/enterprise-solutions",
-  uav: "/uav-solutions",
+  geospatial: "/uav-solutions",
   products: "/products",
   news: "/news",
   caseStudies: "/case-studies",

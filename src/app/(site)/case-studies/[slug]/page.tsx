@@ -27,7 +27,7 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
       <HeroBlock eyebrow={item.category} title={item.title} description={item.excerpt} image={item.image} />
       <article className="section-padding bg-white">
         <AnimatedSection className="container-padded max-w-3xl">
-          {item.body.map((paragraph) => <p key={paragraph} className="mb-6 text-lg leading-9 text-slate-700">{paragraph}</p>)}
+          {item.body.filter(p => p.trim()).map((paragraph, index) => <p key={index} className="mb-6 text-lg leading-9 text-slate-700">{paragraph}</p>)}
         </AnimatedSection>
       </article>
       <CtaBand title="Discuss a similar project" />

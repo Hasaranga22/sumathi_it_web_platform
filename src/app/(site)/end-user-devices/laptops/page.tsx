@@ -40,6 +40,7 @@ export default function LaptopsPage() {
               src="/images/end user devices/subpages/laptops.jpg"
               alt="Business Laptops"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
           </AnimatedSection>
@@ -101,6 +102,7 @@ export default function LaptopsPage() {
                 width={400}
                 height={400}
                 className="object-contain"
+                style={{ width: "auto", height: "auto" }}
               />
             </div>
           </AnimatedSection>
