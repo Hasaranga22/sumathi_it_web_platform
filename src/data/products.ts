@@ -700,7 +700,7 @@ export const products: Product[] = [
     summary: "Heavy-lift enterprise drone platform for demanding industrial inspection, mapping, and public safety missions.",
     description:
       "DJI Matrice 400 is a robust enterprise drone designed for heavy-lift operations and demanding industrial missions. With enhanced payload capacity, extended flight time, and advanced obstacle sensing, the Matrice 400 excels in infrastructure inspection, large-scale mapping, and emergency response scenarios where reliability and performance are critical.",
-    images: ["/images/uav/drone products/matrice 400/matrice400.jpg"],
+    images: ["/images/uav/drone products/matrice 400/DJI-Matrice-400-Side-and-Top-View-_No-Payload_500x.jpg", "/images/uav/drone products/matrice 400/DJI-Matrice-400-Top-View-Folded_500x.jpg", "/images/uav/drone products/matrice 400/DJI-Matrice-400-Top-View-_No-Payload_500x.jpg"],
     features: ["Heavy-lift capability", "Extended flight time", "Advanced obstacle sensing", "Multi-payload support", "Industrial-grade reliability"],
     specifications: {
       "Use case": "Industrial inspection, large-scale mapping, public safety",
@@ -735,7 +735,7 @@ export const products: Product[] = [
     summary: "Enterprise drone platform with enhanced photogrammetry capabilities for high-precision mapping and surveying.",
     description:
       "DJI Matrice 4E is optimized for photogrammetry and mapping applications, featuring advanced camera systems and precise positioning for survey-grade data collection. Ideal for construction monitoring, topographic surveys, and infrastructure inspection where high-resolution imagery and accuracy are essential.",
-    images: ["/images/uav/drone products/matrice 4 series/matrice4e.jpg"],
+    images: ["/images/uav/drone products/matrice 4 series/0d094c6c5fc4345015a60fd6315a8a2f.png", "/images/uav/drone products/matrice 4 series/0da7a1c2c07e8cc3f2b6524049ced98a.png", "/images/uav/drone products/matrice 4 series/c72f0e3ee037a2dbea5516a6c0f61c51.png"],
     features: ["Photogrammetry optimized", "High-resolution imaging", "RTK positioning", "Survey-grade accuracy", "Mapping workflows"],
     specifications: {
       "Use case": "Photogrammetry, mapping, surveying",
@@ -770,7 +770,7 @@ export const products: Product[] = [
     summary: "Enterprise drone with thermal imaging capabilities for inspection, search and rescue, and public safety operations.",
     description:
       "DJI Matrice 4T combines enterprise drone performance with advanced thermal imaging, making it ideal for electrical inspection, building diagnostics, search and rescue, and public safety missions. The thermal camera detects heat signatures while the visible camera provides detailed context, enabling comprehensive situational awareness.",
-    images: ["/images/uav/drone products/matrice 4 series/matrice4t.jpg"],
+    images: ["/images/uav/drone products/matrice 4 series/c72f0e3ee037a2dbea5516a6c0f61c51.png", "/images/uav/drone products/matrice 4 series/0d094c6c5fc4345015a60fd6315a8a2f.png", "/images/uav/drone products/matrice 4 series/0da7a1c2c07e8cc3f2b6524049ced98a.png"],
     features: ["Thermal imaging", "Dual camera system", "Inspection workflows", "Search and rescue ready", "Public safety optimized"],
     specifications: {
       "Use case": "Thermal inspection, search and rescue, public safety",
@@ -805,7 +805,10 @@ export const products: Product[] = [
     summary: "Enterprise drone with enhanced photogrammetry and extended range for large-area mapping and surveying operations.",
     description:
       "DJI Matrice 4DE builds upon the Matrice 4E platform with extended flight range and enhanced photogrammetry capabilities, making it ideal for large-area mapping projects, corridor surveys, and extensive topographic mapping where extended coverage and efficiency are critical.",
-    images: ["/images/uav/drone products/matrice 4d series/matrice4de.jpg"],
+    images: [
+  "/images/uav/drone products/matrice 4de/dji_launches_matrice_4_series.webp",
+  "/images/uav/drone products/matrice 4de/matrice_4_t_and_m4e.webp",
+],
     features: ["Extended range", "Enhanced photogrammetry", "Large-area coverage", "Survey-grade accuracy", "Efficient mapping workflows"],
     specifications: {
       "Use case": "Large-area mapping, corridor surveys, topographic mapping",
@@ -834,13 +837,13 @@ export const products: Product[] = [
     seoDescription: "DJI Matrice 4DE extended-range drone solutions in Sri Lanka for large-area mapping and surveying operations."
   },
   {
-    title: "DJI Matrice 4DT",
+    title: "DJI Matrice 4 TD",
     slug: "dji-matrice-4dt",
     category: "drones",
     summary: "Enterprise drone with thermal imaging and extended range for large-area inspection and public safety operations.",
     description:
-      "DJI Matrice 4DT combines extended flight range with advanced thermal imaging, making it ideal for large-area infrastructure inspection, pipeline monitoring, and extensive search and rescue operations where coverage and thermal detection are both critical requirements.",
-    images: ["/images/uav/drone products/matrice 4d series/matrice4dt.jpg"],
+      "DJI Matrice 4 TD combines extended flight range with advanced thermal imaging, making it ideal for large-area infrastructure inspection, pipeline monitoring, and extensive search and rescue operations where coverage and thermal detection are both critical requirements.",
+    images: ["/images/uav/drone products/matrice 4d series/16x9_Blog_Header_-M4TD_IP.webp"],
     features: ["Extended range", "Thermal imaging", "Large-area inspection", "Pipeline monitoring", "Search and rescue optimized"],
     specifications: {
       "Use case": "Large-area inspection, pipeline monitoring, search and rescue",
@@ -875,7 +878,7 @@ export const products: Product[] = [
     summary: "Multispectral enterprise drone for agriculture, environmental monitoring, and precision agriculture applications.",
     description:
       "DJI Mavic 3M is a multispectral imaging drone designed for agriculture and environmental monitoring. With specialized sensors that capture data across multiple spectral bands, it enables crop health analysis, vegetation mapping, and precision agriculture applications that go beyond what standard RGB cameras can provide.",
-    images: ["/images/uav/drone products/mavic 3m/mavic3m.jpg"],
+    images: ["/images/uav/drone products/mavic 3m/mavic 3m.jpg", "/images/uav/drone products/mavic 3m/unnamed-2-600x600.png"],
     features: ["Multispectral imaging", "Crop health analysis", "Precision agriculture", "Environmental monitoring", "Compact enterprise design"],
     specifications: {
       "Use case": "Agriculture, environmental monitoring, vegetation mapping",
@@ -910,7 +913,7 @@ export const products: Product[] = [
     summary: "Heavy-duty agricultural drone for large-scale spraying, spreading, and crop protection operations.",
     description:
       "DJI Agras T55 is a heavy-duty agricultural drone designed for large-scale spraying and spreading operations. With enhanced payload capacity and extended flight time, the T55 is ideal for commercial farming, orchard management, and large-area crop protection where efficiency and coverage are critical.",
-    images: ["/images/uav/drone products/agras t55/agras-t55.jpg"],
+    images: ["/images/uav/drone products/agras t55/agras t55 pt2.png", "/images/uav/drone products/agras t55/tagras  t55.jpg"],
     features: ["Heavy payload capacity", "Large-area spraying", "Spreading capability", "Extended flight time", "Commercial farming optimized"],
     specifications: {
       "Use case": "Large-scale spraying, spreading, crop protection",
@@ -945,7 +948,7 @@ export const products: Product[] = [
     summary: "Ultra-heavy agricultural drone for maximum commercial spraying and spreading operations.",
     description:
       "DJI Agras T100 represents the pinnacle of agricultural drone capability with ultra-heavy payload capacity for maximum spraying and spreading performance. Designed for the most demanding commercial agricultural operations, the T100 delivers unmatched coverage and efficiency for large-scale farming enterprises.",
-    images: ["/images/uav/drone products/agras t100/agras-t100.jpg"],
+    images: ["/images/uav/drone products/agras t100/agras_t100_render_720x720_crop_center.png.png", "/images/uav/drone products/agras t100/nuyWayAg2025-T100_General-3512_-_Square.jpg", "/images/uav/drone products/agras t100/nuyWayAg2025-T100_General-3701_-_Square.jpg"],
     features: ["Ultra-heavy payload", "Maximum coverage", "Commercial spraying", "Heavy spreading", "Enterprise farming"],
     specifications: {
       "Use case": "Maximum commercial spraying and spreading",
@@ -980,7 +983,7 @@ export const products: Product[] = [
     summary: "Professional agricultural drone for precision spraying and spreading with advanced flight control.",
     description:
       "DJI Agras T70P is a professional agricultural drone designed for precision spraying and spreading operations. With advanced flight control systems and precise payload management, the T70P delivers accurate application for orchards, vineyards, and precision agriculture where targeted treatment is essential.",
-    images: ["/images/uav/drone products/agras t70p/agras-t70p.jpg"],
+    images: ["/images/uav/drone products/agras t70p/Ag_T70P2.jpg", "/images/uav/drone products/agras t70p/Ag_T70P4.jpg", "/images/uav/drone products/agras t70p/Ag_t70P-Controller_crop.jpg"],
     features: ["Precision spraying", "Advanced flight control", "Orchard optimized", "Targeted application", "Professional agriculture"],
     specifications: {
       "Use case": "Precision spraying, orchard management, targeted application",
@@ -1015,7 +1018,7 @@ export const products: Product[] = [
     summary: "Compact agricultural drone for small to medium-scale spraying and spreading operations.",
     description:
       "DJI Agras T25P is a compact agricultural drone designed for small to medium-scale farming operations. With efficient spraying and spreading capabilities in a portable form factor, the T25P is ideal for smaller farms, specialty crops, and operations where maneuverability and ease of transport are important.",
-    images: ["/images/uav/drone products/agras t25p/agras-t25p.jpg"],
+    images: ["/images/uav/drone products/agras t25p/415 (1).png", "/images/uav/drone products/agras t25p/415.png", "/images/uav/drone products/agras t25p/416.png"],
     features: ["Compact design", "Efficient spraying", "Portable operation", "Small farm optimized", "Specialty crop support"],
     specifications: {
       "Use case": "Small to medium-scale spraying and spreading",
@@ -1050,7 +1053,7 @@ export const products: Product[] = [
     summary: "Heavy-lift delivery drone for cargo transport and logistics operations.",
     description:
       "DJI FlyCart 100 is a heavy-lift delivery drone designed for cargo transport and logistics operations. With substantial payload capacity and extended range, the FlyCart 100 enables efficient delivery of supplies, equipment, and materials to remote or hard-to-reach locations, revolutionizing last-mile logistics and emergency supply delivery.",
-    images: ["/images/uav/drone products/fly cart 100/flycart100.jpg"],
+    images: ["/images/uav/drone products/fly cart 100/BI5A3198-2.jpg", "/images/uav/drone products/fly cart 100/DJI-Flycart-100-01-700x700.webp", "/images/uav/drone products/fly cart 100/Screenshot-2025-12-05-at-10.29.50-740x498.jpg"],
     features: ["Heavy-lift capacity", "Extended range", "Cargo delivery", "Logistics optimized", "Emergency supply transport"],
     specifications: {
       "Use case": "Cargo delivery, logistics, emergency supply transport",
