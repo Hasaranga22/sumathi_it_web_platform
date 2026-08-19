@@ -735,7 +735,7 @@ export const products: Product[] = [
     summary: "Enterprise drone platform with enhanced photogrammetry capabilities for high-precision mapping and surveying.",
     description:
       "DJI Matrice 4E is optimized for photogrammetry and mapping applications, featuring advanced camera systems and precise positioning for survey-grade data collection. Ideal for construction monitoring, topographic surveys, and infrastructure inspection where high-resolution imagery and accuracy are essential.",
-    images: ["/images/uav/drone products/matrice 4 series/0d094c6c5fc4345015a60fd6315a8a2f.png", "/images/uav/drone products/matrice 4 series/0da7a1c2c07e8cc3f2b6524049ced98a.png", "/images/uav/drone products/matrice 4 series/c72f0e3ee037a2dbea5516a6c0f61c51.png"],
+    images: ["/images/uav/drone products/matrice 4e/0090cf0a8739bde10de74494ca69aa49@770_462.jpg","/images/uav/drone products/matrice 4e/4c24b5fde2b8b904f89ebd71a3215b96@770_462.jpg"],
     features: ["Photogrammetry optimized", "High-resolution imaging", "RTK positioning", "Survey-grade accuracy", "Mapping workflows"],
     specifications: {
       "Use case": "Photogrammetry, mapping, surveying",
@@ -770,7 +770,7 @@ export const products: Product[] = [
     summary: "Enterprise drone with thermal imaging capabilities for inspection, search and rescue, and public safety operations.",
     description:
       "DJI Matrice 4T combines enterprise drone performance with advanced thermal imaging, making it ideal for electrical inspection, building diagnostics, search and rescue, and public safety missions. The thermal camera detects heat signatures while the visible camera provides detailed context, enabling comprehensive situational awareness.",
-    images: ["/images/uav/drone products/matrice 4 series/c72f0e3ee037a2dbea5516a6c0f61c51.png", "/images/uav/drone products/matrice 4 series/0d094c6c5fc4345015a60fd6315a8a2f.png", "/images/uav/drone products/matrice 4 series/0da7a1c2c07e8cc3f2b6524049ced98a.png"],
+    images: ["/images/uav/drone products/matrice 4d series/DJI_Dock_3_Features_Image_2.webp"],
     features: ["Thermal imaging", "Dual camera system", "Inspection workflows", "Search and rescue ready", "Public safety optimized"],
     specifications: {
       "Use case": "Thermal inspection, search and rescue, public safety",
