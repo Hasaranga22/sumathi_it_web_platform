@@ -16,6 +16,7 @@ interface AnniversaryHeroProps {
 }
 
 /**
+ * *saved
  * Hero banner for the anniversary page. Renders after AnniversaryCelebration's
  * intro has handed off to the page. The backdrop is a set of slow-rotating
  * orbit rings, each carrying a single travelling point of light — a quiet
