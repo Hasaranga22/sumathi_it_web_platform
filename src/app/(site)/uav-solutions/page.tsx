@@ -1,4 +1,4 @@
-import { Compass, Map, Plane, ScanLine, Wrench } from "lucide-react";
+import { Compass, Map, Plane, ScanLine } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { uavCategories } from "@/data/uav-categories";
 import { products } from "@/data/products";
