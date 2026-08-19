@@ -34,7 +34,7 @@ export default function AboutUsPage() {
         backgroundImage="/images/home/sumathiIT-home-image2.jpg"
       />
 
-      {/* Mission & Vision */}
+      {/* Mission and Vision */}
 <section className="section-padding relative overflow-hidden bg-gradient-to-b from-purple-50/60 via-white to-purple-50/40">
   {/* soft ambient glow, purely decorative */}
   <div className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-brand-purple/10 blur-3xl" />
