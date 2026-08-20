@@ -23,7 +23,7 @@ export const navigation: NavItem[] = [
       { label: "Software", href: "/uav-solutions/software" },
       { label: "Scanners", href: "/uav-solutions/scanners" },
       { label: "GNSS System", href: "/uav-solutions/gnss" },
-      { label: "BIM & Digital Construction", href: "/uav-solutions/bim" },
+      { label: "BIM & Digital Construction", href: "/uav-solutions/bim/bim" },
       { label: "Repair & Servicing", href: "/uav-solutions/repair-servicing" }
     ]
   },

@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/enterprise-solutions",
     "/uav-solutions",
+    "/uav-solutions/bim/bim",
     "/end-user-devices",
     "/case-studies",
     "/news",
