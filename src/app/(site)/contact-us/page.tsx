@@ -18,7 +18,7 @@ export default function ContactUsPage() {
     <>
       <PageHero
         title="Contact Us"
-        description="Send your inquiry and our team will guide you toward the right enterprise, UAV, or end-user technology solution."
+        description="testing"
         breadcrumbs={[{ label: "Contact Us" }]}
         backgroundImage="/images/home/conatct us hero.jpg"
       />
